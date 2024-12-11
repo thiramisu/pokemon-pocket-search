@@ -1,0 +1,11 @@
+Twitter Card Validator
+https://cards-dev.twitter.com/validator
+
+Favicon Generator
+https://realfavicongenerator.net/
+
+#92be98
+#a29e6b
+
+フィルターアイコン
+https://fonts.google.com/icons?icon.query=filter&icon.set=Material+Symbols&selected=Material+Symbols+Outlined:tune:FILL@0;wght@400;GRAD@0;opsz@48&icon.size=64&icon.color=%23e8eaed

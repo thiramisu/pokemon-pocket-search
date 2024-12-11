@@ -225,7 +225,15 @@ watch(filteredCards, () => {
               changed: cardName !== '',
             }"
           >
-            <th>Card Name</th>
+            <th>
+              Card Name<br />
+              <SearchButton
+                text="clear"
+                :disabled="cardName === ''"
+                class="action-button"
+                @button-click="cardName = ''"
+              />
+            </th>
             <td>
               <div class="flex">
                 <input
@@ -242,7 +250,15 @@ watch(filteredCards, () => {
               changed: cardText !== '',
             }"
           >
-            <th>Card Text</th>
+            <th>
+              Card Text<br />
+              <SearchButton
+                text="clear"
+                :disabled="cardText === ''"
+                class="action-button"
+                @button-click="cardText = ''"
+              />
+            </th>
             <td>
               <div class="flex column">
                 <input type="text" v-model="cardText" />

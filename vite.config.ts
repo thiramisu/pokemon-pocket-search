@@ -6,6 +6,10 @@ import { processJSON } from "./src/services/dataProcessing";
 
 // https://vite.dev/config/
 export default defineConfig({
+  build: {
+    // GitHub Pages用
+    outDir: "docs",
+  },
   server: {
     watch: {
       // 自動生成ファイル

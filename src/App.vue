@@ -5,7 +5,7 @@ import { POKEMON_NAME_DATALIST_ID } from "./const";
 import { cards } from "./data/types";
 import CardSearch from "./components/CardSearch.vue";
 import FaviconEditorDialog from "./components/FaviconEditorDialog.vue";
-import Sandbox from "./components/Sandbox.vue";
+// import Sandbox from "./components/Sandbox.vue";
 import SearchButton from "./components/SearchButton.vue";
 import TSVConverterDialog from "./components/TSVConverterDialog.vue";
 

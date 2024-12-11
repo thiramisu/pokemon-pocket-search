@@ -94,5 +94,6 @@
 
 - [ ] 検索結果の表示をlazy/debounceにする？
 - [ ] CardDetailDialogでのピカチュウexの名指しをやめる
+- [ ] GitHub Actionsで自動でビルドできるか調べる？
 
 # 未分類

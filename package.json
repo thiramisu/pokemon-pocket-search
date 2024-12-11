@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc -b && vite build --base=/my/public/path/",
+    "build": "vue-tsc -b && vite build --base=./",
     "preview": "vite preview",
     "lint-dry": "eslint '*/*.{js,vue}'"
   },

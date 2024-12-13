@@ -17,6 +17,7 @@ defineProps<{
     #5e5e5e 43% 57%,
     white 70% 100%
   );
+  filter: drop-shadow(0 0 0.1em black);
   display: inline-block;
   transform: scaleX(70%) rotate(-45deg);
   width: 1em;

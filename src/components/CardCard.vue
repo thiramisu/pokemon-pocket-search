@@ -118,8 +118,8 @@ const expansion = computed(() => getExpansionByPackName(props.card.パック));
 <style scoped>
 .card-card {
   align-items: stretch;
-  background: inherit;
-  border: solid 0.6em var(--color-text);
+  background: var(--color-text-background);
+  border: solid 0.6em var(--color-card-border);
   border-radius: 0.3em;
   font-family: inherit;
   font-size: 2.4rem;
@@ -166,10 +166,19 @@ footer {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   letter-spacing: -0.05em;
   line-height: 1;
   padding-right: 0.05em;
+  position: relative;
+}
+.ex::before {
+  content: "ex";
+  text-shadow: 0 0 0.1em black;
+  inset: 0;
+  position: absolute;
+  z-index: -1;
 }
 .hp {
   position: absolute;

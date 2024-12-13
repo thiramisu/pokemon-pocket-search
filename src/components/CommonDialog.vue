@@ -60,7 +60,7 @@ dialog {
 .dialog-container {
   align-items: center;
   background-color: var(--color-background);
-  border: solid 0.6em var(--color-text);
+  border: solid 0.6em var(--color-card-border);
   border-radius: 3em;
   contain: content;
   display: flex;

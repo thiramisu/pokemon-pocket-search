@@ -54,7 +54,7 @@ option {
 
 /* transform するとoptionがガタつくためアニメーションしない */
 select {
-  background-color: var(--color-background);
+  background-color: var(--color-text-background);
   /* selectに左右のpaddingを指定すると<option>の表示がおかしくなるため */
   border: solid transparent;
   border-width: 0.5em 1.1em 0.5em 1em;
@@ -87,7 +87,7 @@ select {
 }
 
 option {
-  background-color: #1a1a1a;
+  background-color: var(--color-option-background);
   color: var(--color-text);
   font-family: inherit;
   font-size: inherit;

@@ -582,9 +582,9 @@ watch(filteredCards, () => {
           <SearchButton
             text="検索条件"
             title="検索条件の表示/非表示を切り替える"
-            color="var(--primary-color-80)"
+            color="var(--color-attention)"
             :text-color="
-              filterPanelToggle ? 'var(--color-background)' : undefined
+              filterPanelToggle ? 'var(--color-fab-text)' : undefined
             "
             :filled="filterPanelToggle"
             @button-click="filterPanelToggle = !filterPanelToggle"

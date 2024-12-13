@@ -85,7 +85,7 @@ defineProps<{
 .ability-mark {
   background: linear-gradient(-45deg, black, red, black);
   box-shadow: inset 0 0 0.2em #00000088;
-  border: solid 0.1em var(--color-text);
+  border: solid 0.1em #cccccc;
   border-bottom-color: #333333;
   border-right-color: #333333;
   border-radius: 0.2em;
@@ -98,6 +98,7 @@ defineProps<{
 }
 .ability-mark::before {
   content: "特性";
+  color: #f8f8f8;
   font-size: 60%;
   inset: 0;
   margin: auto;

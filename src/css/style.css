@@ -1,63 +1,44 @@
 :root {
-  --color-button-overlay: #ffffff;
-  --color-drop-shadow: #ffffff22;
-  --color-background: #242424;
-  --color-text: rgba(255, 255, 255, 0.87);
-  --color-text-alternate: rgba(0, 0, 0, 0.87);
-  --color-input: #00000080;
-  --color-ability-text: #ff1111cc;
-  --color-filled-button-default: #707e93;
-  --color-attention: yellow;
-  --color-border: #444444;
+  --color-primary: hsl(147, 70%, 71%);
+  --color-primary-10: color-mix(in srgb, var(--color-primary) 20%, black);
+  --color-primary-20: color-mix(in srgb, var(--color-primary) 40%, black);
+  --color-primary-30: color-mix(in srgb, var(--color-primary) 60%, black);
+  --color-primary-40: color-mix(in srgb, var(--color-primary) 80%, black);
+  --color-primary-50: var(--color-primary);
+  --color-primary-60: color-mix(in srgb, var(--color-primary) 80%, white);
+  --color-primary-70: color-mix(in srgb, var(--color-primary) 60%, white);
+  --color-primary-80: color-mix(in srgb, var(--color-primary) 40%, white);
+  --color-primary-90: color-mix(in srgb, var(--color-primary) 20%, white);
+  --color-secondary: hsl(0, 100%, 76%);
+  --color-secondary-10: color-mix(in srgb, var(--color-secondary) 20%, black);
+  --color-secondary-20: color-mix(in srgb, var(--color-secondary) 40%, black);
+  --color-secondary-30: color-mix(in srgb, var(--color-secondary) 60%, black);
+  --color-secondary-40: color-mix(in srgb, var(--color-secondary) 80%, black);
+  --color-secondary-50: var(--color-secondary);
+  --color-secondary-60: color-mix(in srgb, var(--color-secondary) 80%, white);
+  --color-secondary-70: color-mix(in srgb, var(--color-secondary) 60%, white);
+  --color-secondary-80: color-mix(in srgb, var(--color-secondary) 40%, white);
+  --color-secondary-90: color-mix(in srgb, var(--color-secondary) 20%, white);
+  --color-secondary-97: color-mix(in srgb, var(--color-secondary) 6%, white);
 
-  --primary-color-r: 171;
-  --primary-color-g: 205;
-  --primary-color-b: 239;
-  --primary-color-10: rgb(
-    calc(var(--primary-color-r) / 5 * 1),
-    calc(var(--primary-color-g) / 5 * 1),
-    calc(var(--primary-color-b) / 5 * 1)
-  );
-  --primary-color-20: rgb(
-    calc(var(--primary-color-r) / 5 * 2),
-    calc(var(--primary-color-g) / 5 * 2),
-    calc(var(--primary-color-b) / 5 * 2)
-  );
-  --primary-color-30: rgb(
-    calc(var(--primary-color-r) / 5 * 3),
-    calc(var(--primary-color-g) / 5 * 3),
-    calc(var(--primary-color-b) / 5 * 3)
-  );
-  --primary-color-40: rgb(
-    calc(var(--primary-color-r) / 5 * 4),
-    calc(var(--primary-color-g) / 5 * 4),
-    calc(var(--primary-color-b) / 5 * 4)
-  );
-  --primary-color-50: rgb(
-    var(--primary-color-r),
-    var(--primary-color-g),
-    var(--primary-color-b)
-  );
-  --primary-color-60: rgb(
-    calc(var(--primary-color-r) + (255 - var(--primary-color-r)) / 5 * 1),
-    calc(var(--primary-color-g) + (255 - var(--primary-color-g)) / 5 * 1),
-    calc(var(--primary-color-b) + (255 - var(--primary-color-b)) / 5 * 1)
-  );
-  --primary-color-70: rgb(
-    calc(var(--primary-color-r) + (255 - var(--primary-color-r)) / 5 * 2),
-    calc(var(--primary-color-g) + (255 - var(--primary-color-g)) / 5 * 2),
-    calc(var(--primary-color-b) + (255 - var(--primary-color-b)) / 5 * 2)
-  );
-  --primary-color-80: rgb(
-    calc(var(--primary-color-r) + (255 - var(--primary-color-r)) / 5 * 3),
-    calc(var(--primary-color-g) + (255 - var(--primary-color-g)) / 5 * 3),
-    calc(var(--primary-color-b) + (255 - var(--primary-color-b)) / 5 * 3)
-  );
-  --primary-color-90: rgb(
-    calc(var(--primary-color-r) + (255 - var(--primary-color-r)) / 5 * 4),
-    calc(var(--primary-color-g) + (255 - var(--primary-color-g)) / 5 * 4),
-    calc(var(--primary-color-b) + (255 - var(--primary-color-b)) / 5 * 4)
-  );
+  --color-background: #242424;
+  --color-text: rgb(255 255 255 / 0.87);
+
+  --color-attention: var(--color-secondary-70);
+  --color-button-overlay: #ffffff;
+  --color-card-border: var(--color-primary-90);
+  --color-drop-shadow: #ffffff22;
+  --color-fab-background: var(--color-secondary-70);
+  --color-fab-text: var(--color-background);
+  --color-filled-button-default: var(--color-secondary-20);
+  --color-input: #00000080;
+  --color-range-slider-caption-background: var(--color-primary-30);
+  --color-text-background: var(--color-background);
+  --color-option-background: var(--color-primary-10);
+
+  /* モードによらず固定 */
+  --color-border: rgb(255 255 255 / 0.16);
+  --color-ability-text: #ff1111cc;
 
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -65,12 +46,31 @@
 
   color-scheme: light dark;
   color: var(--color-text);
-  background-color: #242424;
+  background-color: var(--color-background);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --color-background: var(--color-primary-70);
+    --color-text: rgb(0 0 0 / 0.87);
+
+    --color-attention: var(--color-secondary-70);
+    --color-button-overlay: #00000055;
+    --color-card-border: var(--color-secondary-80);
+    --color-drop-shadow: #00000022;
+    --color-fab-background: var(--color-secondary-80);
+    --color-fab-text: var(--color-text);
+    --color-filled-button-default: var(--color-secondary-70);
+    --color-input: #ffffff80;
+    --color-range-slider-caption-background: var(--color-primary-90);
+    --color-text-background: var(--color-secondary-97);
+    --color-option-background: var(--color-secondary-80);
+  }
 }
 
 * {
@@ -157,18 +157,3 @@ button {
 .justify-self-start {
   justify-self: flex-start;
 }
-/* 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-
-  a:hover {
-    color: #747bff;
-  }
-
-  button {
-    background-color: #f9f9f9;
-  }
-} */

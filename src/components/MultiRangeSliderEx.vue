@@ -422,7 +422,7 @@ watch(valueMax, () => {
 /** 選択範囲外の見た目上の線 */
 .bar-outer::before {
   content: "";
-  background-color: white;
+  background-color: var(--color-text);
   inset: 2.1em -0.125em 1.3em -0.125em;
   opacity: 0.08;
   pointer-events: none;
@@ -476,9 +476,9 @@ watch(valueMax, () => {
 .thumb::before {
   content: "";
   aspect-ratio: 1 / 1;
-  background-color: white;
+  background-color: var(--color-text);
   border-radius: 50%;
-  box-shadow: 0 0 0.3em black;
+  box-shadow: 0 0 0.3em var(--color-background);
   cursor: pointer;
   inset: 1.6em -0.6em auto -0.6em;
   position: absolute;
@@ -498,7 +498,7 @@ watch(valueMax, () => {
 
 /** つまみ上の現在値 */
 .caption {
-  background-color: var(--primary-color-30);
+  background-color: var(--color-range-slider-caption-background);
   border-radius: 100em;
   bottom: 2.5em;
   box-shadow: 0 0 0.5em var(--color-drop-shadow);

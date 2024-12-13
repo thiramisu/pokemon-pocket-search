@@ -114,10 +114,10 @@ input[type="checkbox"] {
 }
 .fab {
   aspect-ratio: 1 / 1;
-  background: var(--primary-color-80);
+  background: var(--color-fab-background);
   border-radius: 20%;
   box-shadow: 0 0 1.5em var(--color-drop-shadow);
-  color: var(--color-background);
+  color: var(--color-fab-text);
   position: fixed;
   inset: auto 3em 3em auto;
   user-select: none;
@@ -132,11 +132,15 @@ input[type="checkbox"] {
 }
 
 footer {
+  background-color: var(--color-text-background);
+  border: solid 1em var(--color-card-border);
+  border-radius: 2em;
+  margin-top: 2em;
   padding: 1.5em;
 }
 @media (width <= 1440px) {
   footer {
-    padding-bottom: calc(6em + 10vmax);
+    margin-bottom: calc(4em + 10vmax);
   }
 }
 h1 {
@@ -162,14 +166,13 @@ h1 {
   background-image: url("/fullscreen_portrait.svg");
 }
 .filter-button-icon::after {
-  background-color: var(--primary-color-80);
+  background-color: var(--color-fab-background);
   background-image: url("/tune.svg");
 }
 .filter-button.opened > .filter-button-icon::after {
   opacity: 0;
 }
 .filter-button-text {
-  color: var(--color-text-alternate);
   font-size: 2vmax;
   font-weight: bold;
   position: absolute;
@@ -179,7 +182,7 @@ h1 {
 .filter-button-text-stroke {
   inset: 0;
   position: absolute;
-  -webkit-text-stroke: 0.4em var(--primary-color-80);
+  -webkit-text-stroke: 0.4em var(--color-fab-background);
   z-index: -1;
 }
 </style>

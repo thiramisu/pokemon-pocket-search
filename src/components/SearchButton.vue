@@ -45,7 +45,7 @@ const playAnimation = async () => {
 
 <style scoped>
 .search-button {
-  background-color: var(--color-background);
+  background-color: var(--color-text-background);
   border: solid 0.1em #ffffff33;
   border-left-width: 0.2em;
   border-radius: 10em;

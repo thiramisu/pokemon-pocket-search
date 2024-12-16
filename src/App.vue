@@ -142,6 +142,12 @@ watch(
   max-width: revert;
 }
 
+@media (width <= 1440px) {
+  .main-container {
+    padding-bottom: calc(4em + 10vmax);
+  }
+}
+
 input[type="checkbox"] {
   display: none;
 }
@@ -170,11 +176,6 @@ footer {
   border-radius: 2em;
   margin-top: 2em;
   padding: 1.5em;
-}
-@media (width <= 1440px) {
-  footer {
-    margin-bottom: calc(4em + 10vmax);
-  }
 }
 h1 {
   font-size: 300%;

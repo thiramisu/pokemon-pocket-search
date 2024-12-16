@@ -51,6 +51,18 @@ export default defineConfig({
             purpose: "maskable",
           },
         ],
+        screenshots: [
+          {
+            src: "./screenshots/wide/1.png",
+            sizes: "1441x1000",
+            form_factor: "wide",
+          },
+          {
+            src: "./screenshots/narrow/1.png",
+            sizes: "662x1000",
+            form_factor: "narrow",
+          },
+        ],
         theme_color: "#81e9b0",
         background_color: "#ff8585",
         display: "standalone",

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // import LanguageSelectBox from "./components/LanguageSelectBox.vue";
-import { ref, useId } from "vue";
+import { ref, useId, watch } from "vue";
 import { POKEMON_NAME_DATALIST_ID } from "./const";
 import { cards } from "./data/types";
 import CardSearch from "./components/CardSearch.vue";
@@ -8,6 +8,8 @@ import FaviconEditorDialog from "./components/FaviconEditorDialog.vue";
 // import Sandbox from "./components/Sandbox.vue";
 import SearchButton from "./components/SearchButton.vue";
 import TSVConverterDialog from "./components/TSVConverterDialog.vue";
+import ToggleButton from "./components/ToggleButton.vue";
+import Icon from "./components/Icon.vue";
 
 const tsvConverterDialogVisible = ref(false);
 const FaviconEditorDialogVisible = ref(false);
@@ -21,6 +23,28 @@ const filteredCardCount = ref(0);
 const onSearch = (count: number) => {
   filteredCardCount.value = count;
 };
+
+const isLightTheme = (() => {
+  const savedTheme = localStorage.getItem("theme");
+
+  return ref(
+    savedTheme === "light" ||
+      // 初回
+      (savedTheme === null &&
+        window.matchMedia("(prefers-color-scheme: light)").matches)
+  );
+})();
+watch(
+  isLightTheme,
+  (newValue) => {
+    if (newValue !== undefined) {
+      localStorage.setItem("theme", newValue ? "light" : "dark");
+      document.body.classList.toggle("light", newValue);
+      document.body.classList.toggle("dark", !newValue);
+    }
+  },
+  { immediate: true }
+);
 </script>
 
 <template>
@@ -67,15 +91,24 @@ const onSearch = (count: number) => {
     <footer class="page-footer flex items-center justify-center">
       <h1>ポケポケ カード検索</h1>
       <div class="column">
+        <ToggleButton
+          v-model="isLightTheme"
+          class="justify-center theme-switch"
+        >
+          <template #off>
+            <Icon icon="dark_mode" color="blue" />
+          </template>
+          <template #on>
+            <Icon icon="light_mode" color="blue" />
+          </template>
+        </ToggleButton>
         開発用ツールなど（PC向け）
         <SearchButton
           text="tsv変換器をひらく"
-          filled
           @button-click="tsvConverterDialogVisible = true"
         />
         <SearchButton
           text="faviconエディタをひらく"
-          filled
           @button-click="FaviconEditorDialogVisible = true"
         />
       </div>
@@ -184,5 +217,8 @@ h1 {
   position: absolute;
   -webkit-text-stroke: 0.4em var(--color-fab-background);
   z-index: -1;
+}
+.theme-switch {
+  padding: 1em 0;
 }
 </style>

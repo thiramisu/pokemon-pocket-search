@@ -47,6 +47,7 @@ dialog {
   background: none;
   border: none;
   box-shadow: 0 0 0.2em var(--color-drop-shadow);
+  color: var(--color-text);
   font-size: 1.6em;
   padding: 0;
 }

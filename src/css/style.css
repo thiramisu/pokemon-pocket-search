@@ -1,0 +1,205 @@
+:root {
+  --color-primary: hsl(147, 70%, 71%);
+  --color-primary-10: color-mix(in srgb, var(--color-primary) 20%, black);
+  --color-primary-20: color-mix(in srgb, var(--color-primary) 40%, black);
+  --color-primary-30: color-mix(in srgb, var(--color-primary) 60%, black);
+  --color-primary-40: color-mix(in srgb, var(--color-primary) 80%, black);
+  --color-primary-50: var(--color-primary);
+  --color-primary-60: color-mix(in srgb, var(--color-primary) 80%, white);
+  --color-primary-70: color-mix(in srgb, var(--color-primary) 60%, white);
+  --color-primary-80: color-mix(in srgb, var(--color-primary) 40%, white);
+  --color-primary-90: color-mix(in srgb, var(--color-primary) 20%, white);
+  --color-secondary: hsl(0, 100%, 76%);
+  --color-secondary-10: color-mix(in srgb, var(--color-secondary) 20%, black);
+  --color-secondary-20: color-mix(in srgb, var(--color-secondary) 40%, black);
+  --color-secondary-30: color-mix(in srgb, var(--color-secondary) 60%, black);
+  --color-secondary-40: color-mix(in srgb, var(--color-secondary) 80%, black);
+  --color-secondary-50: var(--color-secondary);
+  --color-secondary-60: color-mix(in srgb, var(--color-secondary) 80%, white);
+  --color-secondary-70: color-mix(in srgb, var(--color-secondary) 60%, white);
+  --color-secondary-80: color-mix(in srgb, var(--color-secondary) 40%, white);
+  --color-secondary-90: color-mix(in srgb, var(--color-secondary) 20%, white);
+  --color-secondary-97: color-mix(in srgb, var(--color-secondary) 6%, white);
+
+  --color-background-dark: #242424;
+  --color-background-light: var(--color-primary-70);
+  --color-text-dark: rgb(255 255 255 / 0.87);
+  --color-text-light: rgb(0 0 0 / 0.87);
+
+  --color-attention-dark: var(--color-primary-70);
+  --color-attention-light: var(--color-secondary-70);
+  --color-button-overlay-dark: #ffffff;
+  --color-button-overlay-light: #00000055;
+  --color-card-border-dark: var(--color-secondary-80);
+  --color-card-border-light: var(--color-secondary-80);
+  --color-dialog-background-dark: var(--color-background-dark);
+  --color-dialog-background-light: var(--color-primary-90);
+  --color-dialog-border-dark: var(--color-primary-70);
+  --color-dialog-border-light: var(--color-secondary-60);
+  --color-drop-shadow-dark: #ffffff22;
+  --color-drop-shadow-light: #00000022;
+  --color-fab-background-dark: var(--color-primary-70);
+  --color-fab-background-light: var(--color-secondary-80);
+  --color-fab-text-dark: var(--color-background-dark);
+  --color-fab-text-light: var(--color-text-light);
+  --color-filled-button-default-dark: var(--color-primary-20);
+  --color-filled-button-default-light: var(--color-secondary-70);
+  --color-input-dark: #00000080;
+  --color-input-light: var(--color-secondary-80);
+  --color-range-slider-caption-background-dark: var(--color-secondary-30);
+  --color-range-slider-caption-background-light: var(--color-primary-90);
+  --color-scrollbar-dark: var(--color-secondary-20) var(--color-primary-10);
+  --color-scrollbar-light: var(--color-secondary-70) var(--color-primary-30);
+  --color-text-background-dark: var(--color-background-dark);
+  --color-text-background-light: var(--color-secondary-97);
+  --color-option-background-dark: var(--color-primary-10);
+  --color-option-background-light: var(--color-secondary-80);
+
+  /* ダークテーマ */
+  --color-background: var(--color-background-dark);
+  --color-text: var(--color-text-dark);
+
+  --color-attention: var(--color-attention-dark);
+  --color-button-overlay: var(--color-button-overlay-dark);
+  --color-card-border: var(--color-card-border-dark);
+  --color-dialog-background: var(--color-dialog-background-dark);
+  --color-dialog-border: var(--color-dialog-border-dark);
+  --color-drop-shadow: var(--color-drop-shadow-dark);
+  --color-fab-background: var(--color-fab-background-dark);
+  --color-fab-text: var(--color-fab-text-dark);
+  --color-filled-button-default: var(--color-filled-button-default-dark);
+  --color-input: var(--color-input-dark);
+  --color-range-slider-caption-background: var(
+    --color-range-slider-caption-background-dark
+  );
+  --color-scrollbar: var(--color-scrollbar-dark);
+  --color-text-background: var(--color-text-background-dark);
+  --color-option-background: var(--color-option-background-dark);
+
+  /* テーマによらず固定 */
+  --color-border: rgb(255 255 255 / 0.16);
+  --color-ability-text: #ff1111cc;
+
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: dark light;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  scrollbar-color: var(--color-scrollbar);
+}
+
+:root.light {
+  /* ライトテーマ */
+  --color-background: var(--color-background-light);
+  --color-text: var(--color-text-light);
+
+  --color-attention: var(--color-attention-light);
+  --color-button-overlay: var(--color-button-overlay-light);
+  --color-card-border: var(--color-card-border-light);
+  --color-dialog-background: var(--color-dialog-background-light);
+  --color-dialog-border: var(--color-dialog-border-light);
+  --color-drop-shadow: var(--color-drop-shadow-light);
+  --color-fab-background: var(--color-fab-background-light);
+  --color-fab-text: var(--color-fab-text-light);
+  --color-filled-button-default: var(--color-filled-button-default-light);
+  --color-input: var(--color-input-light);
+  --color-range-slider-caption-background: var(
+    --color-range-slider-caption-background-light
+  );
+  --color-scrollbar: var(--color-scrollbar-light);
+  --color-text-background: var(--color-text-background-light);
+  --color-option-background: var(--color-option-background-light);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  height: 100%;
+}
+
+@media (width <= 768px) {
+  html {
+    font-size: 1.6vw;
+  }
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  height: 100%;
+  margin: 0;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  color: inherit;
+}
+
+.relative {
+  position: relative;
+}
+
+.full-width {
+  width: 100%;
+}
+.full-height {
+  height: 100%;
+}
+
+.text-xs {
+  font-size: 50%;
+}
+.text-left {
+  text-align: left;
+}
+
+.flex {
+  display: flex;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.grid {
+  display: grid;
+}
+.items-baseline {
+  align-items: baseline;
+}
+.items-center {
+  align-items: center;
+}
+.items-end {
+  align-items: flex-end;
+}
+.items-start {
+  align-items: flex-start;
+}
+.self-end {
+  align-self: flex-end;
+}
+.justify-center {
+  justify-content: center;
+}
+.justify-evenly {
+  justify-content: space-evenly;
+}
+.justify-self-start {
+  justify-self: flex-start;
+}

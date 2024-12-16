@@ -1,0 +1,28 @@
+.icon-button {
+  background-color: transparent;
+  border: none;
+  border-radius: 10em;
+  cursor: pointer;
+  font-size: 200%;
+  height: 1.5em;
+  inset: 0.9em 0.9em auto auto;
+  line-height: 1;
+  position: absolute;
+  width: 2em;
+}
+.icon-button::before {
+  content: "";
+  background-color: var(--color-button-overlay);
+  border-radius: 10em;
+  inset: 0;
+  opacity: 0;
+  position: absolute;
+  transition: opacity 0.2s;
+}
+.icon-button:hover::before,
+.icon-button:focus-visible::before {
+  opacity: 16%;
+}
+.icon-button:active::before {
+  opacity: 24%;
+}

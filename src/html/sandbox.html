@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="item">アイテム1</div>
+  <div class="item">アイテム2</div>
+  <div class="item">アイテム3</div>
+</div>
+
+<button id="toggleButton">アニメーション開始</button>
+
+<style>
+  .container {
+    display: flex;
+    gap: 10px;
+  }
+
+  .item {
+    background-color: lightblue;
+    padding: 20px;
+    transition:
+      flex-basis 0.5s ease,
+      opacity 0.5s ease; /* 幅と透明度のアニメーション */
+    flex-grow: 1; /* アイテムが残りのスペースを均等に分ける */
+  }
+
+  .item.hide {
+    flex-basis: 0; /* 幅を0にする */
+    opacity: 0; /* 透明にする */
+  }
+</style>
+
+<script>
+  document
+    .getElementById("toggleButton")
+    .addEventListener("click", function () {
+      const items = document.querySelectorAll(".item");
+      items[0].classList.toggle("hide");
+    });
+</script>

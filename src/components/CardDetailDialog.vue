@@ -1,0 +1,178 @@
+<script setup lang="ts">
+import { computed, watch } from "vue";
+import {
+  Card,
+  cards,
+  cardRelations,
+  getExpansionByPackName,
+  targetables,
+  getEvolutionStage,
+  evolutionStageNames,
+  getSharedExpansionName,
+  dummyCard,
+} from "../data/types";
+import { SHARED_PACK } from "../const";
+import CardCard from "./CardCard.vue";
+import CommonDialog from "./CommonDialog.vue";
+const card = defineModel<Card>("card", { default: dummyCard });
+
+const relations = computed(() => cardRelations[card.value.名前]);
+const targetableNames = computed(() => targetables[card.value.ID]);
+const expansionName = computed(
+  () => getExpansionByPackName(card.value.パック).名前
+);
+
+// TODO ピカチュウex以外で途中進化のexなどが出てきた場合に備える
+const isPikachuEx = (card: Card) => card.名前 === "ピカチュウ" && "ex" in card;
+
+const dialogVisible = defineModel({ default: false });
+const applyCardIdFromQuery = () => {
+  const currentUrl = new URL(window.location.href);
+  const cardId = parseInt(currentUrl.searchParams.get("card_id") ?? "-1");
+  if (
+    !Number.isInteger(cardId) ||
+    cardId < 0 ||
+    cards.length <= cardId ||
+    cards[cardId].名前 === dummyCard.名前
+  ) {
+    dialogVisible.value = false;
+  } else {
+    dialogVisible.value = true;
+    card.value = cards[cardId];
+  }
+};
+const pushState = (mode: "set" | "delete") => {
+  const currentUrl = new URL(window.location.href);
+  currentUrl.searchParams[mode]("card_id", card.value.ID.toString());
+  const url = currentUrl.toString();
+  if (window.location.href !== url) {
+    history.pushState(undefined, "", url);
+  }
+};
+watch(card, () => {
+  pushState("set");
+});
+watch(dialogVisible, () => {
+  pushState(dialogVisible.value ? "set" : "delete");
+});
+window.addEventListener("load", applyCardIdFromQuery);
+window.addEventListener("popstate", applyCardIdFromQuery);
+</script>
+
+<template>
+  <CommonDialog v-model="dialogVisible" class="card-detail-dialog">
+    <div class="column-grid">
+      <CardCard :card />
+      <div class="card-header">
+        <h1>{{ card.名前 }}</h1>
+        <div>{{ expansionName }}</div>
+        <div>
+          {{
+            card.パック === getSharedExpansionName(expansionName)
+              ? SHARED_PACK
+              : card.パック
+          }}
+        </div>
+      </div>
+    </div>
+    <div class="flex items-center">
+      <div class="column">
+        <template v-if="relations.cardIds.length !== 1">
+          <h2>同名/ex</h2>
+          <div class="flex flex-wrap justify-center">
+            <template v-for="cardId of relations.cardIds">
+              <CardCard
+                v-if="card.ID !== cardId"
+                :card="cards[cardId]"
+                button
+                @click="card = cards[cardId]"
+              />
+            </template>
+          </div>
+        </template>
+        <template
+          v-if="relations.evolutions !== undefined && !isPikachuEx(card)"
+          v-for="evolutionName of relations.evolutions"
+        >
+          <h2>
+            {{ evolutionStageNames[getEvolutionStage(evolutionName)] }}：{{
+              evolutionName
+            }}
+          </h2>
+          <div class="flex flex-wrap justify-center">
+            <template v-for="cardId of cardRelations[evolutionName].cardIds">
+              <CardCard
+                v-if="!isPikachuEx(cards[cardId])"
+                :card="cards[cardId]"
+                button
+                @click="card = cards[cardId]"
+              />
+            </template>
+          </div>
+        </template>
+        <template v-if="targetableNames !== undefined">
+          <h2>このカードで選べるカード</h2>
+          <template v-for="targetableName of targetableNames">
+            <h3>{{ targetableName }}</h3>
+            <div class="flex flex-wrap justify-center">
+              <CardCard
+                v-for="cardId of cardRelations[targetableName].cardIds"
+                :card="cards[cardId]"
+                button
+                @click="card = cards[cardId]"
+              />
+            </div>
+          </template>
+        </template>
+        <template v-if="relations.targetedBy !== undefined">
+          <h2>このカードを選べるカード</h2>
+          <div class="flex flex-wrap justify-center">
+            <CardCard
+              v-for="cardId of relations.targetedBy"
+              :card="cards[cardId]"
+              button
+              @click="card = cards[cardId]"
+            />
+          </div>
+        </template>
+        <!-- TODO: <h3>イラスト違いカード</h3> -->
+      </div>
+    </div>
+  </CommonDialog>
+</template>
+
+<style scoped>
+.column-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+@media (width <= 768px) {
+  .column-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+  .card-header {
+    order: -1;
+  }
+}
+.card-card {
+  font-size: 1.2rem;
+}
+@media (width <= 768px) {
+  .card-card {
+    font-size: 1rem;
+  }
+}
+h1 {
+  line-height: 1;
+  margin: 0;
+  padding: 0.3em 0;
+}
+h2,
+h3 {
+  line-height: 1.2;
+  margin: 1.2em 0 0.6em 0;
+  padding: 0;
+}
+</style>

@@ -1,0 +1,90 @@
+[
+  {
+    "color": "#7ac74c",
+    "shorten": "G",
+    "translations": {
+      "en": "Grass",
+      "jp": "草"
+    }
+  },
+  {
+    "color": "#ee4130",
+    "shorten": "R",
+    "translations": {
+      "en": "Fire",
+      "jp": "炎"
+    }
+  },
+  {
+    "color": "#6390f0",
+    "shorten": "W",
+    "translations": {
+      "en": "Water",
+      "jp": "水"
+    }
+  },
+  {
+    "color": "#f7d02c",
+    "shorten": "L",
+    "translations": {
+      "en": "Lightning",
+      "jp": "雷"
+    }
+  },
+  {
+    "color": "#f953ee",
+    "shorten": "P",
+    "translations": {
+      "en": "Psychic",
+      "jp": "超"
+    }
+  },
+  {
+    "color": "#e07b0b",
+    "shorten": "F",
+    "translations": {
+      "en": "Fighting",
+      "jp": "闘"
+    }
+  },
+  {
+    "color": "#4a778e",
+    "shorten": "D",
+    "translations": {
+      "en": "Darkness",
+      "jp": "悪"
+    }
+  },
+  {
+    "color": "#B7B7CE",
+    "shorten": "M",
+    "translations": {
+      "en": "Metal",
+      "jp": "鋼"
+    }
+  },
+  {
+    "color": "#A8A77A",
+    "shorten": "C",
+    "translations": {
+      "en": "Colorless",
+      "jp": "無色"
+    }
+  },
+  {
+    "color": "#d685ad",
+    "shorten": "Y",
+    "translations": {
+      "en": "Fairy",
+      "jp": "フェアリー"
+    }
+  },
+  {
+    "color": "#ebe4b0",
+    "shorten": "N",
+    "translations": {
+      "en": "Dragon",
+      "jp": "ドラゴン"
+    }
+  }
+]

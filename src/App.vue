@@ -39,8 +39,8 @@ watch(
   (newValue) => {
     if (newValue !== undefined) {
       localStorage.setItem("theme", newValue ? "light" : "dark");
-      document.body.classList.toggle("light", newValue);
-      document.body.classList.toggle("dark", !newValue);
+      document.documentElement.classList.toggle("light", newValue);
+      document.documentElement.classList.toggle("dark", !newValue);
     }
   },
   { immediate: true }

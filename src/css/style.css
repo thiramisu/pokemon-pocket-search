@@ -49,38 +49,6 @@
   --color-option-background-dark: var(--color-primary-10);
   --color-option-background-light: var(--color-secondary-80);
 
-  /* モードによらず固定 */
-  --color-border: rgb(255 255 255 / 0.16);
-  --color-ability-text: #ff1111cc;
-
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: dark light;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  font-size: 62.5%;
-  height: 100%;
-}
-
-@media (width <= 768px) {
-  html {
-    font-size: 1.6vw;
-  }
-}
-
-body {
   /* ダークテーマ */
   --color-background: var(--color-background-dark);
   --color-text: var(--color-text-dark);
@@ -98,9 +66,24 @@ body {
   );
   --color-text-background: var(--color-text-background-dark);
   --color-option-background: var(--color-option-background-dark);
+
+  /* テーマによらず固定 */
+  --color-border: rgb(255 255 255 / 0.16);
+  --color-ability-text: #ff1111cc;
+
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: dark light;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-body.light {
+:root.light {
   /* ライトテーマ */
   --color-background: var(--color-background-light);
   --color-text: var(--color-text-light);
@@ -118,6 +101,21 @@ body.light {
   );
   --color-text-background: var(--color-text-background-light);
   --color-option-background: var(--color-option-background-light);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  height: 100%;
+}
+
+@media (width <= 768px) {
+  html {
+    font-size: 1.6vw;
+  }
 }
 
 body {

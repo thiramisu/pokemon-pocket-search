@@ -7,5 +7,17 @@ https://realfavicongenerator.net/
 #92be98
 #a29e6b
 
+タイプの色（パック裏からスポイト）
+#40d49b
+#d7414d
+#1d8dd0
+#f0c42c
+#9972b3
+#a34e2d
+#4a778e
+#9a9aa7
+#828099
+#898041
+
 フィルターアイコン
 https://fonts.google.com/icons?icon.query=filter&icon.set=Material+Symbols&selected=Material+Symbols+Outlined:tune:FILL@0;wght@400;GRAD@0;opsz@48&icon.size=64&icon.color=%23e8eaed

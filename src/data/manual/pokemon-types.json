@@ -1,6 +1,6 @@
 [
   {
-    "color": "#7AC74C",
+    "color": "#7ac74c",
     "shorten": "G",
     "translations": {
       "en": "Grass",
@@ -8,7 +8,7 @@
     }
   },
   {
-    "color": "#EE8130",
+    "color": "#ee4130",
     "shorten": "R",
     "translations": {
       "en": "Fire",
@@ -16,7 +16,7 @@
     }
   },
   {
-    "color": "#6390F0",
+    "color": "#6390f0",
     "shorten": "W",
     "translations": {
       "en": "Water",
@@ -24,7 +24,7 @@
     }
   },
   {
-    "color": "#F7D02C",
+    "color": "#f7d02c",
     "shorten": "L",
     "translations": {
       "en": "Lightning",
@@ -32,7 +32,7 @@
     }
   },
   {
-    "color": "#F95587",
+    "color": "#f953ee",
     "shorten": "P",
     "translations": {
       "en": "Psychic",
@@ -40,7 +40,7 @@
     }
   },
   {
-    "color": "#C22E28",
+    "color": "#e07b0b",
     "shorten": "F",
     "translations": {
       "en": "Fightning",
@@ -48,7 +48,7 @@
     }
   },
   {
-    "color": "#705746",
+    "color": "#4a778e",
     "shorten": "D",
     "translations": {
       "en": "Darkness",
@@ -72,7 +72,7 @@
     }
   },
   {
-    "color": "#D685AD",
+    "color": "#d685ad",
     "shorten": "Y",
     "translations": {
       "en": "Fairy",
@@ -80,7 +80,7 @@
     }
   },
   {
-    "color": "#6F35FC",
+    "color": "#ebe4b0",
     "shorten": "N",
     "translations": {
       "en": "Dragon",

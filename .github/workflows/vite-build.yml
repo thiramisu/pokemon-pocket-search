@@ -1,0 +1,45 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # main ブランチへの push がトリガーとなる
+  workflow_dispatch: # 明示的に走って！とボタンを押したとき
+
+jobs:
+  build:
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest # ビルドを実行するOSの指定
+
+    steps:
+      # リポジトリのコードをクローン
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Node.js をセットアップ
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "22" # 使用する Node.js のバージョン
+
+      # 依存関係をインストール
+      - name: Install dependencies
+        # npm ci は CI 環境でのインストールに適している
+        run: |
+          npm ci
+
+      # Vite をビルド
+      - name: Build with Vite
+        # Vite のビルドコマンドを実行
+        run: |
+          npm run build
+
+      # gh-pages ブランチにデプロイ
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: docs
+        env:
+          # GitHub Actions による認証
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

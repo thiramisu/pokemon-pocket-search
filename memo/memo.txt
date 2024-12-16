@@ -7,6 +7,9 @@ https://realfavicongenerator.net/
 #92be98
 #a29e6b
 
+#81e9b0
+#ff8585
+
 タイプの色（パック裏からスポイト）
 #40d49b
 #d7414d

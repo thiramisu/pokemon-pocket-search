@@ -34,9 +34,10 @@ export default defineConfig({
       injectRegister: "auto",
       manifest: {
         name: "ポケポケ カード検索",
+        lang: "ja",
         short_name: "PP Search",
-        description: "ポケポケのカードを検索できます。",
-        start_url: "/",
+        description:
+          "ワザの合計エネとかでポケポケのカードを検索できるアプリです。",
         icons: [
           {
             src: "./web-app-manifest-192x192.png",
@@ -48,7 +49,6 @@ export default defineConfig({
             src: "./web-app-manifest-512x512.png",
             sizes: "512x512",
             type: "image/png",
-            purpose: "maskable",
           },
         ],
         screenshots: [

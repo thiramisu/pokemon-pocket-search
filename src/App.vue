@@ -171,8 +171,8 @@ input[type="checkbox"] {
 }
 
 footer {
-  background-color: var(--color-text-background);
-  border: solid 1em var(--color-card-border);
+  background-color: var(--color-dialog-background);
+  border: solid 1.2em var(--color-dialog-border);
   border-radius: 2em;
   margin-top: 2em;
   padding: 1.5em;

@@ -46,7 +46,6 @@ watch(visible, (newValue) => {
 dialog {
   background: none;
   border: none;
-  box-shadow: 0 0 0.2em var(--color-drop-shadow);
   color: var(--color-text);
   font-size: 1.6em;
   padding: 0;
@@ -60,9 +59,10 @@ dialog {
 }
 .dialog-container {
   align-items: center;
-  background-color: var(--color-background);
-  border: solid 0.6em var(--color-card-border);
+  background-color: var(--color-dialog-background);
+  border: solid 1.2em var(--color-dialog-border);
   border-radius: 3em;
+  box-shadow: 0 0 0.2em var(--color-drop-shadow);
   contain: content;
   display: flex;
   flex-direction: column;

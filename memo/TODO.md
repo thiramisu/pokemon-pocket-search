@@ -73,6 +73,7 @@
 - [x] ミュウ\[A1|283/226]のレアリティをとりあえず3に
 - [x] タイプの色を調整
 - [x] Fightingの衍字を修正
+- [x] GitHub Actionsで自動でビルド&デプロイ
 
 # 使い勝手
 
@@ -98,6 +99,5 @@
 
 - [ ] 検索結果の表示をlazy/debounceにする？
 - [ ] CardDetailDialogでのピカチュウexの名指しをやめる
-- [ ] GitHub Actionsで自動でビルドできるか調べる？
 
 # 未分類

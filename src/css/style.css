@@ -44,6 +44,8 @@
   --color-input-light: #ffffff80;
   --color-range-slider-caption-background-dark: var(--color-secondary-30);
   --color-range-slider-caption-background-light: var(--color-primary-90);
+  --color-scrollbar-dark: var(--color-secondary-20) var(--color-primary-10);
+  --color-scrollbar-light: var(--color-secondary-70) var(--color-primary-30);
   --color-text-background-dark: var(--color-background-dark);
   --color-text-background-light: var(--color-secondary-97);
   --color-option-background-dark: var(--color-primary-10);
@@ -64,6 +66,7 @@
   --color-range-slider-caption-background: var(
     --color-range-slider-caption-background-dark
   );
+  --color-scrollbar: var(--color-scrollbar-dark);
   --color-text-background: var(--color-text-background-dark);
   --color-option-background: var(--color-option-background-dark);
 
@@ -81,6 +84,8 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  scrollbar-color: var(--color-scrollbar);
 }
 
 :root.light {
@@ -99,6 +104,7 @@
   --color-range-slider-caption-background: var(
     --color-range-slider-caption-background-light
   );
+  --color-scrollbar: var(--color-scrollbar-light);
   --color-text-background: var(--color-text-background-light);
   --color-option-background: var(--color-option-background-light);
 }

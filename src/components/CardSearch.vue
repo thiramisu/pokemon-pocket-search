@@ -389,7 +389,7 @@ watch(filteredCards, () => {
                   "
                 />
                 <SearchButton
-                  text="1 + Ability"
+                  text="Ability + 1"
                   :filled="hasAbility === true && attackCount === 2"
                   @button-click="
                     if (hasAbility === true && attackCount === 2) {

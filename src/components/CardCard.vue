@@ -18,7 +18,6 @@ import RarityMark from "./RarityMark.vue";
 const props = defineProps<{
   card: Card;
   fontSize?: string;
-  simple?: boolean;
   button?: boolean;
 }>();
 const evolutionFrom = computed(() => getPreEvolution(props.card.名前));
@@ -62,7 +61,6 @@ const expansion = computed(() => getExpansionByPackName(props.card.パック));
           v-if="'タイプ' in card"
           size="1.25em"
           :pokemon-type="japaneseToTypes(card.タイプ)"
-          :simple
         />
       </div>
     </header>
@@ -73,7 +71,6 @@ const expansion = computed(() => getExpansionByPackName(props.card.パック));
         :pokemon-type="
           'タイプ' in card ? japaneseToTypes(card.タイプ) : undefined
         "
-        :simple
       />
     </div>
     <footer>
@@ -95,7 +92,7 @@ const expansion = computed(() => getExpansionByPackName(props.card.パック));
         <span class="type-description text-left text-xs lh-100">弱点</span>
         <span v-if="card.弱点 === POKEMON_NO_WEAK" class="lh-100">-</span>
         <span v-else class="flex items-end">
-          <PokemonTypeMark :pokemon-type="japaneseToTypes(card.弱点)" :simple />
+          <PokemonTypeMark :pokemon-type="japaneseToTypes(card.弱点)" />
           <span class="additional-damage">+20</span>
         </span>
       </div>
@@ -105,7 +102,6 @@ const expansion = computed(() => getExpansionByPackName(props.card.パック));
           <PokemonTypeMark
             v-for="_i in card.にげる"
             :pokemon-type="colorLess"
-            :simple
           />
         </span>
       </div>

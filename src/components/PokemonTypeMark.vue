@@ -2,7 +2,6 @@
 import { PokemonType } from "../data/types";
 
 defineProps<{
-  simple?: boolean;
   size?: string;
   pokemonType: PokemonType;
 }>();
@@ -10,9 +9,9 @@ defineProps<{
 
 <template>
   <span
-    :class="{ 'pokemon-type-mark': true, simple }"
+    class="pokemon-type-mark"
     :style="{
-      backgroundColor: simple ? undefined : pokemonType.color,
+      backgroundColor: pokemonType.color,
       borderColor: pokemonType.color,
       fontSize: size,
     }"
@@ -41,7 +40,7 @@ defineProps<{
   width: 1em;
 }
 /* ハイライト */
-.pokemon-type-mark:not(.simple)::before {
+.pokemon-type-mark::before {
   content: "";
   background: linear-gradient(#ffffffaa 0% 40%, #ffffff00 60% 100%);
   border-radius: 50%;
@@ -50,11 +49,6 @@ defineProps<{
   inset: 0 25%;
   position: absolute;
   transform: rotate(-45deg);
-}
-.simple {
-  border: solid 0.1em;
-  color: var(--color-text);
-  transform: unset;
 }
 
 .pokemon-type-string {

@@ -18,7 +18,6 @@ watch(cardPerPage, (newValue: number, oldValue: number) => {
   page.value =
     Math.round((oldFirstCardIndex - mod) / newValue) + (mod === 0 ? 0 : 1);
 });
-const simple = ref(false);
 
 const detailedCard = ref(dummyCard);
 const cardDetailDialogVisible = ref(false);
@@ -48,9 +47,6 @@ watch(
             </option>
           </select>
         </span>
-        <label class="flex items-center"
-          ><input type="checkbox" v-model="simple" />シンプル表示</label
-        >
       </div>
       <PageButton
         v-model="page"
@@ -69,7 +65,6 @@ watch(
           v-if="(page - 1) * cardPerPage <= i && i < page * cardPerPage"
           font-size="1rem"
           :card
-          :simple
           button
           @click="
             detailedCard = card;
@@ -84,7 +79,7 @@ watch(
         v-for="_i in page * cardPerPage - filteredCards.length"
         :key="_i"
       >
-        <CardCard font-size="1rem" :card="dummyCard" :simple />
+        <CardCard font-size="1rem" :card="dummyCard" />
       </div>
     </div>
     <PageButton

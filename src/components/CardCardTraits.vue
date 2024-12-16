@@ -8,7 +8,6 @@ import AttackEnergyOverride from "./AttackEnergyOverride.vue";
 defineProps<{
   trait: Trait;
   pokemonType?: PokemonType;
-  simple?: boolean;
 }>();
 </script>
 
@@ -36,13 +35,11 @@ defineProps<{
             v-for="_i in trait.一致エネルギー数"
             size="1.1em"
             :pokemon-type
-            :simple
           />
           <PokemonTypeMark
             v-for="_i in trait.無色エネルギー数"
             size="1.1em"
             :pokemon-type="colorLess"
-            :simple
           />
         </template>
       </div>

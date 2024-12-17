@@ -360,13 +360,37 @@ watch(valueMax, () => {
       <div v-if="ruler" class="ruler"></div>
       <div class="current-range-container">
         <span class="current-range">
-          <span class="current-min">{{ minValue }}</span>
-          - <span class="current-max">{{ maxValue }}</span>
-        </span>
+          <span class="current-min select-container"
+            ><select v-model="valueMin">
+              <option
+                v-for="i in ruleCount"
+                :key="i"
+                :value="min + step * (i - 1)"
+              >
+                {{ min + step * (i - 1) }}
+              </option>
+            </select></span
+          >
+          -
+          <span class="current-max select-container"
+            ><select v-model="valueMax">
+              <option
+                v-for="i in ruleCount"
+                :key="i"
+                :value="min + step * (i - 1)"
+              >
+                {{ min + step * (i - 1) }}
+              </option>
+            </select></span
+          ></span
+        >
       </div>
     </div>
   </div>
 </template>
+
+<!-- select と select-container 用 -->
+<style src="../css/card-search.css"></style>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
@@ -597,16 +621,11 @@ watch(valueMax, () => {
 }
 .current-range {
   padding: 0 0.3em;
-  position: relative;
 }
-.current-min {
-  font-weight: bold;
-  inset: 0 100% 0 auto;
-  position: absolute;
-}
+.current-min,
 .current-max {
-  font-weight: bold;
-  inset: 0 auto 0 100%;
-  position: absolute;
+  display: inline-block;
+  font-size: 80%;
+  pointer-events: all;
 }
 </style>

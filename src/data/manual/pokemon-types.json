@@ -11,7 +11,7 @@
     "color": "#ee4130",
     "shorten": "R",
     "translations": {
-      "en": "Fire",
+      "en": "fiRe",
       "jp": "炎"
     }
   },
@@ -75,7 +75,7 @@
     "color": "#d685ad",
     "shorten": "Y",
     "translations": {
-      "en": "Fairy",
+      "en": "fairY",
       "jp": "フェアリー"
     }
   },
@@ -83,7 +83,7 @@
     "color": "#ebe4b0",
     "shorten": "N",
     "translations": {
-      "en": "Dragon",
+      "en": "dragoN",
       "jp": "ドラゴン"
     }
   }

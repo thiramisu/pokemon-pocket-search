@@ -192,12 +192,6 @@ const onInputChange = (e: Event, valueRef: Ref<number, number>) => {
 };
 
 const methods = {
-  onInnerBarLeftClick() {
-    valueMin.value += step;
-  },
-  onInnerBarRightClick() {
-    valueMax.value -= step;
-  },
   onInputMinChange(e: Event) {
     onInputChange(e, valueMin);
   },

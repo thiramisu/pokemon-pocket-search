@@ -182,10 +182,10 @@ const onInputChange = (e: Event, valueRef: Ref<number, number>) => {
   if (!(e.target instanceof HTMLInputElement)) {
     throw new Error("!(e.target instanceof HTMLInputElement)");
   }
-  const beforeValue = valueRef.value;
+  const oldValue = valueRef.value;
   valueRef.value = e.target.valueAsNumber;
   // 不正な数値だった場合
-  if (beforeValue === valueRef.value) {
+  if (oldValue === valueRef.value) {
     e.target.valueAsNumber = valueRef.value;
     return;
   }

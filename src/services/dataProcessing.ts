@@ -39,10 +39,10 @@ const processRelatedCards = () => {
   }
   for (const [to, from] of Object.entries(evolutions)) {
     if (!(to in cardRelations) || !(from in cardRelations)) continue;
-    const preEvolution = getPreEvolution(from);
-    if (preEvolution !== undefined) {
-      cardRelations[preEvolution].evolutions!.push(to);
-      cardRelations[to].evolutions!.push(preEvolution);
+    const basicEvolutionOfStage2 = getPreEvolution(from);
+    if (basicEvolutionOfStage2 !== undefined) {
+      cardRelations[basicEvolutionOfStage2].evolutions!.push(to);
+      cardRelations[to].evolutions!.push(basicEvolutionOfStage2);
     }
     cardRelations[to].evolutions!.push(from);
     cardRelations[from].evolutions!.push(to);

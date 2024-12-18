@@ -10,13 +10,16 @@ import {
   evolutionStageNames,
   getSharedExpansionName,
   dummyCard,
+  getCardNameWithSuffix,
 } from "../data/types";
 import { SHARED_PACK } from "../const";
 import CardCard from "./CardCard.vue";
 import CommonDialog from "./CommonDialog.vue";
 const card = defineModel<Card>("card", { default: dummyCard });
 
-const relations = computed(() => cardRelations[card.value.名前]);
+const relations = computed(
+  () => cardRelations[getCardNameWithSuffix(card.value)]
+);
 const targetableNames = computed(() => targetables[card.value.ID]);
 const expansionName = computed(
   () => getExpansionByPackName(card.value.パック).名前
@@ -115,12 +118,14 @@ window.addEventListener("popstate", applyCardIdFromQuery);
           <template v-for="targetableName of targetableNames">
             <h3>{{ targetableName }}</h3>
             <div class="flex flex-wrap justify-center">
-              <CardCard
-                v-for="cardId of cardRelations[targetableName].cardIds"
-                :card="cards[cardId]"
-                button
-                @click="card = cards[cardId]"
-              />
+              <template v-for="cardId of cardRelations[targetableName].cardIds">
+                <CardCard
+                  v-if="getCardNameWithSuffix(cards[cardId]) === targetableName"
+                  :card="cards[cardId]"
+                  button
+                  @click="card = cards[cardId]"
+                />
+              </template>
             </div>
           </template>
         </template>

@@ -3,6 +3,7 @@ import path from "path";
 import {
   CardRelations,
   cards,
+  getCardNameWithSuffix,
   evolutions,
   getPreEvolution,
   Targetables,
@@ -15,10 +16,21 @@ const processRelatedCards = () => {
    */
   const cardRelations: CardRelations = {};
   for (const card of cards) {
-    if (card.名前 in cardRelations) {
-      cardRelations[card.名前].cardIds.push(card.ID);
+    const cardName = getCardNameWithSuffix(card);
+    const alternateCardName = getCardNameWithSuffix(card, true);
+    if (cardName in cardRelations) {
+      cardRelations[cardName].cardIds.push(card.ID);
+    } else if (alternateCardName in cardRelations) {
+      // targetedBy 以外は ex版 or exじゃない版 を参照
+      cardRelations[cardName] = {
+        cardIds: cardRelations[alternateCardName].cardIds,
+        evolutions: cardRelations[alternateCardName].evolutions,
+        targetedBy: [],
+      };
+      cardRelations[cardName].cardIds.push(card.ID);
     } else {
-      cardRelations[card.名前] = {
+      // 完全新規
+      cardRelations[cardName] = {
         cardIds: [card.ID],
         evolutions: [],
         targetedBy: [],
@@ -39,13 +51,15 @@ const processRelatedCards = () => {
   for (const trait of traits) {
     if (trait.効果 === undefined) continue;
     for (const card of cards) {
-      if (!trait.効果.includes(`「${card.名前}」`)) continue;
-      if (trait.カードID in targetables) {
-        targetables[trait.カードID].push(card.名前);
-      } else {
-        targetables[trait.カードID] = [card.名前];
+      const cardName = getCardNameWithSuffix(card);
+      if (trait.効果.includes(`「${cardName}」`)) {
+        if (trait.カードID in targetables) {
+          targetables[trait.カードID].push(cardName);
+        } else {
+          targetables[trait.カードID] = [cardName];
+        }
+        cardRelations[cardName].targetedBy!.push(trait.カードID);
       }
-      cardRelations[card.名前].targetedBy!.push(trait.カードID);
     }
   }
   for (const cardRelation of Object.values(cardRelations)) {

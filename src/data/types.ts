@@ -108,6 +108,8 @@ export type FossilCard = TrainerCard & {
 export type Card = BaseCard | PokemonCard | TrainerCard | FossilCard;
 export const cards: Card[] = cardData;
 export const dummyCard = cards[0];
+export const getCardNameWithSuffix = (card: Card, reverse = false) =>
+  "ex" in card !== reverse ? `${card.名前}ex` : card.名前;
 
 /**
  * ワザ

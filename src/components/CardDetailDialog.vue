@@ -25,9 +25,6 @@ const expansionName = computed(
   () => getExpansionByPackName(card.value.パック).名前
 );
 
-// TODO ピカチュウex以外で途中進化のexなどが出てきた場合に備える
-const isPikachuEx = (card: Card) => card.名前 === "ピカチュウ" && "ex" in card;
-
 const dialogVisible = defineModel({ default: false });
 const applyCardIdFromQuery = () => {
   const currentUrl = new URL(window.location.href);
@@ -94,7 +91,7 @@ window.addEventListener("popstate", applyCardIdFromQuery);
           </div>
         </template>
         <template
-          v-if="relations.evolutions !== undefined && !isPikachuEx(card)"
+          v-if="relations.evolutions !== undefined"
           v-for="evolutionName of relations.evolutions"
         >
           <h2>
@@ -103,14 +100,12 @@ window.addEventListener("popstate", applyCardIdFromQuery);
             }}
           </h2>
           <div class="flex flex-wrap justify-center">
-            <template v-for="cardId of cardRelations[evolutionName].cardIds">
-              <CardCard
-                v-if="!isPikachuEx(cards[cardId])"
-                :card="cards[cardId]"
-                button
-                @click="card = cards[cardId]"
-              />
-            </template>
+            <CardCard
+              v-for="cardId of cardRelations[evolutionName].cardIds"
+              :card="cards[cardId]"
+              button
+              @click="card = cards[cardId]"
+            />
           </div>
         </template>
         <template v-if="targetableNames !== undefined">

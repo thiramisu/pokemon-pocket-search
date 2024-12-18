@@ -21,10 +21,10 @@ const processRelatedCards = () => {
     if (cardName in cardRelations) {
       cardRelations[cardName].cardIds.push(card.ID);
     } else if (alternateCardName in cardRelations) {
-      // targetedBy 以外は ex版 or exじゃない版 を参照
+      // cardIds は ex版 or exじゃない版 を参照
       cardRelations[cardName] = {
         cardIds: cardRelations[alternateCardName].cardIds,
-        evolutions: cardRelations[alternateCardName].evolutions,
+        evolutions: [],
         targetedBy: [],
       };
       cardRelations[cardName].cardIds.push(card.ID);
@@ -37,15 +37,23 @@ const processRelatedCards = () => {
       };
     }
   }
+  const pushPostEvolution = (postEvolution: string, from: string) => {
+    if (postEvolution in cardRelations) {
+      cardRelations[postEvolution].evolutions!.push(from);
+    }
+    if (`${postEvolution}ex` in cardRelations) {
+      cardRelations[`${postEvolution}ex`].evolutions!.push(from);
+    }
+  };
   for (const [to, from] of Object.entries(evolutions)) {
     if (!(to in cardRelations) || !(from in cardRelations)) continue;
     const basicEvolutionOfStage2 = getPreEvolution(from);
     if (basicEvolutionOfStage2 !== undefined) {
       cardRelations[basicEvolutionOfStage2].evolutions!.push(to);
-      cardRelations[to].evolutions!.push(basicEvolutionOfStage2);
+      pushPostEvolution(to, basicEvolutionOfStage2);
     }
-    cardRelations[to].evolutions!.push(from);
     cardRelations[from].evolutions!.push(to);
+    pushPostEvolution(to, from);
   }
   const targetables: Targetables = {};
   for (const trait of traits) {

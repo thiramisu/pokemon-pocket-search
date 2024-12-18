@@ -157,7 +157,7 @@ const onThumbMousedown = (
 
   const changeValue = (e: MouseEvent | TouchEvent) => {
     e.preventDefault();
-    const clientX = (e instanceof TouchEvent ? e.touches[0] : e).clientX;
+    const clientX = ("touches" in e ? e.touches[0] : e).clientX;
     const per = (clientX - barBox.left) / barBox.width;
     valueRef.value =
       min + Math.round(((maxComputed.value - min) * per) / step) * step;

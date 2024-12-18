@@ -12,7 +12,9 @@ const isPlayingClickAnimation = ref(false);
 const playAnimation = async () => {
   isPlayingClickAnimation.value = false;
   requestAnimationFrame(() => {
-    isPlayingClickAnimation.value = true;
+    requestAnimationFrame(() => {
+      isPlayingClickAnimation.value = true;
+    });
   });
 };
 </script>

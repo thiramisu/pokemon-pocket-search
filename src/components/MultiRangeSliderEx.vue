@@ -388,7 +388,7 @@ watch(valueMax, () => {
 </template>
 
 <!-- select と select-container 用 -->
-<style src="../css/card-search.css"></style>
+<style scoped src="../css/card-search.css"></style>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>

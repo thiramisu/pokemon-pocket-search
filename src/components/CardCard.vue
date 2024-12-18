@@ -75,7 +75,9 @@ const expansion = computed(() => getExpansionByPackName(props.card.パック));
     </div>
     <footer>
       <div class="expansion-mark">
-        <span class="expansion">{{ expansion.略号 }}</span
+        <span :class="`expansion-${expansion.略号.length}`">{{
+          expansion.略号
+        }}</span
         ><span class="separator"></span
         ><span class="collection-number-container">
           <PseudoMonospace
@@ -205,14 +207,20 @@ footer {
   border: solid 1px var(--color-text);
   border-radius: 0.4em;
   font-weight: bold;
+  justify-self: self-start;
+  width: max-content;
 }
-.expansion,
+.expansion-2,
+.expansion-3,
 .collection-number-container {
   padding: 0.1em 0.6em 0.1em 0.6em;
 }
 
-.expansion {
+.expansion-2,
+.expansion-3 {
   border-right: solid 1px var(--color-text);
+}
+.expansion-2 {
   letter-spacing: 0.15em;
   padding-right: 0.45em;
 }

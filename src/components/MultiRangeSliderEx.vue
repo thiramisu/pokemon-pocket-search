@@ -85,24 +85,24 @@ const rangeMarginValue = ref(
   })()
 );
 
+const crop = {
+  min: (valueMin: number) =>
+    Math.min(Math.max(valueMin, min), valueMax.value - rangeMarginValue.value),
+  max: (valueMax: number) =>
+    Math.max(
+      Math.min(valueMax, maxComputed.value),
+      valueMin.value + rangeMarginValue.value
+    ),
+} as const;
+
 const valueMin = defineModel<number>("minValue", {
   default: NaN,
-  set(valueMin: number) {
-    return Math.min(
-      Math.max(valueMin, min),
-      valueMax.value - rangeMarginValue.value
-    );
-  },
+  set: crop.min,
 });
 
 const valueMax = defineModel<number>("maxValue", {
   default: NaN,
-  set(valueMax: number) {
-    return Math.max(
-      Math.min(valueMax, maxComputed.value),
-      valueMin.value + rangeMarginValue.value
-    );
-  },
+  set: crop.max,
 });
 // definePropsはトランスパイル時にrefに展開されるため、初期化のタイミングをずらす必要がある
 valueMin.value = isNaN(valueMin.value)
@@ -240,6 +240,8 @@ const methods = {
   },
 };
 
+const stepIndexToValue = (stepIndex: number) => min + step * (stepIndex - 1);
+
 watch(valueMin, () => {
   methods.triggerInput();
 });
@@ -356,25 +358,27 @@ watch(valueMax, () => {
         <span class="current-range">
           <span class="current-min select-container"
             ><select v-model="valueMin">
-              <option
-                v-for="i in ruleCount"
-                :key="i"
-                :value="min + step * (i - 1)"
-              >
-                {{ min + step * (i - 1) }}
-              </option>
+              <template v-for="i of ruleCount" :key="i">
+                <option
+                  v-if="crop.min(stepIndexToValue(i)) === stepIndexToValue(i)"
+                  :value="stepIndexToValue(i)"
+                >
+                  {{ stepIndexToValue(i) }}
+                </option>
+              </template>
             </select></span
           >
           -
           <span class="current-max select-container"
             ><select v-model="valueMax">
-              <option
-                v-for="i in ruleCount"
-                :key="i"
-                :value="min + step * (i - 1)"
-              >
-                {{ min + step * (i - 1) }}
-              </option>
+              <template v-for="i of ruleCount" :key="i">
+                <option
+                  v-if="crop.max(stepIndexToValue(i)) === stepIndexToValue(i)"
+                  :value="stepIndexToValue(i)"
+                >
+                  {{ stepIndexToValue(i) }}
+                </option>
+              </template>
             </select></span
           ></span
         >

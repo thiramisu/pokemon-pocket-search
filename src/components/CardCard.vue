@@ -78,7 +78,7 @@ const expansion = computed(() => getExpansionByPackName(props.card.パック));
         <span :class="`expansion-${expansion.略号.length}`">{{
           expansion.略号
         }}</span
-        ><span class="separator"></span
+        ><span class="separator"><span class="text-for-copy">|</span></span
         ><span class="collection-number-container">
           <PseudoMonospace
             :string="card.コレクションナンバー.toString().padStart(3, '0')"
@@ -100,7 +100,7 @@ const expansion = computed(() => getExpansionByPackName(props.card.パック));
       </div>
       <div v-if="'にげる' in card" class="column justify-self-start">
         <span class="type-description text-left text-xs lh-100">にげる</span>
-        <span class="flex retreat-cost">
+        <span class="retreat-cost">
           <PokemonTypeMark
             v-for="_i in card.にげる"
             :pokemon-type="colorLess"
@@ -231,6 +231,15 @@ footer {
 }
 .retreat-cost {
   min-height: 1em; /* にげるに必要なエネルギーが無い時用 */
+}
+.separator {
+  contain: content;
+  display: inline-block;
+}
+.text-for-copy {
+  inset: 0;
+  margin: auto;
+  position: absolute;
 }
 .rarity-mark-container {
   transform: translateY(0.1em);

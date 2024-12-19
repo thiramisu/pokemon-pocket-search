@@ -30,8 +30,8 @@
   --color-attention-light: var(--color-secondary-70);
   --color-button-overlay-dark: #ffffff;
   --color-button-overlay-light: #00000055;
-  --color-card-border-dark: var(--color-secondary-80);
-  --color-card-border-light: var(--color-secondary-80);
+  --color-trainer-card-border-dark: var(--color-secondary-40);
+  --color-trainer-card-border-light: var(--color-secondary-80);
   --color-dialog-background-dark: var(--color-background-dark);
   --color-dialog-background-light: var(--color-primary-90);
   --color-dialog-border-dark: var(--color-primary-70);
@@ -61,7 +61,7 @@
 
   --color-attention: var(--color-attention-dark);
   --color-button-overlay: var(--color-button-overlay-dark);
-  --color-card-border: var(--color-card-border-dark);
+  --color-trainer-card-border: var(--color-trainer-card-border-dark);
   --color-dialog-background: var(--color-dialog-background-dark);
   --color-dialog-border: var(--color-dialog-border-dark);
   --color-drop-shadow: var(--color-drop-shadow-dark);
@@ -101,7 +101,7 @@
 
   --color-attention: var(--color-attention-light);
   --color-button-overlay: var(--color-button-overlay-light);
-  --color-card-border: var(--color-card-border-light);
+  --color-trainer-card-border: var(--color-trainer-card-border-light);
   --color-dialog-background: var(--color-dialog-background-light);
   --color-dialog-border: var(--color-dialog-border-light);
   --color-drop-shadow: var(--color-drop-shadow-light);

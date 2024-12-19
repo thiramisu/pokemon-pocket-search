@@ -41,7 +41,13 @@ const expansion = computed(() => getExpansionByPackName(props.card.パック));
   <component
     :is="button ? 'button' : 'div'"
     :class="{ 'card-card': true, button }"
-    :style="{ fontSize }"
+    :style="{
+      fontSize,
+      borderColor:
+        'タイプ' in card
+          ? `color-mix(in srgb, ${japaneseToTypes(card.タイプ).color} 50%, var(--color-background))`
+          : undefined,
+    }"
   >
     <header
       :class="{
@@ -117,7 +123,7 @@ const expansion = computed(() => getExpansionByPackName(props.card.パック));
 .card-card {
   align-items: stretch;
   background: var(--color-text-background);
-  border: solid 0.6em var(--color-card-border);
+  border: solid 0.6em var(--color-trainer-card-border);
   border-radius: 0.3em;
   font-family: inherit;
   font-size: 2.4rem;

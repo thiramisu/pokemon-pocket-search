@@ -11,6 +11,8 @@ import TSVConverterDialog from "./components/TSVConverterDialog.vue";
 import ToggleButton from "./components/ToggleButton.vue";
 import Icon from "./components/Icon.vue";
 
+const pageTitle = import.meta.env.VITE_APP_TITLE;
+
 const tsvConverterDialogVisible = ref(false);
 const FaviconEditorDialogVisible = ref(false);
 
@@ -89,7 +91,7 @@ watch(
     </CardSearch>
     <!-- <LanguageSelectBox /> -->
     <footer class="page-footer flex items-center justify-center">
-      <h1>ポケポケ カード検索</h1>
+      <h1>{{ pageTitle }}</h1>
       <div class="column">
         <ToggleButton
           v-model="isLightTheme"

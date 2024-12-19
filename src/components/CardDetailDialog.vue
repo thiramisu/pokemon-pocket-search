@@ -10,11 +10,13 @@ import {
   evolutionStageNames,
   getSharedExpansionName,
   dummyCard,
+  isVariant,
   getCardNameWithSuffix,
 } from "../data/types";
 import { SHARED_PACK } from "../const";
 import CardCard from "./CardCard.vue";
 import CommonDialog from "./CommonDialog.vue";
+import { partition } from "../utils";
 const card = defineModel<Card>("card", { default: dummyCard });
 
 const relations = computed(
@@ -23,6 +25,12 @@ const relations = computed(
 const targetableNames = computed(() => targetables[card.value.ID]);
 const expansionName = computed(
   () => getExpansionByPackName(card.value.パック).名前
+);
+
+const predicatedVariants = computed(() =>
+  partition(relations.value.cardIds, (cardId2) =>
+    isVariant(card.value, cards[cardId2])
+  )
 );
 
 const dialogVisible = defineModel({ default: false });
@@ -77,12 +85,24 @@ window.addEventListener("popstate", applyCardIdFromQuery);
     </div>
     <div class="flex items-center">
       <div class="column">
-        <template v-if="relations.cardIds.length !== 1">
-          <h2>同名/ex</h2>
+        <template v-if="predicatedVariants.pass.length !== 1">
+          <h2>同型</h2>
           <div class="flex flex-wrap justify-center">
-            <template v-for="cardId of relations.cardIds">
+            <template v-for="cardId of predicatedVariants.pass">
               <CardCard
                 v-if="card.ID !== cardId"
+                :card="cards[cardId]"
+                button
+                @click="card = cards[cardId]"
+              />
+            </template>
+          </div>
+        </template>
+        <template v-if="predicatedVariants.fail.length !== 0">
+          <h2>同名/ex</h2>
+          <div class="flex flex-wrap justify-center">
+            <template v-for="cardId of predicatedVariants.fail">
+              <CardCard
                 :card="cards[cardId]"
                 button
                 @click="card = cards[cardId]"

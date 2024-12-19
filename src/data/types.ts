@@ -108,6 +108,34 @@ export type FossilCard = TrainerCard & {
 export type Card = BaseCard | PokemonCard | TrainerCard | FossilCard;
 export const cards: Card[] = cardData;
 export const dummyCard = cards[0];
+export const isVariant = (cardA: Card, cardB: Card) => {
+  const traitsA = getTraits(cardA.ID);
+  const traitsB = getTraits(cardB.ID);
+  return (
+    cardA.名前 === cardB.名前 &&
+    (!("タイプ" in cardA) ||
+      ("タイプ" in cardB &&
+        cardA.タイプ === cardB.タイプ &&
+        cardA.弱点 === cardB.弱点 &&
+        cardA.にげる === cardB.にげる &&
+        getCardNameWithSuffix(cardA) === getCardNameWithSuffix(cardB))) &&
+    (!("HP" in cardA) || ("HP" in cardB && cardA.HP === cardB.HP)) &&
+    (!("トレーナーズ" in cardA) ||
+      ("トレーナーズ" in cardB && cardA.トレーナーズ === cardB.トレーナーズ)) &&
+    traitsA.every((trait, i) => {
+      const traitB = traitsB[i];
+      return (
+        trait.効果 === traitB.効果 &&
+        (!("名前" in trait) ||
+          ("名前" in traitB &&
+            trait.一致エネルギー数 === traitB.一致エネルギー数 &&
+            trait.無色エネルギー数 === traitB.無色エネルギー数 &&
+            trait.必要エネルギー上書き === traitB.必要エネルギー上書き &&
+            trait.威力 === traitB.威力))
+      );
+    })
+  );
+};
 export const getCardNameWithSuffix = (card: Card, reverse = false) =>
   "ex" in card !== reverse ? `${card.名前}ex` : card.名前;
 

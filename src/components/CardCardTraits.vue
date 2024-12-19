@@ -12,9 +12,9 @@ defineProps<{
 </script>
 
 <template>
-  <div v-if="'名前' in trait" class="trait column items-start">
-    <div class="flex items-center full-width">
-      <div class="trait-energy">
+  <div v-if="'名前' in trait" class="column items-start">
+    <div class="trait-line">
+      <div>
         <!-- 特性 -->
         <div
           v-if="
@@ -45,7 +45,6 @@ defineProps<{
       </div>
       <div
         :class="{
-          'trait-name': true,
           'ability-name':
             trait.一致エネルギー数 === undefined &&
             trait.無色エネルギー数 === undefined,
@@ -102,13 +101,12 @@ defineProps<{
   position: absolute;
   transform: scaleX(1.2);
 }
-.trait-energy {
-  width: 5.2em;
-}
-.trait-name {
-  flex: 1 1;
+.trait-line {
+  display: grid;
   font-weight: bold;
-  text-align: left;
+  grid-template-columns: 5.2em 1fr max-content;
+  place-items: center start;
+  width: 100%;
 }
 .ability-name {
   color: var(--color-ability-text);
@@ -116,7 +114,6 @@ defineProps<{
 .trait-damage {
   contain: layout;
   font-size: 120%;
-  font-weight: bold;
   line-height: 1;
 }
 .trait-damage-suffix {

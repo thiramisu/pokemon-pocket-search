@@ -23,6 +23,8 @@ export default defineConfig({
       registerType: "autoUpdate",
       includeAssets: [
         "apple-touch-icon.png",
+        "arrow_back_ios_new_wght100.svg",
+        "arrow_forward_ios_wght100.svg",
         "dark_mode.svg",
         "favicon-96x96.png",
         "favicon.ico",

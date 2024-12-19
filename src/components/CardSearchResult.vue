@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch } from "vue";
+import { computed, ref, watch } from "vue";
 import { Card, dummyCard } from "../data/types";
 import CardCard from "./CardCard.vue";
 import PageButton from "./PageButton.vue";
@@ -20,6 +20,10 @@ watch(cardPerPage, (newValue: number, oldValue: number) => {
 });
 
 const detailedCard = ref(dummyCard);
+const detailedCardIndex = computed(() =>
+  props.filteredCards.findIndex((card) => card.ID === detailedCard.value.ID)
+);
+const navigationButtons = computed(() => detailedCardIndex.value !== -1);
 const cardDetailDialogVisible = ref(false);
 
 watch(
@@ -91,6 +95,14 @@ watch(
     <CardDetailDialog
       v-model="cardDetailDialogVisible"
       v-model:card="detailedCard"
+      :navigation-buttons
+      @previous="
+        detailedCard =
+          filteredCards[detailedCardIndex - 1] ?? filteredCards.at(-1)
+      "
+      @next="
+        detailedCard = filteredCards[detailedCardIndex + 1] ?? filteredCards[0]
+      "
     />
   </article>
 </template>

@@ -63,12 +63,12 @@ dialog {
   border: solid 1.2em var(--color-dialog-border);
   border-radius: 3em;
   box-shadow: 0 0 0.2em var(--color-drop-shadow);
-  contain: content;
   display: flex;
   flex-direction: column;
   max-width: 80em;
   min-width: 40em;
   padding: 1.8em;
+  position: relative;
 }
 @media (width <= 768px) {
   .dialog-container {

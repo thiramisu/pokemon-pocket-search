@@ -17,7 +17,11 @@ import { SHARED_PACK } from "../const";
 import CardCard from "./CardCard.vue";
 import CommonDialog from "./CommonDialog.vue";
 import { partition } from "../utils";
+import Icon from "./Icon.vue";
+
 const card = defineModel<Card>("card", { default: dummyCard });
+
+defineProps<{ navigationButtons: boolean }>();
 
 const relations = computed(
   () => cardRelations[getCardNameWithSuffix(card.value)]
@@ -65,6 +69,11 @@ watch(dialogVisible, () => {
 });
 window.addEventListener("load", applyCardIdFromQuery);
 window.addEventListener("popstate", applyCardIdFromQuery);
+
+defineEmits<{
+  previous: [void];
+  next: [void];
+}>();
 </script>
 
 <template>
@@ -158,8 +167,18 @@ window.addEventListener("popstate", applyCardIdFromQuery);
         <!-- TODO: <h3>イラスト違いカード</h3> -->
       </div>
     </div>
+    <div v-if="navigationButtons" class="button-container">
+      <button class="button" title="" @click="$emit('previous')">
+        <Icon icon="arrow_back_ios_new_wght100" class="" />
+      </button>
+      <button class="button" @click="$emit('next')">
+        <Icon icon="arrow_forward_ios_wght100" />
+      </button>
+    </div>
   </CommonDialog>
 </template>
+
+<style scoped src="../css/button.css"></style>
 
 <style scoped>
 .column-grid {
@@ -194,5 +213,28 @@ h3 {
   line-height: 1.2;
   margin: 1.2em 0 0.6em 0;
   padding: 0;
+}
+.button-container {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  filter: drop-shadow(0 0 0.2em black);
+  justify-content: space-between;
+  inset: 0;
+  margin: auto;
+  pointer-events: none;
+  position: fixed;
+}
+:not(.width-maximized) .button-container {
+  max-width: calc(1440px + 5em);
+}
+button {
+  background-color: transparent;
+  border: none;
+  font-size: 8em;
+  pointer-events: initial;
+}
+.button::before {
+  border-radius: 0.25em;
 }
 </style>

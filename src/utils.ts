@@ -31,6 +31,23 @@ export function positiveRemainder(dividend: number, divisor: number) {
 }
 
 /**
+ * predicate が true か false かで配列を分け、新しい2つの配列を返します。
+ * Array#filter に似た動作です。
+ */
+export function partition<T>(array: T[], predicate: (item: T) => boolean) {
+  const pass: T[] = [];
+  const fail: T[] = [];
+  for (const item of array) {
+    if (predicate(item)) {
+      pass.push(item);
+    } else {
+      fail.push(item);
+    }
+  }
+  return { pass, fail };
+}
+
+/**
  * 到達しない文であることを型チェック・実行時の両方で確認します。
  */
 export function assertNever(value: never): never {

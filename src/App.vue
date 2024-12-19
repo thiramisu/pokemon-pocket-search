@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // import LanguageSelectBox from "./components/LanguageSelectBox.vue";
-import { ref, useId, watch } from "vue";
+import { computed, ref, useId, watch } from "vue";
 import { POKEMON_NAME_DATALIST_ID } from "./const";
 import { cards } from "./data/types";
 import CardSearch from "./components/CardSearch.vue";
@@ -47,6 +47,9 @@ watch(
   },
   { immediate: true }
 );
+
+// 重複削除
+const cardNames = computed(() => new Set(cards.map((card) => card.名前)));
 </script>
 
 <template>
@@ -121,7 +124,11 @@ watch(
   <FaviconEditorDialog v-model="FaviconEditorDialogVisible" />
 
   <datalist :id="POKEMON_NAME_DATALIST_ID">
-    <option v-for="{ ID, 名前 } of cards" :key="ID" :value="名前"></option>
+    <option
+      v-for="cardName of cardNames"
+      :key="cardName"
+      :value="cardName"
+    ></option>
   </datalist>
 </template>
 

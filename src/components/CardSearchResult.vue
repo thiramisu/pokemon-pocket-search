@@ -88,7 +88,10 @@ watch(
       color="var(--color-filled-button-default)"
       :width="9"
     />
-    <CardDetailDialog v-model="cardDetailDialogVisible" :card="detailedCard" />
+    <CardDetailDialog
+      v-model="cardDetailDialogVisible"
+      v-model:card="detailedCard"
+    />
   </article>
 </template>
 

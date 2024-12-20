@@ -12,7 +12,8 @@ import {
 
 const processRelatedCards = () => {
   /**
-   * カード名とその関連カード。
+   * key: カード名（exは別項目）。
+   * value: その関連カード。
    */
   const cardRelations: CardRelations = {};
   for (const card of cards) {
@@ -55,6 +56,10 @@ const processRelatedCards = () => {
     cardRelations[from].evolutions!.push(to);
     pushPostEvolution(to, from);
   }
+  /**
+   * key: カードID。
+   * value: そのカードで選べるカードの配列。
+   */
   const targetables: Targetables = {};
   for (const trait of traits) {
     if (trait.効果 === undefined) continue;

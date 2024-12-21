@@ -18,7 +18,7 @@ import { partition } from "../utils";
 import { useTranslation } from "../composables/translation";
 import CardCard from "./CardCard.vue";
 import CommonDialog from "./CommonDialog.vue";
-import Icon from "./Icon.vue";
+import DialogNavigationButtons from "./DialogNavigationButtons.vue";
 
 const { getTranslatedCardName, getSharedExpansionName, getTranslatedName } =
   useTranslation();
@@ -171,18 +171,15 @@ defineEmits<{
         <!-- TODO: <h3>イラスト違いカード</h3> -->
       </div>
     </div>
-    <div v-if="navigationButtons" class="button-container">
-      <button class="button" title="前のカードへ" @click="$emit('previous')">
-        <Icon icon="arrow_back_ios_new_wght100" />
-      </button>
-      <button class="button" title="次のカードへ" @click="$emit('next')">
-        <Icon icon="arrow_forward_ios_wght100" />
-      </button>
-    </div>
+    <DialogNavigationButtons
+      v-if="navigationButtons"
+      previous-title="前のカードへ"
+      next-title="次のカードへ"
+      @previous="$emit('previous')"
+      @next="$emit('next')"
+    />
   </CommonDialog>
 </template>
-
-<style scoped src="../css/button.css"></style>
 
 <style scoped>
 .column-grid {
@@ -217,28 +214,5 @@ h3 {
   line-height: 1.2;
   margin: 1.2em 0 0.6em 0;
   padding: 0;
-}
-.button-container {
-  align-items: center;
-  cursor: pointer;
-  display: flex;
-  filter: drop-shadow(0 0 0.2em black);
-  justify-content: space-between;
-  inset: 0;
-  margin: auto;
-  pointer-events: none;
-  position: fixed;
-}
-:not(.width-maximized) .button-container {
-  max-width: calc(1440px + 5em);
-}
-.button {
-  background-color: transparent;
-  border: none;
-  font-size: 8em;
-  pointer-events: initial;
-}
-.button::before {
-  border-radius: 0.25em;
 }
 </style>

@@ -1,8 +1,7 @@
 <script setup lang="ts">
-// import LanguageSelectBox from "./components/LanguageSelectBox.vue";
 import { computed, ref, useId, watch } from "vue";
 import { POKEMON_NAME_DATALIST_ID } from "./const";
-import { cards } from "./data/types";
+import { cards, dummyCard, languages } from "./data/types";
 import CardSearch from "./components/CardSearch.vue";
 import FaviconEditorDialog from "./components/FaviconEditorDialog.vue";
 // import Sandbox from "./components/Sandbox.vue";
@@ -10,6 +9,9 @@ import SearchButton from "./components/SearchButton.vue";
 import TSVConverterDialog from "./components/TSVConverterDialog.vue";
 import ToggleButton from "./components/ToggleButton.vue";
 import Icon from "./components/Icon.vue";
+import { useTranslation } from "./composables/translation";
+
+const { language, getTranslatedCardName } = useTranslation();
 
 const pageTitle = import.meta.env.VITE_APP_TITLE;
 
@@ -49,7 +51,10 @@ watch(
 );
 
 // 重複削除
-const cardNames = computed(() => new Set(cards.map((card) => card.名前)));
+const cardNames = computed(
+  // () => new Set(cards.map((card) => getTranslatedCardName.value(card)))
+  () => new Set(cards.map((card) => getTranslatedCardName.value(card)))
+);
 </script>
 
 <template>
@@ -92,7 +97,6 @@ const cardNames = computed(() => new Set(cards.map((card) => card.名前)));
         />
       </template>
     </CardSearch>
-    <!-- <LanguageSelectBox /> -->
     <footer class="page-footer flex items-center justify-center">
       <h1>{{ pageTitle }}</h1>
       <div class="column">
@@ -107,6 +111,22 @@ const cardNames = computed(() => new Set(cards.map((card) => card.名前)));
             <Icon icon="light_mode" color="blue" />
           </template>
         </ToggleButton>
+        <div class="language-select">
+          Language:
+          <span class="select-container">
+            <select v-model="language">
+              <template v-for="language in languages">
+                <option
+                  v-if="language.code === 'ja' || language.code === 'en'"
+                  :value="language.code"
+                >
+                  {{ language.name }}
+                </option>
+              </template>
+            </select>
+          </span>
+          (Experimental)
+        </div>
         開発用ツールなど（PC向け）
         <SearchButton
           text="tsv変換器をひらく"
@@ -124,15 +144,18 @@ const cardNames = computed(() => new Set(cards.map((card) => card.名前)));
   <FaviconEditorDialog v-model="FaviconEditorDialogVisible" />
 
   <datalist :id="POKEMON_NAME_DATALIST_ID">
-    <option
-      v-for="cardName of cardNames"
-      :key="cardName"
-      :value="cardName"
-    ></option>
+    <template v-for="cardName of cardNames" :key="cardName">
+      <option
+        v-if="cardName !== getTranslatedCardName(dummyCard)"
+        :value="cardName"
+      ></option>
+    </template>
   </datalist>
 </template>
 
 <style scoped src="./css/button.css"></style>
+<!-- <select>用 -->
+<style scoped src="./css/card-search.css"></style>
 
 <style scoped>
 .main-container {
@@ -228,7 +251,11 @@ h1 {
   -webkit-text-stroke: 0.4em var(--color-fab-background);
   z-index: -1;
 }
-.theme-switch {
+.theme-switch,
+.language-select {
   padding: 1em 0;
+}
+.select-container {
+  display: inline-block;
 }
 </style>

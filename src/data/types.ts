@@ -8,18 +8,9 @@ import pokemonTypeData from "./manual/pokemon-types.json";
 import languageData from "./manual/languages.json";
 import tsvConverterHeaderOverwriteData from "./manual/tsvconverter-header-overwrites.json";
 import cardRelationData from "./generated/card-relations.json";
+import pokemonTranslationData from "./generated/pokemon-translations.json";
 import targetablesData from "./generated/targetables.json";
 import { COLOR_LESS_JP } from "../const";
-
-/**
- * 言語
- */
-export type Language = {
-  code: string;
-  name: string;
-  translated?: boolean;
-};
-export const languages: Language[] = languageData;
 
 /**
  * 進化
@@ -48,6 +39,7 @@ export const evolutionStageNames = ["たね", "1進化", "2進化"] as const;
  */
 export type Expansion = {
   名前: string;
+  名前_en: string;
   略号: string;
   カード種類数: number;
 };
@@ -57,13 +49,13 @@ export const getExpansionByName = DataIndex(
   expansions,
   (expansion: Expansion) => expansion.名前
 );
-export const getSharedExpansionName = (expansionName: string) =>
-  `（${expansionName}）`;
 export type Pack = {
   名前: string;
+  名前_en: string;
   エキスパンション名: string;
 };
 export const packs: Pack[] = packData;
+export const getPackByName = DataIndex(packs, (pack: Pack) => pack.名前);
 export const getExpansionByPackName = DataIndex2(
   packs,
   (pack: Pack) => pack.名前,
@@ -89,6 +81,7 @@ export type BaseCard = {
   パック: string;
   コレクションナンバー: number;
   名前: string;
+  名前_en?: string;
   レアリティ: number;
 };
 export type PokemonCard = BaseCard & {
@@ -165,13 +158,13 @@ export type PokemonType = {
   shorten: string;
   translations: {
     en: string;
-    jp: string;
+    ja: string;
   };
 };
 export const pokemonTypes: PokemonType[] = pokemonTypeData;
 export const japaneseToTypes = DataIndex(
   pokemonTypes,
-  (pokemonType: PokemonType) => pokemonType.translations.jp
+  (pokemonType: PokemonType) => pokemonType.translations.ja
 );
 export const colorLess = japaneseToTypes(COLOR_LESS_JP);
 export const shortenToTypes = DataIndex(
@@ -198,6 +191,41 @@ export const cardRelations: CardRelations = cardRelationData;
  */
 export type Targetables = Record<string, string[]>;
 export const targetables: Targetables = targetablesData;
+
+/**
+ * 言語
+ */
+export type Language = {
+  code: string;
+  name: string;
+  translated?: boolean;
+};
+export const languages: Language[] = languageData;
+
+export const pokemonNameLanguages = [
+  "en",
+  // "es", 英語と同じ
+  "fr",
+  "de",
+  // "it", 英語と同じ
+  // "pt", 英語と同じ
+  "ko",
+  "ja",
+  "zh-Hant",
+  // 不使用
+  // "th",
+  // "ru",
+  // "zh-Hans",
+] as const;
+export type PokemonNameLanguages = (typeof pokemonNameLanguages)[number];
+
+type PokemonTranslationData = {
+  [jp_name in string]: {
+    [language in PokemonNameLanguages]: string;
+  };
+};
+export const pokemonTranslations: PokemonTranslationData =
+  pokemonTranslationData;
 
 /**
  * TSV変換

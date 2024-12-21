@@ -8,7 +8,10 @@ import {
   getPreEvolution,
   Targetables,
   traits,
+  dummyCard,
+  pokemonNameLanguages,
 } from "../data/types";
+import pokemon, { Language } from "pokemon";
 
 const processRelatedCards = () => {
   /**
@@ -98,6 +101,49 @@ const processRelatedCards = () => {
   };
 };
 
+const processTranslatedCards = () => {
+  /**
+   * カード名とその関連カード。
+   */
+  const translationsByCardName: Record<
+    string,
+    Partial<Record<Language, string>>
+  > = {};
+  for (const card of cards) {
+    if (card.名前 === dummyCard.名前 || card.名前 in translationsByCardName) {
+      continue;
+    }
+    let id;
+    try {
+      id = pokemon.getId(card.名前, "ja");
+    } catch {
+      continue;
+    }
+    if (
+      // Farfetch'd(en) と Farfetch’d(es) になっている
+      // pokedex ブラジル語版では「Farfetch’d」だが、アポストロフィは'に寄せて良さそう
+      card.名前 !== "カモネギ" &&
+      // Flabébé(en) と Flabebe(es) になっている
+      // pokedex ブラジル語版では「Flabébé」
+      card.名前 !== "フラベベ" &&
+      //
+      pokemon.getName(id, "en") !== pokemon.getName(id, "es")
+    ) {
+      throw new Error(
+        `${pokemon.getName(id, "ja")}の英語名(${pokemon.getName(id, "en")})がスペイン語名(${pokemon.getName(id, "es")})と異なります。`
+      );
+    }
+    translationsByCardName[card.名前] = pokemonNameLanguages.reduce(
+      (translations, language) => {
+        translations[language] = pokemon.getName(id, language);
+        return translations;
+      },
+      {} as Partial<Record<Language, string>>
+    );
+  }
+  return translationsByCardName;
+};
+
 export function processJSON() {
   const { cardRelations, targetables } = processRelatedCards();
   fs.writeFileSync(
@@ -107,6 +153,11 @@ export function processJSON() {
   fs.writeFileSync(
     path.resolve(__dirname, "../data/generated/targetables.json"),
     JSON.stringify(targetables, null, 2)
+  );
+
+  fs.writeFileSync(
+    path.resolve(__dirname, "../data/generated/pokemon-translations.json"),
+    JSON.stringify(processTranslatedCards(), null, 2)
   );
 
   console.log("Processed JSON has been written");

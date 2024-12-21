@@ -10,10 +10,13 @@ import {
   getExpansionByPackName,
 } from "../data/types";
 import { colorLess } from "../data/types";
+import { useTranslation } from "../composables/translation";
 import CardCardTraits from "./CardCardTraits.vue";
 import PokemonTypeMark from "./PokemonTypeMark.vue";
 import PseudoMonospace from "./PseudoMonospace.vue";
 import RarityMark from "./RarityMark.vue";
+
+const { getTranslatedCardName } = useTranslation();
 
 const props = defineProps<{
   card: Card;
@@ -56,7 +59,7 @@ const expansion = computed(() => getExpansionByPackName(props.card.パック));
     >
       <div class="card-type x-small">{{ cardType }}</div>
       <div class="name">
-        <span>{{ card.名前 }}</span
+        <span>{{ getTranslatedCardName(card) }}</span
         ><span v-if="'ex' in card" class="ex">ex</span>
         <div v-if="'HP' in card" class="hp">
           <span class="text-xs">HP </span>{{ card.HP }}

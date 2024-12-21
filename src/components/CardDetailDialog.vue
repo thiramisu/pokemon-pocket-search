@@ -8,16 +8,20 @@ import {
   targetables,
   getEvolutionStage,
   evolutionStageNames,
-  getSharedExpansionName,
   dummyCard,
   isVariant,
   getCardNameWithSuffix,
+  getPackByName,
 } from "../data/types";
 import { SHARED_PACK } from "../const";
+import { partition } from "../utils";
+import { useTranslation } from "../composables/translation";
 import CardCard from "./CardCard.vue";
 import CommonDialog from "./CommonDialog.vue";
-import { partition } from "../utils";
 import Icon from "./Icon.vue";
+
+const { getTranslatedCardName, getSharedExpansionName, getTranslatedName } =
+  useTranslation();
 
 const card = defineModel<Card>("card", { default: dummyCard });
 
@@ -27,8 +31,8 @@ const relations = computed(
   () => cardRelations[getCardNameWithSuffix(card.value)]
 );
 const targetableNames = computed(() => targetables[card.value.ID]);
-const expansionName = computed(
-  () => getExpansionByPackName(card.value.パック).名前
+const expansionName = computed(() =>
+  getTranslatedName.value(getExpansionByPackName(card.value.パック))
 );
 
 const predicatedVariants = computed(() =>
@@ -81,13 +85,13 @@ defineEmits<{
     <div class="column-grid">
       <CardCard :card />
       <div class="card-header">
-        <h1>{{ card.名前 }}</h1>
+        <h1>{{ getTranslatedCardName(card) }}</h1>
         <div>{{ expansionName }}</div>
         <div>
           {{
             card.パック === getSharedExpansionName(expansionName)
               ? SHARED_PACK
-              : card.パック
+              : getTranslatedName(getPackByName(card.パック))
           }}
         </div>
       </div>

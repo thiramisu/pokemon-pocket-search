@@ -172,10 +172,10 @@ defineEmits<{
       </div>
     </div>
     <div v-if="navigationButtons" class="button-container">
-      <button class="button" title="" @click="$emit('previous')">
-        <Icon icon="arrow_back_ios_new_wght100" class="" />
+      <button class="button" title="前のカードへ" @click="$emit('previous')">
+        <Icon icon="arrow_back_ios_new_wght100" />
       </button>
-      <button class="button" @click="$emit('next')">
+      <button class="button" title="次のカードへ" @click="$emit('next')">
         <Icon icon="arrow_forward_ios_wght100" />
       </button>
     </div>
@@ -232,7 +232,7 @@ h3 {
 :not(.width-maximized) .button-container {
   max-width: calc(1440px + 5em);
 }
-button {
+.button {
   background-color: transparent;
   border: none;
   font-size: 8em;

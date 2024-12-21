@@ -4,7 +4,7 @@
     "shorten": "G",
     "translations": {
       "en": "Grass",
-      "jp": "草"
+      "ja": "草"
     }
   },
   {
@@ -12,7 +12,7 @@
     "shorten": "R",
     "translations": {
       "en": "fiRe",
-      "jp": "炎"
+      "ja": "炎"
     }
   },
   {
@@ -20,7 +20,7 @@
     "shorten": "W",
     "translations": {
       "en": "Water",
-      "jp": "水"
+      "ja": "水"
     }
   },
   {
@@ -28,7 +28,7 @@
     "shorten": "L",
     "translations": {
       "en": "Lightning",
-      "jp": "雷"
+      "ja": "雷"
     }
   },
   {
@@ -36,7 +36,7 @@
     "shorten": "P",
     "translations": {
       "en": "Psychic",
-      "jp": "超"
+      "ja": "超"
     }
   },
   {
@@ -44,7 +44,7 @@
     "shorten": "F",
     "translations": {
       "en": "Fighting",
-      "jp": "闘"
+      "ja": "闘"
     }
   },
   {
@@ -52,7 +52,7 @@
     "shorten": "D",
     "translations": {
       "en": "Darkness",
-      "jp": "悪"
+      "ja": "悪"
     }
   },
   {
@@ -60,7 +60,7 @@
     "shorten": "M",
     "translations": {
       "en": "Metal",
-      "jp": "鋼"
+      "ja": "鋼"
     }
   },
   {
@@ -68,7 +68,7 @@
     "shorten": "C",
     "translations": {
       "en": "Colorless",
-      "jp": "無色"
+      "ja": "無色"
     }
   },
   {
@@ -76,7 +76,7 @@
     "shorten": "Y",
     "translations": {
       "en": "fairY",
-      "jp": "フェアリー"
+      "ja": "フェアリー"
     }
   },
   {
@@ -84,7 +84,7 @@
     "shorten": "N",
     "translations": {
       "en": "dragoN",
-      "jp": "ドラゴン"
+      "ja": "ドラゴン"
     }
   }
 ]

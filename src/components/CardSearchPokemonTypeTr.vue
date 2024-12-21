@@ -10,7 +10,7 @@ defineProps<{
 const selectedPokemonTypes = defineModel<Set<string>>({ default: new Set() });
 const reversePokemonTypeSet = () => {
   for (const pokemonType of pokemonTypes) {
-    toggleSetItem(selectedPokemonTypes.value, pokemonType.translations.jp);
+    toggleSetItem(selectedPokemonTypes.value, pokemonType.translations.ja);
   }
 };
 </script>
@@ -42,9 +42,9 @@ const reversePokemonTypeSet = () => {
           v-if="pokemonType.shorten !== 'Y'"
           :text="pokemonType.translations.en"
           :color="pokemonType.color"
-          :filled="selectedPokemonTypes.has(pokemonType.translations.jp)"
+          :filled="selectedPokemonTypes.has(pokemonType.translations.ja)"
           @button-click="
-            toggleSetItem(selectedPokemonTypes, pokemonType.translations.jp)
+            toggleSetItem(selectedPokemonTypes, pokemonType.translations.ja)
           "
         />
       </template>

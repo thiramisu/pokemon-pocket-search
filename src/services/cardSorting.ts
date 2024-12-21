@@ -38,7 +38,7 @@ const getSortFunction =
               : 1;
 
 const typeOrderByName = new Map(
-  pokemonTypes.map((pokemonType, i) => [pokemonType.translations.jp, i])
+  pokemonTypes.map((pokemonType, i) => [pokemonType.translations.ja, i])
 );
 
 const getTypeSortFunction =

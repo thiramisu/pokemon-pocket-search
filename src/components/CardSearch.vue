@@ -12,7 +12,6 @@ import {
   expansions,
   dummyExpansion,
   getExpansionByName,
-  getSharedExpansionName,
   getPacksByExpansionName,
   getExpansionByPackName,
 } from "../data/types";
@@ -23,10 +22,14 @@ import {
 } from "../const";
 import { toggleSetItem } from "../utils";
 import { sortFunction } from "../services/cardSorting";
+import { useTranslation } from "../composables/translation";
 import CardSearchPokemonTypeTr from "./CardSearchPokemonTypeTr.vue";
 import CardSearchRangeSliderTr from "./CardSearchRangeSliderTr.vue";
 import SearchButton from "./SearchButton.vue";
 import CardSearchResult from "./CardSearchResult.vue";
+
+const { getSharedExpansionName, getTranslatedCardName, getTranslatedName } =
+  useTranslation();
 
 /** width <= 1440px では true なら open, 1440px < width では true なら close */
 const filterPanelToggle = defineModel({ default: false });
@@ -113,7 +116,7 @@ const filteredCards = computed(() =>
     const traits = getTraits(card.ID);
     return (
       // カード名
-      card.名前.includes(cardName.value) &&
+      getTranslatedCardName.value(card).includes(cardName.value) &&
       // HP
       (!("HP" in card) || (hpMin.value <= card.HP && card.HP <= hpMax.value)) &&
       // カードテキスト
@@ -185,7 +188,8 @@ const filteredCards = computed(() =>
           (packName.value === undefined ||
             card.パック === packName.value ||
             // エキスパンション内共通カード
-            (card.パック === getSharedExpansionName(expansionName.value) &&
+            (card.パック ===
+              getSharedExpansionName.value(expansionName.value) &&
               // 検索パック名に部分的にエキスパンション名が含まれる場合は完全一致以外除外する
               !packName.value?.includes(expansionName.value))) &&
           // コレクションナンバー
@@ -515,7 +519,7 @@ watch(filteredCards, () => {
                         v-if="expansion !== dummyExpansion"
                         :value="expansion.名前"
                       >
-                        {{ expansion.略号 }}：{{ expansion.名前 }}
+                        {{ expansion.略号 }}：{{ getTranslatedName(expansion) }}
                       </option>
                     </template>
                   </select>
@@ -532,12 +536,13 @@ watch(filteredCards, () => {
                       >
                         <option
                           v-if="
-                            pack.名前 !== getSharedExpansionName(expansionName)
+                            pack.名前 !==
+                            getSharedExpansionName(expansionName, 'ja')
                           "
                           :value="pack.名前"
                         >
                           {{
-                            pack.名前.replace(
+                            getTranslatedName(pack).replace(
                               getSharedExpansionName(expansionName),
                               ""
                             )

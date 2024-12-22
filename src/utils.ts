@@ -47,6 +47,10 @@ export function partition<T>(array: T[], predicate: (item: T) => boolean) {
   return { pass, fail };
 }
 
+export function writeTextToClipboard(text: string) {
+  navigator.clipboard.writeText(text);
+}
+
 /**
  * 到達しない文であることを型チェック・実行時の両方で確認します。
  */

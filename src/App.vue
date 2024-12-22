@@ -2,21 +2,22 @@
 import { computed, ref, useId, watch } from "vue";
 import { POKEMON_NAME_DATALIST_ID } from "./const";
 import { cards, dummyCard, languages } from "./data/types";
+import { useTranslation } from "./composables/translation";
 import CardSearch from "./components/CardSearch.vue";
+import EffectTranslationToolDialog from "./components/EffectTranslationToolDialog.vue";
 import FaviconEditorDialog from "./components/FaviconEditorDialog.vue";
+import Icon from "./components/Icon.vue";
 // import Sandbox from "./components/Sandbox.vue";
 import SearchButton from "./components/SearchButton.vue";
 import TSVConverterDialog from "./components/TSVConverterDialog.vue";
 import ToggleButton from "./components/ToggleButton.vue";
-import Icon from "./components/Icon.vue";
-import { useTranslation } from "./composables/translation";
-
 const { language, getTranslatedCardName } = useTranslation();
 
 const pageTitle = import.meta.env.VITE_APP_TITLE;
 
 const tsvConverterDialogVisible = ref(false);
 const FaviconEditorDialogVisible = ref(false);
+const EffectTranslationToolDialogVisible = ref(false);
 
 const shouldMaximizeWidth = ref(false);
 
@@ -136,12 +137,17 @@ const cardNames = computed(
           text="faviconエディタをひらく"
           @button-click="FaviconEditorDialogVisible = true"
         />
+        <SearchButton
+          text="翻訳用ツールをひらく"
+          @button-click="EffectTranslationToolDialogVisible = true"
+        />
       </div>
     </footer>
   </div>
 
   <TSVConverterDialog v-model="tsvConverterDialogVisible" />
   <FaviconEditorDialog v-model="FaviconEditorDialogVisible" />
+  <EffectTranslationToolDialog v-model="EffectTranslationToolDialogVisible" />
 
   <datalist :id="POKEMON_NAME_DATALIST_ID">
     <template v-for="cardName of cardNames" :key="cardName">

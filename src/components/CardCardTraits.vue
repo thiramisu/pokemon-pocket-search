@@ -99,6 +99,7 @@ defineProps<{
   inset: 0;
   margin: auto;
   position: absolute;
+  text-align: center;
   transform: scaleX(1.2);
 }
 .trait-line {

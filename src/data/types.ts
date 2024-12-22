@@ -119,8 +119,8 @@ export const isVariant = (cardA: Card, cardB: Card) => {
       const traitB = traitsB[i];
       return (
         trait.効果 === traitB.効果 &&
-        (!("名前" in trait) ||
-          ("名前" in traitB &&
+        (!("一致エネルギー数" in trait) ||
+          ("一致エネルギー数" in traitB &&
             trait.一致エネルギー数 === traitB.一致エネルギー数 &&
             trait.無色エネルギー数 === traitB.無色エネルギー数 &&
             trait.必要エネルギー上書き === traitB.必要エネルギー上書き &&
@@ -138,15 +138,19 @@ export const getCardNameWithSuffix = (card: Card, reverse = false) =>
 export type BaseCardTrait = {
   カードID: number;
   効果?: string;
+  効果_en?: string;
 };
-export type PokemonCardTrait = BaseCardTrait & {
+export type PokemonCardAbility = BaseCardTrait & {
+  名前: string;
+};
+export type PokemonCardAttack = BaseCardTrait & {
   名前: string;
   一致エネルギー数: number;
   無色エネルギー数: number;
   必要エネルギー上書き?: string;
   威力: number;
 };
-export type Trait = BaseCardTrait | PokemonCardTrait;
+export type Trait = BaseCardTrait | PokemonCardAbility | PokemonCardAttack;
 export const traits: Trait[] = traitData;
 export const getTraits = DataIndexArray(
   traits,

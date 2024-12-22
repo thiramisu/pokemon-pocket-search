@@ -16,13 +16,7 @@ defineProps<{
     <div class="trait-line">
       <div>
         <!-- 特性 -->
-        <div
-          v-if="
-            trait.一致エネルギー数 === undefined &&
-            trait.無色エネルギー数 === undefined
-          "
-          class="ability-mark"
-        ></div>
+        <div v-if="!('一致エネルギー数' in trait)" class="ability-mark"></div>
         <AttackEnergyOverride
           v-else-if="trait.必要エネルギー上書き !== undefined"
           :energy-override-text="trait.必要エネルギー上書き"
@@ -45,14 +39,12 @@ defineProps<{
       </div>
       <div
         :class="{
-          'ability-name':
-            trait.一致エネルギー数 === undefined &&
-            trait.無色エネルギー数 === undefined,
+          'ability-name': !('一致エネルギー数' in trait),
         }"
       >
         {{ trait.名前 }}
       </div>
-      <div v-if="trait.威力 !== 0" class="trait-damage">
+      <div v-if="'威力' in trait && trait.威力 !== 0" class="trait-damage">
         {{ trait.威力 }}
         <div class="trait-damage-suffix">
           {{

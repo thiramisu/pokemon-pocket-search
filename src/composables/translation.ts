@@ -1,5 +1,10 @@
 import { computed, ref, watch } from "vue";
-import { Card, PokemonNameLanguages, pokemonTranslations } from "../data/types";
+import {
+  Card,
+  getTranslatedCardName,
+  getTranslatedName,
+  PokemonNameLanguages,
+} from "../data/types";
 
 /**
  * 言語
@@ -22,26 +27,12 @@ export const useTranslation = (() => {
     { immediate: true }
   );
 
-  const getPropertyName = (language: PokemonNameLanguages) =>
-    language === "ja" ? "名前" : "名前_en";
   const returnValue = {
     language: languageRef,
     getTranslatedCardName: computed(
       () =>
-        (card: Card, language = languageRef.value) => {
-          if (card.名前 in pokemonTranslations) {
-            return pokemonTranslations[card.名前][language];
-          } else if (language === "ja") {
-            return card.名前;
-          } else if (language === "en" && card.名前_en !== undefined) {
-            return card.名前_en;
-          } else {
-            console.error(
-              `${card.名前}の${language}での名前が見つかりませんでした。`
-            );
-            return "";
-          }
-        }
+        (card: Card, language = languageRef.value) =>
+          getTranslatedCardName(card, language)
     ),
     getSharedExpansionName: computed(
       () =>
@@ -54,7 +45,7 @@ export const useTranslation = (() => {
           target: { 名前: string; 名前_en: string },
           language = languageRef.value
         ) =>
-          target[getPropertyName(language)]
+          getTranslatedName(target, language)
     ),
   } as const;
   return () => returnValue;

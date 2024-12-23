@@ -205,6 +205,12 @@ export type Language = {
   translated?: boolean;
 };
 export const languages: Language[] = languageData;
+const getPropertyName = (language: PokemonNameLanguages) =>
+  language === "ja" ? "名前" : "名前_en";
+export const getTranslatedName = (
+  target: { 名前: string; 名前_en: string },
+  language: PokemonNameLanguages
+) => target[getPropertyName(language)];
 
 export const pokemonNameLanguages = [
   "en",
@@ -230,6 +236,22 @@ type PokemonTranslationData = {
 };
 export const pokemonTranslations: PokemonTranslationData =
   pokemonTranslationData;
+
+export function getTranslatedCardName(
+  card: Card,
+  language: PokemonNameLanguages
+) {
+  if (card.名前 in pokemonTranslations) {
+    return pokemonTranslations[card.名前][language];
+  } else if (language === "ja") {
+    return card.名前;
+  } else if (language === "en" && card.名前_en !== undefined) {
+    return card.名前_en;
+  } else {
+    console.error(`${card.名前}の${language}での名前が見つかりませんでした。`);
+    return "";
+  }
+}
 
 /**
  * TSV変換

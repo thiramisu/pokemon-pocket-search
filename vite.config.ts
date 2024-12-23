@@ -12,6 +12,8 @@ export default defineConfig({
     outDir: "docs",
   },
   server: {
+    // ブラウザを自動で開く
+    open: true,
     watch: {
       // 自動生成ファイル
       ignored: ["**/generated/**"],

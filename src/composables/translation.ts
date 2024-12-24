@@ -44,7 +44,7 @@ export const useTranslation = (() => {
     getTranslatedName: computed(
       () =>
         (
-          target: { 名前: string; 名前_en: string },
+          target: { 名前: string; 名前_en?: string },
           language = languageRef.value
         ) =>
           getTranslatedName(target, language)

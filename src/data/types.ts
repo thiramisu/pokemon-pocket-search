@@ -207,9 +207,9 @@ export const languages: Language[] = languageData;
 const getPropertyName = (language: PokemonNameLanguages) =>
   language === "ja" ? "名前" : "名前_en";
 export const getTranslatedName = (
-  target: { 名前: string; 名前_en: string },
+  target: { 名前: string; 名前_en?: string },
   language: PokemonNameLanguages
-) => target[getPropertyName(language)];
+) => target[getPropertyName(language)] ?? target.名前;
 
 export const pokemonNameLanguages = [
   "en",

@@ -2,6 +2,7 @@ import { computed, ref, watch } from "vue";
 import {
   CardNameGetterOption,
   getCardName,
+  getTranslatedEffect,
   getTranslatedName,
   PokemonNameLanguages,
 } from "../data/types";
@@ -48,6 +49,14 @@ export const useTranslation = (() => {
           language = languageRef.value
         ) =>
           getTranslatedName(target, language)
+    ),
+    getTranslatedEffect: computed(
+      () =>
+        (
+          target: { 効果: string; 効果_en?: string },
+          language = languageRef.value
+        ) =>
+          getTranslatedEffect(target, language)
     ),
   } as const;
   return () => returnValue;

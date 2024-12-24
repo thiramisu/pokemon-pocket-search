@@ -4,11 +4,13 @@ import PokemonTypeMark from "./PokemonTypeMark.vue";
 import { colorLess } from "../data/types";
 import { Trait } from "../data/types";
 import AttackEnergyOverride from "./AttackEnergyOverride.vue";
+import { useTranslation } from "../composables/translation";
 
 defineProps<{
   trait: Trait;
   pokemonType?: PokemonType;
 }>();
+const { getTranslatedName, getTranslatedEffect } = useTranslation();
 </script>
 
 <template>
@@ -42,7 +44,7 @@ defineProps<{
           'ability-name': !('一致エネルギー数' in trait),
         }"
       >
-        {{ trait.名前 }}
+        {{ getTranslatedName(trait) }}
       </div>
       <div v-if="'威力' in trait && trait.威力 !== 0" class="trait-damage">
         {{ trait.威力 }}
@@ -60,12 +62,12 @@ defineProps<{
       </div>
     </div>
     <div v-if="'効果' in trait" class="trait-effect">
-      {{ trait.効果 }}
+      {{ getTranslatedEffect(trait) }}
     </div>
   </div>
   <!-- トレーナーズ用 -->
   <div v-else-if="'効果' in trait" class="trait-effect">
-    {{ trait.効果 }}
+    {{ getTranslatedEffect(trait) }}
   </div>
 </template>
 

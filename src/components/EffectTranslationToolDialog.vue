@@ -29,7 +29,7 @@ traitIndex.value = findNextTraitIndexWithEffect(1);
 const trait = computed(() => traits[traitIndex.value]);
 
 const extractedWords = computed(() =>
-  extractKnownEffectFragments(trait.value.効果!)
+  "効果" in trait.value ? extractKnownEffectFragments(trait.value.効果) : []
 );
 const result = computed(() => joinExtractedResults(extractedWords.value));
 </script>

@@ -1,10 +1,33 @@
-import { japaneseToTypes } from "../data/types";
+import {
+  cards,
+  getCardName,
+  findTranslatedCardNameByName,
+  japaneseToTypes,
+  withSuffix,
+} from "../data/types";
 
 export type ExtractedResult = {
   leadingText: string;
   source: string;
   converted: string;
 };
+
+/**
+ * カード名の連続を翻訳します。
+ * 例) "「あ」「い」「う」" => "a, i, or u"
+ */
+export function getTranslatedCardNamesString(cardNamesString: string) {
+  const translatedCardNames = cardNamesString
+    .slice(1, -1)
+    .split("」「")
+    .map((cardName: string) => findTranslatedCardNameByName(cardName, "en"));
+  if (translatedCardNames.length === 1) {
+    return translatedCardNames[0];
+  } else {
+    const lastCardName = translatedCardNames.pop();
+    return `${translatedCardNames.join(", ")}${translatedCardNames.length >= 2 ? "," : ""} or ${lastCardName}`;
+  }
+}
 
 export function extractKnownEffectFragments(target: string) {
   const result: ExtractedResult[] = [];
@@ -60,9 +83,15 @@ export const joinExtractedResults = (extractedResults: ExtractedResult[]) =>
   extractedResults
     .map((extractedWord) => extractedWord.leadingText + extractedWord.converted)
     .join("")
-    .replace(/(?<=^|\. )([a-z])/g, (_, headLowerCase: string) =>
+    .replace(/(?<=\.)(?=[a-zA-Z])/g, " ")
+    .replace(/(?<=^|\. )[a-z]/g, (headLowerCase: string) =>
       headLowerCase.toUpperCase()
     );
+
+export const isFullTranslated = (extractedResults: ExtractedResult[]) =>
+  extractedResults.every(
+    (extractedResult) => extractedResult.leadingText === ""
+  );
 
 type KnownEffectFragment = [
   RegExp,
@@ -80,24 +109,28 @@ const toEnglishType = (pokemonType: string) =>
       headLowerCase.toUpperCase()
     );
 const getKnownWordsAndConverters = (): KnownEffectFragment[] =>
-  // TODO: カード名指定のカード名を翻訳
   // lastIndexを使用するため、gフラグを付与（つけ忘れると無限ループになるので注意）
   [
     // ダメージ
     [
       /相手のポケモン１匹に(\d+)ダメージ/g,
       (_, damage) =>
-        `this attack does ${damage} to 1 of your opponent's Pokémon`,
+        `this attack does ${damage} damage to 1 of your opponent's Pokémon`,
     ],
     [
       /相手のベンチポケモン１匹に(\d+)ダメージ/g,
       (_, damage) =>
-        `this attack does ${damage} to 1 of your opponent's Benched Pokémon`,
+        `this attack does ${damage} damage to 1 of your opponent's Benched Pokémon`,
+    ],
+    [
+      /相手のベンチポケモン全員にも(\d+)ダメージ。/g,
+      (_, damage) =>
+        `this attack also does ${damage} damage to each of your opponent's Benched Pokémon.`,
     ],
     [
       /自分のベンチの(.)ポケモンの数×(\d+)ダメージ/g,
       (_, pokemonType, damage) =>
-        `This attack does ${damage} damage for each of your Benched ${toEnglishType(pokemonType)} Pokémon`,
+        `this attack does ${damage} damage for each of your Benched ${toEnglishType(pokemonType)} Pokémon`,
     ],
     [
       /このポケモンが、バトル場で相手のポケモンからワザのダメージを受けたとき、ワザを使ったポケモンに(\d+)ダメージ/g,
@@ -114,22 +147,22 @@ const getKnownWordsAndConverters = (): KnownEffectFragment[] =>
     [/このワザは失敗/g, "this attack does nothing"],
     [
       /コインを([２-９])回投げ、/g,
-      (_, coins) => `Flip ${toHankakuDigit(coins)} coins. `,
+      (_, coins) => `flip ${toHankakuDigit(coins)} coins. `,
     ],
     [
       /オモテの数×(\d+)ダメージ/g,
-      (_, damage) => `This attack does ${damage} damage for each heads`,
+      (_, damage) => `this attack does ${damage} damage for each heads`,
     ],
     // 追加
     [
       /追加で(.)エネルギーが([２-９])個ついているなら、/g,
       (_, energy, extraEnergyCount) =>
-        `If this Pokémon has at least ${toHankakuDigit(extraEnergyCount)} ${toEnglishType(energy)} Energy attached, `,
+        `if this Pokémon has at least ${toHankakuDigit(extraEnergyCount)} extra ${toEnglishType(energy)} Energy attached, `,
     ],
     [
       /相手のバトルポケモンのエネルギーの数×(\d+)ダメージ追加/g,
       (_, damage) =>
-        `This attack does ${damage} more damage for each Energy attached to your opponent's Active Pokémon`,
+        `this attack does ${damage} more damage for each Energy attached to your opponent's Active Pokémon`,
     ],
     [
       /(\d+)ダメージ追加/g,
@@ -137,9 +170,9 @@ const getKnownWordsAndConverters = (): KnownEffectFragment[] =>
         `this attack does ${additionalDamage} more damage`,
     ],
     [
-      /が使うワザの、相手のバトルポケモンへのダメージを+(\d+)する/g,
-      (additionalDamage) =>
-        `do ＋${additionalDamage} damage to your opponent's Active Pokémon`,
+      /が使うワザの、相手のバトルポケモンへのダメージを\+(\d+)する/g,
+      (_, additionalDamage) =>
+        `attacks used by do ＋${additionalDamage} damage to your opponent's Active Pokémon`,
     ],
     // 自傷
     [
@@ -149,14 +182,13 @@ const getKnownWordsAndConverters = (): KnownEffectFragment[] =>
     ],
     // 耐性
     [
-      /このポケモンが受けるワザのダメージを-(\d+)する/g,
-      (_, decreasedDamage) =>
-        `this Pokémon takes －${decreasedDamage} damage from attacks`,
+      /受けるワザのダメージを-(\d+)する/g,
+      (_, decreasedDamage) => `takes －${decreasedDamage} damage from attacks`,
     ],
     [
       /このポケモンはワザのダメージや効果を受けない/g,
       (_) =>
-        `prevent all damage from―and effect of―attacks done to this Pokémon`,
+        `prevent all damage from―and effects of―attacks done to this Pokémon`,
     ],
     // 回復
     [
@@ -172,49 +204,64 @@ const getKnownWordsAndConverters = (): KnownEffectFragment[] =>
     [
       /このポケモンから(.)エネルギーを１個トラッシュ/g,
       (_, energy) =>
-        `Discard a ${toEnglishType(energy)} Energy from this Pokémon`,
+        `discard a ${toEnglishType(energy)} Energy from this Pokémon`,
     ],
     [
       /このポケモンから(.)エネルギーを([２-９])個トラッシュ/g,
       (_, energy, energyCount) =>
-        `Discard ${toHankakuDigit(energyCount)} ${toEnglishType(energy)} Energy from this Pokémon`,
+        `discard ${toHankakuDigit(energyCount)} ${toEnglishType(energy)} Energy from this Pokémon`,
     ],
     [
       /相手のバトルポケモンからエネルギーをランダムに１個トラッシュ/g,
-      (_) => `Discard a random Energy from your opponent's Active Pokémon`,
+      (_) => `discard a random Energy from your opponent's Active Pokémon`,
     ],
     // エネルギーつける
     [
       /自分のエネルギーゾーンから(.)エネルギーを１個出し、/g,
       (_, energy) =>
-        `Take a ${toEnglishType(energy)} Energy from your Energy Zone `,
+        `take a ${toEnglishType(energy)} Energy from your Energy Zone `,
     ],
     [/自分のエネルギーゾーンから/g, "from your Energy Zone"],
-    [/このポケモンにつける/g, "and attach it to this pokemon"],
+    [/このポケモンにつける/g, "and attach it to this Pokémon"],
     [
       /ベンチの(.)ポケモンにつける/g,
       (_, pokemonType) =>
-        `and attach it to 1 of your Benched ${toEnglishType(pokemonType)} pokemon`,
+        `and attach it to 1 of your Benched ${toEnglishType(pokemonType)} Pokémon`,
     ],
     [/につける/g, "and attach it to "],
+    [/つけ替える/g, "Move Energy from your Benched Pokémon to "],
     // 山札
+    [/自分の山札を上から１枚見/g, "look at the top card of your deck"],
+    [
+      /て、もとにもどす/g,
+      // 英語版には対応するテキストがない
+      "",
+    ],
+    [/手札をすべて山札にもど/g, "shuffles the hand into the deck"],
     [/自分の山札を１枚引く/g, "draw a card"],
+    [
+      /山札を([２-９])枚引く/g,
+      (_, cardCount) => `draw ${toHankakuDigit(cardCount)} cards`,
+    ],
     [
       /自分の山札から(.)ポケモンをランダムに１枚、/g,
       (_, pokemonType) =>
-        `Put 1 random ${toEnglishType(pokemonType)} Pokémon from your deck `,
+        `put 1 random ${toEnglishType(pokemonType)} Pokémon from your deck `,
     ],
     [
       /自分の山札から「(.+?)」をランダムに１枚、/g,
-      (_, pokemonName) => `Put 1 random ${pokemonName} from your deck `,
+      (_, pokemonName) =>
+        `put 1 random ${getCardName({
+          card: cards.find(
+            (card) => getCardName({ card, withSuffix }) === pokemonName
+          )!,
+          language: "en",
+          withSuffix,
+        })} from your deck `,
     ],
     [/手札に加える/g, (_) => `into your hand`],
     [/ベンチに出す/g, (_) => `onto your Bench`],
     // 特性
-    [
-      /このポケモンがバトル場にいるなら、/g,
-      "If this Pokémon is in the Active Spot, ",
-    ],
     [
       /このポケモンがいるかぎり、/g,
       // 英語版には対応するテキストがない
@@ -222,18 +269,15 @@ const getKnownWordsAndConverters = (): KnownEffectFragment[] =>
     ],
     // 妨害
     [
-      /次の相手の番、このワザを受けたポケモンはワザが使えない/g,
-      "the Defending Pokémon can't attack during your opponent's next turn",
-    ],
-    [
-      /このワザを受けたポケモンはにげるができない/g,
-      "the Defending Pokémon can't retreat",
-    ],
-    [
       /このワザを受けたポケモンが使うワザのダメージを-(\d+)する。/g,
       (_, damage) =>
         `attacks used by the Defending Pokémon do －${damage} damage.`,
     ],
+    [/このワザを受けたポケモン(は|が)/g, "the Defending Pokémon"],
+    // NOTE: オムスター[A1|082/226]はこの順だが、ロコン[A1|037/226]はコイントスとの組み合わせだからか
+    //       during your opponent's next turn が後に来ている。
+    [/ワザが使えない/g, "can't attack"],
+    [/にげるができない/g, "can't retreat"],
     [
       /次の相手の番、相手は手札からサポートを出して使えない/g,
       "your opponent can't use any Supporter cards from their hand during their next turn",
@@ -253,8 +297,18 @@ const getKnownWordsAndConverters = (): KnownEffectFragment[] =>
       (_, retreatCost) =>
         `the Retreat Cost of your Active Pokémon is ${toHankakuDigit(retreatCost)} less`,
     ],
+    // バウンス
+    [
+      /自分のバトル場の((?:「.+?」)+)を手札にもどす/g,
+      (_, cardNamesString: string) =>
+        `Put your ${getTranslatedCardNamesString(cardNamesString)} in the Active Spot into your hand`,
+    ],
     // 番
-    [/自分の番に１回使える。/g, "once during your turn, "],
+    [
+      /このポケモンがバトル場にいるなら、自分の番に１回使える。/g,
+      "once during your turn, if this Pokémon is in the Active Spot, you may ",
+    ],
+    [/自分の番に１回使える。/g, "once during your turn, you may "],
     [/この番、/g, "during this turn, "],
     [/次の相手の番、/g, "during your opponent's next turn, "],
     // 特殊状態
@@ -268,19 +322,27 @@ const getKnownWordsAndConverters = (): KnownEffectFragment[] =>
     // 化石
     [
       /このカードは、HP40の無色タイプのたねポケモンとして、場に出すことができる。\n自分の番の中でなら、場に出ているこのカードをトラッシュしてよい。\nこのカードはにげるができない。/g,
-      "Play this card as if it were a 40-HP Basic Colorless Pokémon.\nAt any time during your turn, you may discard this card from play.\nThis card can't retreat.'",
+      "Play this card as if it were a 40-HP Basic Colorless Pokémon.\nAt any time during your turn, you may discard this card from play.\nThis card can't retreat.",
+    ],
+    // 色々: 自動翻訳では文頭に来ないが手動で移動させるのが確定なので大文字ではじめるもの
+    [/がダメージを受けているなら、/g, "If has damage on it, "],
+    [
+      /が持っているワザを１つ選び、このワザとして使う/g,
+      "Choose 1 of attacks and use it as this attack",
     ],
     // 色々
-    [/がダメージを受けているなら、/g, "If has damage on it, "],
     [/自分の/g, "your "],
     [/相手の/g, "your opponent's "],
+    [/山札/g, "deck"],
     [/バトルポケモンを?/g, "Active Pokémon "],
     [/ベンチポケモン/g, "Benched Pokémon "],
     [/バトル場の/g, "in the Active Spot "],
     [/ベンチの/g, "Benched "],
     [/たね/g, "Basic "],
-    [/このポケモン/g, "this Pokémon "],
+    [/このポケモンが?/g, "this Pokémon "],
     [/ポケモン/g, "Pokémon "],
     [/の数×/g, "for each of "],
+    [/ランダムに１./g, "a random "],
+    [/(?:「.+?」)+/g, (string) => `${getTranslatedCardNamesString(string)} `],
     [/。/g, "."],
   ];

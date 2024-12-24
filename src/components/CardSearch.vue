@@ -50,7 +50,8 @@ const attackCount = ref<number | undefined>(undefined);
 
 const cardText = ref("");
 const includesText = (trait: Trait, text: string) =>
-  trait.効果?.includes(text) || ("名前" in trait && trait.名前.includes(text));
+  ("効果" in trait && trait.効果.includes(text)) ||
+  ("名前" in trait && trait.名前.includes(text));
 const includesSearchText = (trait: Trait) =>
   includesText(trait, cardText.value);
 

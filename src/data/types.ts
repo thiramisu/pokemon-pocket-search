@@ -1,5 +1,4 @@
 import { DataIndex, DataIndex2, DataIndexArray } from "./DataIndex";
-import traitData from "./manual/traits.json";
 import cardData from "./manual/cards.json";
 import evolutionData from "./manual/evolutions.json";
 import expansionData from "./manual/expansions.json";
@@ -10,6 +9,7 @@ import tsvConverterHeaderOverwriteData from "./manual/tsvconverter-header-overwr
 import cardRelationData from "./generated/card-relations.json";
 import pokemonTranslationData from "./generated/pokemon-translations.json";
 import targetablesData from "./generated/targetables.json";
+import traitData from "./generated/traits.json";
 import { COLOR_LESS_JP } from "../const";
 
 /**
@@ -119,7 +119,10 @@ export const isVariant = (cardA: Card, cardB: Card) => {
     traitsA.every((trait, i) => {
       const traitB = traitsB[i];
       return (
-        trait.効果 === traitB.効果 &&
+        ((!("効果" in trait) && !("効果" in traitB)) ||
+          ("効果" in trait &&
+            "効果" in traitB &&
+            trait.効果 === traitB.効果)) &&
         (!("一致エネルギー数" in trait) ||
           ("一致エネルギー数" in traitB &&
             trait.一致エネルギー数 === traitB.一致エネルギー数 &&
@@ -136,20 +139,23 @@ export const isVariant = (cardA: Card, cardB: Card) => {
  */
 export type BaseCardTrait = {
   カードID: number;
-  効果?: string;
-  効果_en?: string;
 };
-export type PokemonCardAbility = BaseCardTrait & {
+export type BaseCardTraitWithEffect = BaseCardTrait & {
+  効果: string;
+  効果_en: string;
+};
+export type PokemonCardAbility = BaseCardTraitWithEffect & {
   名前: string;
 };
-export type PokemonCardAttack = BaseCardTrait & {
+export type PokemonCardAttack = (BaseCardTrait | BaseCardTraitWithEffect) & {
   名前: string;
   一致エネルギー数: number;
   無色エネルギー数: number;
   必要エネルギー上書き?: string;
   威力: number;
 };
-export type Trait = BaseCardTrait | PokemonCardAbility | PokemonCardAttack;
+export type TrainerCardTrait = BaseCardTraitWithEffect;
+export type Trait = PokemonCardAbility | PokemonCardAttack | TrainerCardTrait;
 export const traits: Trait[] = traitData;
 export const getTraits = DataIndexArray(
   traits,
@@ -210,6 +216,10 @@ export const getTranslatedName = (
   target: { 名前: string; 名前_en?: string },
   language: PokemonNameLanguages
 ) => target[getPropertyName(language)] ?? target.名前;
+export const getTranslatedEffect = (
+  target: { 効果: string; 効果_en?: string },
+  language: PokemonNameLanguages
+) => target[language === "ja" ? "効果" : "効果_en"] ?? target.効果;
 
 export const pokemonNameLanguages = [
   "en",
@@ -264,6 +274,23 @@ export function getCardName({
       : `${baseCardName} ex`
     : baseCardName;
 }
+export const findTranslatedCardNameByName = (
+  cardName: string,
+  language: PokemonNameLanguages
+) => {
+  const card = cards.find(
+    (card) => getCardName({ card, withSuffix }) === cardName
+  );
+  if (card === undefined) {
+    console.log(`${cardName}の${language}での名前が見つかりませんでした`);
+    return cardName;
+  }
+  return getCardName({
+    card,
+    language,
+    withSuffix,
+  });
+};
 
 /**
  * TSV変換

@@ -10,8 +10,17 @@ import {
   traits,
   dummyCard,
   pokemonNameLanguages,
+  Trait,
   getCardName,
+  BaseCardTrait,
 } from "../data/types";
+import partiallyTranslatedTraitData from "../data/manual/partially-translated-traits.json";
+
+import {
+  extractKnownEffectFragments,
+  isFullTranslated,
+  joinExtractedResults,
+} from "./extractKnownEffectFragments";
 
 const processRelatedCards = () => {
   /**
@@ -67,7 +76,7 @@ const processRelatedCards = () => {
    */
   const targetables: Targetables = {};
   for (const trait of traits) {
-    if (trait.効果 === undefined) continue;
+    if (!("効果" in trait)) continue;
     for (const card of cards) {
       const cardName = getCardName({ card, withSuffix });
       if (trait.効果.includes(`「${cardName}」`)) {
@@ -146,6 +155,40 @@ const processTranslatedCards = () => {
   return translationsByCardName;
 };
 
+/** ワザ・特性の効果の自動翻訳 */
+const processTraits = (shouldWarn = true) => {
+  const traits: (BaseCardTrait & Partial<Trait>)[] =
+    partiallyTranslatedTraitData;
+  for (const trait of traits) {
+    if (
+      !("効果" in trait) ||
+      trait.効果 === undefined ||
+      trait.効果_en !== undefined
+    ) {
+      continue;
+    }
+    if ("名前" in trait && !("一致エネルギー数" in trait)) {
+      const cardId = trait.カードID;
+      if (shouldWarn)
+        console.error(
+          `「${cards[cardId].名前}(カードID:${cardId})」の特性に効果_enが設定されていません。特性は動詞が加わる可能性などがあり、不安定なので、効果_enを手動で設定してください。`
+        );
+      continue;
+    }
+    const fragments = extractKnownEffectFragments(trait.効果);
+    if (!isFullTranslated(fragments)) {
+      const cardId = trait.カードID;
+      if (shouldWarn)
+        console.error(
+          `「${cards[cardId].名前}(カードID:${cardId})」の効果文の自動翻訳に失敗しました。効果_enを手動で設定してください。`
+        );
+      continue;
+    }
+    trait.効果_en = joinExtractedResults(fragments);
+  }
+  return traits;
+};
+
 export function processJSON() {
   const { cardRelations, targetables } = processRelatedCards();
   fs.writeFileSync(
@@ -162,5 +205,9 @@ export function processJSON() {
     JSON.stringify(processTranslatedCards(), null, 2)
   );
 
+  fs.writeFileSync(
+    path.resolve(__dirname, "../data/generated/traits.json"),
+    JSON.stringify(processTraits(true), null, 2)
+  );
   console.log("Processed JSON has been written");
 }

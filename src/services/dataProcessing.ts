@@ -1,17 +1,17 @@
 import fs from "fs";
 import path from "path";
+import pokemon, { Language } from "pokemon";
 import {
   CardRelations,
   cards,
-  getCardNameWithSuffix,
   evolutions,
   getPreEvolution,
   Targetables,
   traits,
   dummyCard,
   pokemonNameLanguages,
+  getCardName,
 } from "../data/types";
-import pokemon, { Language } from "pokemon";
 
 const processRelatedCards = () => {
   /**
@@ -19,9 +19,11 @@ const processRelatedCards = () => {
    * value: その関連カード。
    */
   const cardRelations: CardRelations = {};
+  const withSuffix = true;
+  const reverse = true;
   for (const card of cards) {
-    const cardName = getCardNameWithSuffix(card);
-    const alternateCardName = getCardNameWithSuffix(card, true);
+    const cardName = getCardName({ card, withSuffix });
+    const alternateCardName = getCardName({ card, withSuffix, reverse });
     if (cardName in cardRelations) {
       cardRelations[cardName].cardIds.push(card.ID);
     } else if (alternateCardName in cardRelations) {
@@ -67,7 +69,7 @@ const processRelatedCards = () => {
   for (const trait of traits) {
     if (trait.効果 === undefined) continue;
     for (const card of cards) {
-      const cardName = getCardNameWithSuffix(card);
+      const cardName = getCardName({ card, withSuffix });
       if (trait.効果.includes(`「${cardName}」`)) {
         if (trait.カードID in targetables) {
           targetables[trait.カードID].push(cardName);

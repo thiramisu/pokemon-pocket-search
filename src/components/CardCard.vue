@@ -59,7 +59,7 @@ const expansion = computed(() => getExpansionByPackName(props.card.パック));
     >
       <div class="card-type x-small">{{ cardType }}</div>
       <div class="name">
-        <span>{{ getTranslatedCardName(card) }}</span
+        <span>{{ getTranslatedCardName({ card }) }}</span
         ><span v-if="'ex' in card" class="ex">ex</span>
         <div v-if="'HP' in card" class="hp">
           <span class="text-xs">HP </span>{{ card.HP }}

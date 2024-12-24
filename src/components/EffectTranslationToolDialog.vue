@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import CommonDialog from "./CommonDialog.vue";
-import { cards, traits } from "../data/types";
+import { cards, getCardName, withSuffix, traits } from "../data/types";
 import {
   extractKnownEffectFragments,
   joinExtractedResults,
@@ -40,7 +40,13 @@ const result = computed(() => joinExtractedResults(extractedWords.value));
       <CardCard :card="cards[trait.カードID]" class="self-center" />
       <div class="margin-top self-center">
         ID {{ traitIndex }}:
-        <span v-if="'名前' in trait">「{{ trait.名前 }}」</span>
+        <span
+          >「{{
+            "名前" in trait
+              ? trait.名前
+              : getCardName({ card: cards[trait.カードID], withSuffix })
+          }}」</span
+        >
       </div>
       <div class="margin-top column items-end">
         <template v-for="extractedWord of extractedWords">

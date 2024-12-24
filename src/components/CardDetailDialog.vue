@@ -10,8 +10,9 @@ import {
   evolutionStageNames,
   dummyCard,
   isVariant,
-  getCardNameWithSuffix,
+  getCardName,
   getPackByName,
+  withSuffix,
 } from "../data/types";
 import { SHARED_PACK } from "../const";
 import { partition } from "../utils";
@@ -28,7 +29,7 @@ const card = defineModel<Card>("card", { default: dummyCard });
 defineProps<{ navigationButtons: boolean }>();
 
 const relations = computed(
-  () => cardRelations[getCardNameWithSuffix(card.value)]
+  () => cardRelations[getCardName({ card: card.value, withSuffix })]
 );
 const targetableNames = computed(() => targetables[card.value.ID]);
 const expansionName = computed(() =>
@@ -85,7 +86,7 @@ defineEmits<{
     <div class="column-grid">
       <CardCard :card />
       <div class="card-header">
-        <h1>{{ getTranslatedCardName(card) }}</h1>
+        <h1>{{ getTranslatedCardName({ card }) }}</h1>
         <div>{{ expansionName }}</div>
         <div>
           {{
@@ -148,7 +149,10 @@ defineEmits<{
             <div class="flex flex-wrap justify-center">
               <template v-for="cardId of cardRelations[targetableName].cardIds">
                 <CardCard
-                  v-if="getCardNameWithSuffix(cards[cardId]) === targetableName"
+                  v-if="
+                    getCardName({ card: cards[cardId], withSuffix }) ===
+                    targetableName
+                  "
                   :card="cards[cardId]"
                   button
                   @click="card = cards[cardId]"

@@ -53,8 +53,7 @@ watch(
 
 // 重複削除
 const cardNames = computed(
-  // () => new Set(cards.map((card) => getTranslatedCardName.value(card)))
-  () => new Set(cards.map((card) => getTranslatedCardName.value(card)))
+  () => new Set(cards.map((card) => getTranslatedCardName.value({ card })))
 );
 </script>
 
@@ -152,7 +151,7 @@ const cardNames = computed(
   <datalist :id="POKEMON_NAME_DATALIST_ID">
     <template v-for="cardName of cardNames" :key="cardName">
       <option
-        v-if="cardName !== getTranslatedCardName(dummyCard)"
+        v-if="cardName !== getTranslatedCardName({ card: dummyCard })"
         :value="cardName"
       ></option>
     </template>

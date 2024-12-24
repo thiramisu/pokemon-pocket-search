@@ -1,7 +1,7 @@
 import { computed, ref, watch } from "vue";
 import {
-  Card,
-  getTranslatedCardName,
+  CardNameGetterOption,
+  getCardName,
   getTranslatedName,
   PokemonNameLanguages,
 } from "../data/types";
@@ -30,9 +30,11 @@ export const useTranslation = (() => {
   const returnValue = {
     language: languageRef,
     getTranslatedCardName: computed(
-      () =>
-        (card: Card, language = languageRef.value) =>
-          getTranslatedCardName(card, language)
+      () => (options: CardNameGetterOption) =>
+        getCardName({
+          language: options.language ?? languageRef.value,
+          ...options,
+        })
     ),
     getSharedExpansionName: computed(
       () =>

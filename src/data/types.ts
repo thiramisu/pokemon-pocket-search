@@ -111,7 +111,8 @@ export const isVariant = (cardA: Card, cardB: Card) => {
         cardA.タイプ === cardB.タイプ &&
         cardA.弱点 === cardB.弱点 &&
         cardA.にげる === cardB.にげる &&
-        getCardNameWithSuffix(cardA) === getCardNameWithSuffix(cardB))) &&
+        getCardName({ card: cardA, withSuffix }) ===
+          getCardName({ card: cardB, withSuffix }))) &&
     (!("HP" in cardA) || ("HP" in cardB && cardA.HP === cardB.HP)) &&
     (!("トレーナーズ" in cardA) ||
       ("トレーナーズ" in cardB && cardA.トレーナーズ === cardB.トレーナーズ)) &&
@@ -129,8 +130,6 @@ export const isVariant = (cardA: Card, cardB: Card) => {
     })
   );
 };
-export const getCardNameWithSuffix = (card: Card, reverse = false) =>
-  "ex" in card !== reverse ? `${card.名前}ex` : card.名前;
 
 /**
  * ワザ
@@ -237,20 +236,33 @@ type PokemonTranslationData = {
 export const pokemonTranslations: PokemonTranslationData =
   pokemonTranslationData;
 
-export function getTranslatedCardName(
-  card: Card,
-  language: PokemonNameLanguages
-) {
+export type CardNameGetterOption = {
+  card: Card;
+  language?: PokemonNameLanguages;
+  withSuffix?: boolean;
+  reverse?: boolean;
+};
+export const withSuffix = true;
+export function getCardName({
+  card,
+  language = "ja",
+  withSuffix = false,
+  reverse = false,
+}: CardNameGetterOption) {
+  let baseCardName;
   if (card.名前 in pokemonTranslations) {
-    return pokemonTranslations[card.名前][language];
-  } else if (language === "ja") {
-    return card.名前;
-  } else if (language === "en" && card.名前_en !== undefined) {
-    return card.名前_en;
+    baseCardName = pokemonTranslations[card.名前][language];
   } else {
-    console.error(`${card.名前}の${language}での名前が見つかりませんでした。`);
-    return "";
+    baseCardName = card[getPropertyName(language)] ?? "";
   }
+  if (baseCardName === "") {
+    console.error(`${card.名前}の${language}での名前が見つかりませんでした。`);
+  }
+  return withSuffix && "ex" in card !== reverse
+    ? language === "ja"
+      ? `${baseCardName}ex`
+      : `${baseCardName} ex`
+    : baseCardName;
 }
 
 /**

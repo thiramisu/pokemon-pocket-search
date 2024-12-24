@@ -116,7 +116,7 @@ const filteredCards = computed(() =>
     const traits = getTraits(card.ID);
     return (
       // カード名
-      getTranslatedCardName.value(card).includes(cardName.value) &&
+      getTranslatedCardName.value({ card }).includes(cardName.value) &&
       // HP
       (!("HP" in card) || (hpMin.value <= card.HP && card.HP <= hpMax.value)) &&
       // カードテキスト

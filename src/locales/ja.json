@@ -1,7 +1,140 @@
 {
+  "card-status": {
+    "weakness": "弱点",
+    "retreat": "にげる",
+    "subcategory": {
+      "basic": "たね",
+      "stage1": "1進化",
+      "stage2": "2進化"
+    }
+  },
   "ui": {
+    "sort": {
+      "type-ascend": "タイプ昇順",
+      "type-descend": "タイプ逆順",
+      "sub-category-ascend": "サブカテゴリ順",
+      "sub-category-descend": "サブカテゴリ逆順",
+      "hp-ascend": "HP高い順",
+      "hp-descend": "HP低い順",
+      "expansion-ascend": "エキスパンション順",
+      "expansion-descend": "エキスパンション逆順",
+      "rarity-ascend": "レアリティ高い順",
+      "rarity-descend": "レアリティ低い順",
+      "weakness-ascend": "弱点順",
+      "weakness-descend": "弱点逆順",
+      "retreat-ascend": "にげるコスト少ない順",
+      "retreat-descend": "にげるコスト多い順"
+    },
+    "suggestion": {
+      "your-opponents-active-pokemon": "相手のバトルポケモン",
+      "your-opponents-benched-pokemon": "相手のベンチポケモン",
+      "your-active-pokemon": "自分のバトルポケモン",
+      "your-benched-pokemon": "自分のベンチポケモン",
+      "during-your-opponents-next-turn": "次の相手の番",
+      "energy": "エネルギー",
+      "coin": "コイン",
+      "poisoned": "どく",
+      "paralyzed": "マヒ",
+      "asleep": "ねむり",
+      "more-damage": "ダメージ追加",
+      "heal": "回復"
+    },
     "button": {
-      "filter": "検索条件"
+      "fab-description": "検索条件の表示/非表示を切り替える",
+      "filter": "検索条件",
+      "full-width": "横幅最大",
+      "full-widthDescription": "表示領域の横幅を限界まで伸ばすかを切り替える",
+      "open-tsv-converter": "tsv変換器をひらく",
+      "open-favicon-editor": "faviconエディタをひらく",
+      "open-effect-translation-tool": "翻訳用ツールをひらく",
+      "close-dialog": "ダイアログを閉じる",
+      "filter-button-description": "検索条件の表示/非表示を切り替える"
+    }
+  },
+  "message": {
+    "dev-tools-description": "開発用ツールなど（PC向け）",
+    "result-per-page-is": "1ページあたりの表示件数:",
+    "search-result": "検索結果: {all}件中 {from} - {to}件目",
+    "no-results-found": "検索結果がありませんでした。",
+    "equivalent-cards": "同型",
+    "same-name-or-ex": "同名/ex",
+    "targetable-cards": "このカードで選べるカード",
+    "choosable-cards": "このカードを選べるカード"
+  },
+  "fe": {
+    "label": {
+      "name": "名前",
+      "should-crop-children": "子レイヤーを切り抜く",
+      "color": "色",
+      "center-position": "中心 (x, y)",
+      "size": "大きさ［幅, 高さ］",
+      "rotation": "角度",
+      "border-radius": "角の丸み"
+    },
+    "ui": {
+      "result": "結果",
+      "add-layer": "レイヤーを追加",
+      "delete-layer": "削除",
+      "rotate-preview": "プレビュー回転"
+    },
+    "message": {
+      "drawing-with-css": "cssでお絵描き",
+      "new-layer": "新しいレイヤー",
+      "layer-size": "大きさ",
+      "example-layer": {
+        "title": "レイヤー",
+        "status": "(中心), [大きさ], 角度°"
+      }
+    }
+  },
+  "tsvc": {
+    "ui": {
+      "dont-use-header-preset": "なし",
+      "convert": "変換"
+    },
+    "label": {
+      "current-header-preset": "ヘッダーの強制",
+      "dont-format": "見た目を整えない",
+      "data-type-head": "先頭文字",
+      "data-type-type": "データ種類",
+      "data-type-ignore": "無視するもの",
+      "data-type-algorithm": "自動決定の基準（2番目のデータが…）",
+      "header-mode-name": "名前",
+      "header-mode-contents": "内容"
+    },
+    "message": {
+      "title": "TSV変換器",
+      "sub-title": "tsv形式 => json形式 へ変換",
+      "conversion-failed": "変換失敗したもの",
+      "consisted-as-number": "0-9、カンマ(,)、ピリオド(.)のみで構成されている",
+      "ignore-everything": "全て無視",
+      "empty-string": "空文字列",
+      "empty": "空",
+      "none-of-the-above": "上記のいずれでもない",
+      "result-placeholder": "変換結果がここに表示されます。"
+    },
+    "data-type": {
+      "boolean": "真偽値",
+      "number": "数値",
+      "string": "文字列"
+    },
+    "p": {
+      "features-h": "機能など",
+      "typed-header1": "データのタイプ（文字列、数値、etc...）は2番目のデータを元に自動決定されますが、手動指定もできます。",
+      "typed-header2": "その場合は、カラム名の先頭に文字を加えて（'名前、=レアリティ、などとして）ください。",
+      "typed-header3": "対応している先頭文字は以下の通りです。",
+      "header-mode": "ヘッダーの強制は以下のモードがあります。",
+      "break": "また、データの途中に改行が含まれる場合は変換に失敗します。かわりに\"\\n\"を使用してください。"
+    }
+  },
+  "ett": {
+    "ui": {
+      "copy-to-clipboard": "コピー",
+      "previous-card": "前のカードへ",
+      "next-card": "次のカードへ"
+    },
+    "error": {
+      "not-found-trait-with-effect": "他に効果を持ったワザが存在しません"
     }
   }
 }

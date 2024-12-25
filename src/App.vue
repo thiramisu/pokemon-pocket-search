@@ -14,7 +14,7 @@ import ToggleButton from "./components/ToggleButton.vue";
 import { useI18n } from "vue-i18n";
 
 const { language, getTranslatedCardName } = useTranslation();
-const { locale } = useI18n();
+const { locale, t } = useI18n();
 
 const pageTitle = import.meta.env.VITE_APP_TITLE;
 
@@ -74,7 +74,7 @@ const cardNames = computed(
       <input type="checkbox" v-model="filterPanelOpen" :id="fabId" />
       <label
         :for="fabId"
-        title="検索条件の表示/非表示を切り替える"
+        :title="t('ui.button.fab-description')"
         :class="[
           'fab',
           'button',
@@ -95,8 +95,8 @@ const cardNames = computed(
     <CardSearch v-model="filterPanelOpen" @change="onSearch">
       <template #result-width-maximize-button>
         <SearchButton
-          text="横幅最大"
-          title="表示領域の横幅を限界まで伸ばすかを切り替える"
+          :text="t('ui.button.full-width')"
+          title="t('ui.button.full-widthDescription')"
           class="maximum-cards"
           :filled="shouldMaximizeWidth"
           @button-click="shouldMaximizeWidth = !shouldMaximizeWidth"
@@ -133,17 +133,17 @@ const cardNames = computed(
           </span>
           (Experimental)
         </div>
-        開発用ツールなど（PC向け）
+        {{ t("message.dev-tools-description") }}
         <SearchButton
-          text="tsv変換器をひらく"
+          :text="t('ui.button.open-tsv-converter')"
           @button-click="tsvConverterDialogVisible = true"
         />
         <SearchButton
-          text="faviconエディタをひらく"
+          :text="t('ui.button.open-favicon-editor')"
           @button-click="FaviconEditorDialogVisible = true"
         />
         <SearchButton
-          text="翻訳用ツールをひらく"
+          :text="t('ui.button.open-effect-translation-tool')"
           @button-click="EffectTranslationToolDialogVisible = true"
         />
       </div>

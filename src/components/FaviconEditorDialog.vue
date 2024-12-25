@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from "vue";
+import { useI18n } from "vue-i18n";
 import SearchButton from "./SearchButton.vue";
 import FaviconLayer from "./FaviconLayer.vue";
 import CommonDialog from "./CommonDialog.vue";
 
+const { t } = useI18n();
 defineProps<{}>();
 
 const borderWidths = ["normal", "thin", "none"] as const;
@@ -38,9 +40,8 @@ const usedLayerNames = computed(
   () => new Set(layers.value.map((layer) => layer.name))
 );
 
-const DEFAULT_LAYER_NAME = "新しいレイヤー";
 const getNewLayer = (name?: string): Layer => ({
-  name: name ?? toUniqueLayerName(DEFAULT_LAYER_NAME),
+  name: name ?? toUniqueLayerName(t("fe.message.new-layer")),
   cropChildren: true,
   positionPercentage: { x: 50, y: 50 },
   widthPercentage: 100,
@@ -72,7 +73,7 @@ const getNewLayer = (name?: string): Layer => ({
   },
 });
 // 初期化時エラー防止用ダミー
-const dummyLayer = getNewLayer(DEFAULT_LAYER_NAME);
+const dummyLayer = getNewLayer(t("fe.message.new-layer"));
 
 const layers = ref<Layer[]>([]);
 const addLayer = () => {
@@ -149,11 +150,11 @@ onMounted(() => {
       >
     </CommonDialog>
     <div class="favicon-editor flex items-start">
-      <h1 class="title">cssでお絵描き</h1>
+      <h1 class="title">{{ $t("fe.message.drawing-with-css") }}</h1>
       <div class="left-panel">
         <div class="canvas-wrapper">
           <div class="canvas-option">
-            大きさ:
+            {{ t("fe.message.layer-size") }}:
             <div class="select-container">
               <select v-model="size">
                 <option v-for="size of [7, 8, 9]" :value="1 << size">
@@ -177,16 +178,23 @@ onMounted(() => {
               :height-per-canvas="1"
             />
           </div>
-          <SearchButton text="結果" @click="saveDialogVisible = true" />
+          <SearchButton
+            :text="t('fe.ui.result')"
+            @click="saveDialogVisible = true"
+          />
         </div>
         <div class="layer-list">
           <div class="layer-item layer-example">
-            <div class="layer-name">レイヤー</div>
-            <div class="layer-details">(中心), [大きさ], 角度°</div>
+            <div class="layer-name">
+              {{ t("fe.message.example-layer.title") }}
+            </div>
+            <div class="layer-details">
+              {{ t("fe.message.example-layer.status") }}
+            </div>
           </div>
           <SearchButton
             text="+"
-            title="レイヤーを追加"
+            :title="t('fe.ui.add-layer')"
             color="var(--color-filled-button-default)"
             filled
             @button-click="addLayer()"
@@ -221,7 +229,7 @@ onMounted(() => {
       <div class="layer-setting">
         <div>
           <SearchButton
-            text="削除"
+            :text="t('fe.ui.delete-layer')"
             :disabled="layers.length === 1"
             @button-click="
               if (selectedLayerIndex === layers.length - 1) {
@@ -252,21 +260,23 @@ onMounted(() => {
               selectedLayerIndex += 1;
             "
           />
-          <SearchButton text="プレビュー回転" @button-click="rotatePreview" />
+          <SearchButton
+            :text="t('fe.ui.rotate-preview')"
+            @button-click="rotatePreview"
+          />
         </div>
         <div class="column items-start">
-          名前
+          {{ t("fe.label.name") }}
           <input type="text" v-model="selectedLayer.name" />
 
           <label>
-            <input
-              type="checkbox"
-              v-model="selectedLayer.cropChildren"
-            />子レイヤーを切り抜く
+            <input type="checkbox" v-model="selectedLayer.cropChildren" />{{
+              t("fe.label.should-crop-children")
+            }}
           </label>
-          色
+          {{ t("fe.label.color") }}
           <input type="color" v-model="selectedLayer.color" />
-          中心 (x, y)
+          {{ t("fe.label.center-position") }}
           <div class="flex">
             (<input
               type="number"
@@ -277,7 +287,7 @@ onMounted(() => {
               v-model="selectedLayer.positionPercentage.y"
             />)
           </div>
-          大きさ［幅, 高さ］
+          {{ t("fe.label.size") }}
           <div class="flex">
             [<input
               type="number"
@@ -285,11 +295,11 @@ onMounted(() => {
             /><span class="self-end">,</span>
             <input type="number" v-model="selectedLayer.heightPercentage" />]
           </div>
-          角度
+          {{ t("fe.label.rotation") }}
           <div class="flex items-baseline">
             <input type="number" v-model="selectedLayer.rotationDeg" />deg
           </div>
-          角の丸み
+          {{ t("fe.label.border-radius") }}
           <div class="border-preview-container">
             <div
               v-if="

@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
+import { useI18n } from "vue-i18n";
 import CommonDialog from "./CommonDialog.vue";
-import { cards, getCardName, withSuffix, traits } from "../data/types";
+import { useTranslation } from "../composables/translation";
+import { cards, withSuffix, traits } from "../data/types";
 import {
   extractKnownEffectFragments,
   joinExtractedResults,
@@ -10,6 +12,9 @@ import { writeTextToClipboard } from "../utils";
 import CardCard from "./CardCard.vue";
 import DialogNavigationButtons from "./DialogNavigationButtons.vue";
 import SearchButton from "./SearchButton.vue";
+
+const { t } = useI18n();
+const { getTranslatedCardName, getTranslatedName } = useTranslation();
 
 const traitIndex = ref(traits.length - 1);
 const findNextTraitIndexWithEffect = (direction: 1 | -1) => {
@@ -21,7 +26,7 @@ const findNextTraitIndexWithEffect = (direction: 1 | -1) => {
       return currentIndex;
     }
   } while (currentIndex !== oldIndex);
-  alert("他に効果を持ったワザが存在しません");
+  alert(t("ett.error.not-found-trait-with-effect"));
   return oldIndex;
 };
 traitIndex.value = findNextTraitIndexWithEffect(1);
@@ -43,8 +48,11 @@ const result = computed(() => joinExtractedResults(extractedWords.value));
         <span
           >「{{
             "名前" in trait
-              ? trait.名前
-              : getCardName({ card: cards[trait.カードID], withSuffix })
+              ? getTranslatedName(trait)
+              : getTranslatedCardName({
+                  card: cards[trait.カードID],
+                  withSuffix,
+                })
           }}」</span
         >
       </div>
@@ -62,12 +70,12 @@ const result = computed(() => joinExtractedResults(extractedWords.value));
       </div>
       <textarea :value="result"></textarea>
       <SearchButton
-        text="コピー"
+        :text="t('ett.ui.copy-to-clipboard')"
         @button-click="writeTextToClipboard(result)"
       />
       <DialogNavigationButtons
-        previous-title="前のカードへ"
-        next-title="次のカードへ"
+        :previous-title="t('ett.ui.previous-card')"
+        :next-title="t('ett.ui.next-card')"
         @previous="traitIndex = findNextTraitIndexWithEffect(-1)"
         @next="traitIndex = findNextTraitIndexWithEffect(1)"
       />

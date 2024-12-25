@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref, watch } from "vue";
+import { useI18n } from "vue-i18n";
 
+const { t } = useI18n();
 const visible = defineModel({ default: false });
 
 const commonDialog = ref<HTMLDialogElement>();
@@ -28,8 +30,8 @@ watch(visible, (newValue) => {
         <div class="subtitle"><slot name="subtitle"></slot></div>
       </h1>
       <button
-        title="ダイアログを閉じる"
-        aria-label="ダイアログを閉じる"
+        :title="t('ui.button.close-dialog')"
+        :aria-label="t('ui.button.close-dialog')"
         class="icon-button close-button"
         @click="visible = false"
       >

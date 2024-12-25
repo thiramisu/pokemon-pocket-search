@@ -32,7 +32,11 @@ export function getEvolutionStage(pokemonName: string) {
       ? 2
       : 1;
 }
-export const evolutionStageNames = ["たね", "1進化", "2進化"] as const;
+export const evolutionStageNames = [
+  "card-status.subcategory.basic",
+  "card-status.subcategory.stage1",
+  "card-status.subcategory.stage2",
+] as const;
 
 /**
  * 拡張パック

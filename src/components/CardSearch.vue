@@ -66,11 +66,18 @@ const includesSearchText = (trait: Trait) =>
   includesText(trait, cardTextLowerCase.value);
 
 const suggestionGroups = [
-  ["相手のバトルポケモン", "相手のベンチポケモン"],
-  ["自分のバトルポケモン", "自分のベンチポケモン"],
-  ["次の相手の番", "エネルギー", "コイン"],
-  ["どく", "マヒ", "ねむり"],
-  ["ダメージ追加", "回復"],
+  [
+    "ui.suggestion.your-opponents-active-pokemon",
+    "ui.suggestion.your-opponents-benched-pokemon",
+  ],
+  ["ui.suggestion.your-active-pokemon", "ui.suggestion.your-benched-pokemon"],
+  [
+    "ui.suggestion.during-your-opponents-next-turn",
+    "ui.suggestion.energy",
+    "ui.suggestion.coin",
+  ],
+  ["ui.suggestion.poisoned", "ui.suggestion.paralyzed", "ui.suggestion.asleep"],
+  ["ui.suggestion.more-damage", "ui.suggestion.heal"],
 ] as const;
 type Suggestion = (typeof suggestionGroups)[number][number];
 const selectedSuggestions = ref(new Set<Suggestion>());
@@ -117,7 +124,9 @@ const isOnlyShowingPokemonCard = () =>
 const isOnlyShowingTrainerCard = () =>
   !isPokemonCardOptionActivated() && isTrainerCardOptionActivated();
 
-const sortFunctionName = ref<keyof typeof sortFunction>("エキスパンション逆順");
+const sortFunctionName = ref<keyof typeof sortFunction>(
+  "ui.sort.expansion-descend"
+);
 const sortedCards = computed(() =>
   cards.toSorted(sortFunction[sortFunctionName.value])
 );
@@ -212,7 +221,7 @@ const filteredCards = computed(() =>
       // キーワード
       // 多重ループで重そうなのでなるべく最後に判定する
       Array.from(selectedSuggestions.value).every((suggestion) =>
-        traits.some((trait) => includesText(trait, suggestion))
+        traits.some((trait) => includesText(trait, t(suggestion).toLowerCase()))
       )
     );
   })
@@ -299,7 +308,7 @@ watch(filteredCards, () => {
                 <SearchButton
                   v-for="suggestion in suggestionGroup"
                   :key="suggestion"
-                  :text="suggestion"
+                  :text="t(suggestion)"
                   :filled="selectedSuggestions.has(suggestion)"
                   @button-click="toggleSetItem(selectedSuggestions, suggestion)"
                 />
@@ -336,7 +345,7 @@ watch(filteredCards, () => {
                 <SearchButton
                   v-for="(text, i) of evolutionStageNames"
                   :key="i"
-                  :text
+                  :text="t(text)"
                   :filled="evolutionStage.has(i)"
                   @button-click="toggleSetItem(evolutionStage, i)"
                 />
@@ -597,7 +606,7 @@ watch(filteredCards, () => {
         <div class="layout-button">
           <SearchButton
             :text="t('ui.button.filter')"
-            title="検索条件の表示/非表示を切り替える"
+            :title="t('ui.button.filter-button-description')"
             color="var(--color-attention)"
             :text-color="
               filterPanelToggle ? 'var(--color-fab-text)' : undefined
@@ -615,7 +624,7 @@ watch(filteredCards, () => {
               v-for="sortName in Object.keys(sortFunction)"
               :value="sortName"
             >
-              {{ sortName }}
+              {{ t(sortName) }}
             </option>
           </select>
         </div>

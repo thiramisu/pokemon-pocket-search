@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import { computed, ref, watch } from "vue";
+import { useI18n } from "vue-i18n";
 import { Card, dummyCard } from "../data/types";
 import CardCard from "./CardCard.vue";
 import PageButton from "./PageButton.vue";
 import CardDetailDialog from "./CardDetailDialog.vue";
+
+const { t } = useI18n();
 
 const props = defineProps<{
   filteredCards: Card[];
@@ -41,10 +44,15 @@ watch(
         <slot name="layout-button"></slot>
       </div>
       <div class="flex items-center justify-center">
-        検索結果: {{ filteredCards.length }}件中
-        {{ filteredCards.length === 0 ? 0 : (page - 1) * cardPerPage + 1 }}
-        - {{ Math.min(filteredCards.length, page * cardPerPage) }}件目
-        1ページあたりの表示件数:<span class="select-container">
+        {{
+          t("message.search-result", {
+            all: filteredCards.length,
+            from: filteredCards.length === 0 ? 0 : (page - 1) * cardPerPage + 1,
+            to: Math.min(filteredCards.length, page * cardPerPage),
+          })
+        }}
+        {{ t("message.result-per-page-is")
+        }}<span class="select-container">
           <select v-model="cardPerPage">
             <option v-for="value in [12, 24, 50, 100]" :key="value" :value>
               {{ value }}
@@ -58,7 +66,9 @@ watch(
         color="var(--color-filled-button-default)"
         :width="9"
       />
-      <div v-if="filteredCards.length === 0">検索結果がありませんでした。</div>
+      <div v-if="filteredCards.length === 0">
+        {{ t("message.no-results-found") }}
+      </div>
       <div class="card-sorter">
         <slot name="card-sorter"></slot>
       </div>

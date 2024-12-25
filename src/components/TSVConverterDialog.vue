@@ -1,15 +1,17 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import { useI18n } from "vue-i18n";
 import SearchButton from "./SearchButton.vue";
 import { tsvConverterHeaderOverwrites } from "../data/types";
 import CommonDialog from "./CommonDialog.vue";
 
+const { t } = useI18n();
 const input =
   ref(`ID	パック	コレクションナンバー	名前	ex	HP	タイプ	レアリティ	!進化	弱点	にげる
 130	ミュウツー	130	ラルトス	FALSE	60	超	1	0	悪	1
 131	ミュウツー	131	キルリア	FALSE	80	超	2	1	悪	1
 132	ミュウツー	132	サーナイト	FALSE	110	超	3	2	悪	2`);
-const output = ref("変換結果がここに表示されます。");
+const output = ref(t("tsvc.message.result-placeholder"));
 
 const propertyTypePrefix = {
   "?": Boolean,
@@ -104,14 +106,18 @@ const methods = {
 </script>
 
 <template>
-  <CommonDialog>
-    <template #title>TSV変換器</template>
-    <template #subtitle>tsv形式 => json形式 へ変換</template>
+  <CommonDialog class="tsv-converter-dialog">
+    <template #title>{{ t("tsvc.message.title") }}</template>
+    <template #subtitle>{{ t("tsvc.message.sub-title") }}</template>
     <template #default>
       <textarea v-model="input" class="input-area" autofocus></textarea>
       <div class="flex items-center">
-        ヘッダーの強制:<select v-model="tsvConverterHeaderOverwrite">
-          <option :value="undefined">なし</option>
+        {{ t("tsvc.label.current-header-preset") }}:<select
+          v-model="tsvConverterHeaderOverwrite"
+        >
+          <option :value="undefined">
+            {{ t("tsvc.ui.dont-use-header-preset") }}
+          </option>
           <option
             v-for="[k, value] of Object.entries(tsvConverterHeaderOverwrites)"
             :value
@@ -121,69 +127,68 @@ const methods = {
         </select>
         <SearchButton
           name="converter"
-          text="変換"
+          :text="t('tsvc.ui.convert')"
           filled
           @button-click="methods.convert()"
         /><label
-          ><input
-            type="checkbox"
-            v-model="isMinifiedJSON"
-          />見た目を整えない</label
+          ><input type="checkbox" v-model="isMinifiedJSON" />{{
+            t("tsvc.label.dont-format")
+          }}</label
         >
       </div>
       <textarea v-model="output" readonly></textarea>
-      <h2>機能など</h2>
-      データのタイプ（文字列、数値、etc...）は2番目のデータを元に自動決定されますが、手動指定もできます。<br />
-      その場合は、カラム名の先頭に文字を加えて（'名前、=レアリティ、などとして）ください。<br />
-      対応している先頭文字は以下の通りです。
+      <h2>{{ t("tsvc.p.features-h") }}</h2>
+      {{ t("tsvc.p.typed-header1") }}<br />
+      {{ t("tsvc.p.typed-header2") }}<br />
+      {{ t("tsvc.p.typed-header3") }}
       <table>
         <thead>
           <tr>
-            <th>先頭文字</th>
-            <th>データ種類</th>
-            <th>無視するもの</th>
-            <th>自動決定の基準（2番目のデータが…）</th>
+            <th>{{ t("tsvc.label.data-type-head") }}</th>
+            <th>{{ t("tsvc.label.data-type-type") }}</th>
+            <th>{{ t("tsvc.label.data-type-ignore") }}</th>
+            <th>{{ t("tsvc.label.data-type-algorithm") }}</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>+</td>
-            <td>真偽値</td>
+            <td>{{ t("tsvc.data-type.boolean") }}</td>
             <td>FALSE</td>
             <td>FALSE</td>
           </tr>
           <tr>
             <td>?</td>
-            <td>真偽値</td>
+            <td>{{ t("tsvc.data-type.boolean") }}</td>
             <td>-</td>
             <td>TRUE</td>
           </tr>
           <tr>
             <td>=</td>
-            <td>数値</td>
-            <td>変換失敗したもの</td>
-            <td>0-9、カンマ(,)、ピリオド(.)のみで構成されている</td>
+            <td>{{ t("tsvc.data-type.number") }}</td>
+            <td>{{ t("tsvc.message.conversion-failed") }}</td>
+            <td>{{ t("tsvc.message.consisted-as-number") }}</td>
           </tr>
           <tr>
             <td>!</td>
             <td>-</td>
-            <td>全て無視</td>
-            <td>空</td>
+            <td>{{ t("tsvc.message.ignore-everything") }}</td>
+            <td>{{ t("tsvc.message.empty") }}</td>
           </tr>
           <tr>
             <td>'</td>
-            <td>文字列</td>
-            <td>空文字列</td>
-            <td>上記のいずれでもない</td>
+            <td>{{ t("tsvc.data-type.string") }}</td>
+            <td>{{ t("tsvc.message.empty-string") }}</td>
+            <td>{{ t("tsvc.message.none-of-the-above") }}</td>
           </tr>
         </tbody>
       </table>
-      ヘッダーの強制は以下のモードがあります。
+      {{ $t("tsvc.p.header-mode") }}
       <table>
         <thead>
           <tr>
-            <th>名前</th>
-            <th>内容</th>
+            <th>{{ t("tsvc.label.header-mode-name") }}</th>
+            <th>{{ t("tsvc.label.header-mode-contents") }}</th>
           </tr>
         </thead>
         <tbody>
@@ -193,12 +198,15 @@ const methods = {
           </tr>
         </tbody>
       </table>
-      また、データの途中に改行が含まれる場合は変換に失敗します。かわりに"\n"を使用してください。
+      {{ $t("tsvc.p.break") }}
     </template>
   </CommonDialog>
 </template>
 
 <style scoped lang="css">
+.tsv-converter-dialog {
+  text-align: center;
+}
 table {
   border: solid 1px var(--color-text);
   margin: 0.6em;

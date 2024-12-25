@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from "vue";
+import { useI18n } from "vue-i18n";
 import { POKEMON_NO_WEAK } from "../const";
 import {
   getTraits,
@@ -16,6 +17,7 @@ import PokemonTypeMark from "./PokemonTypeMark.vue";
 import PseudoMonospace from "./PseudoMonospace.vue";
 import RarityMark from "./RarityMark.vue";
 
+const { t } = useI18n();
 const { getTranslatedCardName } = useTranslation();
 
 const props = defineProps<{
@@ -27,13 +29,15 @@ const evolutionFrom = computed(() => getPreEvolution(props.card.名前));
 const cardType = computed(() =>
   "トレーナーズ" in props.card
     ? props.card.トレーナーズ
-    : evolutionStageNames[
-        evolutionFrom.value === undefined
-          ? 0
-          : getPreEvolution(evolutionFrom.value)
-            ? 2
-            : 1
-      ]
+    : t(
+        evolutionStageNames[
+          evolutionFrom.value === undefined
+            ? 0
+            : getPreEvolution(evolutionFrom.value)
+              ? 2
+              : 1
+        ]
+      )
 );
 const traits = computed(() => getTraits(props.card.ID));
 
@@ -100,7 +104,9 @@ const expansion = computed(() => getExpansionByPackName(props.card.パック));
         <RarityMark :rarity="card.レアリティ" />
       </div>
       <div v-if="'タイプ' in card" class="column justify-self-start">
-        <span class="type-description text-left text-xs lh-100">弱点</span>
+        <span class="type-description text-left text-xs lh-100">{{
+          t("card-status.weakness")
+        }}</span>
         <span v-if="card.弱点 === POKEMON_NO_WEAK" class="lh-100">-</span>
         <span v-else class="flex items-end">
           <PokemonTypeMark :pokemon-type="japaneseToTypes(card.弱点)" />
@@ -108,7 +114,9 @@ const expansion = computed(() => getExpansionByPackName(props.card.パック));
         </span>
       </div>
       <div v-if="'にげる' in card" class="column justify-self-start">
-        <span class="type-description text-left text-xs lh-100">にげる</span>
+        <span class="type-description text-left text-xs lh-100">{{
+          t("card-status.retreat")
+        }}</span>
         <span class="retreat-cost">
           <PokemonTypeMark
             v-for="_i in card.にげる"

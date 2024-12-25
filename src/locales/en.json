@@ -1,7 +1,140 @@
 {
+  "card-status": {
+    "weakness": "Weakness",
+    "retreat": "Retreat",
+    "subcategory": {
+      "basic": "Basic",
+      "stage1": "Stage1",
+      "stage2": "Stage2"
+    }
+  },
   "ui": {
+    "sort": {
+      "type-ascend": "Type Ascending",
+      "type-descend": "Type Descending",
+      "sub-category-ascend": "Subcategory Ascending",
+      "sub-category-descend": "Subcategory Descending",
+      "hp-ascend": "HP High to Low",
+      "hp-descend": "HP Low to High",
+      "expansion-ascend": "Expansion Ascending",
+      "expansion-descend": "Expansion Descending",
+      "rarity-ascend": "Rarity High to Low",
+      "rarity-descend": "Rarity Low to High",
+      "weakness-ascend": "Weakness Ascending",
+      "weakness-descend": "Weakness Descending",
+      "retreat-ascend": "Retreat Cost Low to High",
+      "retreat-descend": "Retreat Cost High to Low"
+    },
+    "suggestion": {
+      "your-opponents-active-pokemon": "Your opponent's Active Pokémon",
+      "your-opponents-benched-pokemon": "Your opponent's Benched Pokémon",
+      "your-active-pokemon": "Your Active Pokémon",
+      "your-benched-pokemon": "Your Benched Pokémon",
+      "during-your-opponents-next-turn": "next turn",
+      "energy": "Energy",
+      "coin": "coin",
+      "poisoned": "Poisoned",
+      "paralyzed": "Paralyzed",
+      "asleep": "Asleep",
+      "more-damage": "more damage",
+      "heal": "heal"
+    },
     "button": {
-      "filter": "Filter"
+      "fab-description": "Toggle search conditions visibility",
+      "filter": "Filter",
+      "full-width": "Full Width",
+      "full-widthDescription": "Toggle display area width to maximum",
+      "open-tsv-converter": "Open TSV Converter",
+      "open-favicon-editor": "Open Favicon Editor",
+      "open-effect-translation-tool": "Open Effect Translation Tool",
+      "close-dialog": "Close Dialog",
+      "filter-button-description": "Toggle search conditions visibility"
+    }
+  },
+  "message": {
+    "dev-tools-description": "Developer tools (for PC)",
+    "result-per-page-is": "Results per page:",
+    "search-result": "Search results: {all} total, showing {from} - {to}.",
+    "no-results-found": "No results found.",
+    "equivalent-cards": "Equivalent cards",
+    "same-name-or-ex": "Same name / ex",
+    "targetable-cards": "Cards you can target by this card",
+    "choosable-cards": "Cards that can choose this card"
+  },
+  "fe": {
+    "label": {
+      "name": "Name",
+      "should-crop-children": "Crop child layers",
+      "color": "Color",
+      "center-position": "Center (x, y)",
+      "size": "Size [width, height]",
+      "rotation": "Rotation",
+      "border-radius": "Border radius"
+    },
+    "ui": {
+      "result": "Result",
+      "add-layer": "Add layer",
+      "delete-layer": "Delete",
+      "rotate-preview": "Rotate preview"
+    },
+    "message": {
+      "drawing-with-css": "Drawing with CSS",
+      "new-layer": "New layer",
+      "layer-size": "Size",
+      "example-layer": {
+        "title": "Layer",
+        "status": "(center), [size], angle°"
+      }
+    }
+  },
+  "tsvc": {
+    "ui": {
+      "dont-use-header-preset": "None",
+      "convert": "Convert"
+    },
+    "label": {
+      "current-header-preset": "Forced header",
+      "dont-format": "Do not format appearance",
+      "data-type-head": "Leading character",
+      "data-type-type": "Data type",
+      "data-type-ignore": "Ignore",
+      "data-type-algorithm": "Automatic decision criteria (second data is ...)",
+      "header-mode-name": "Name",
+      "header-mode-contents": "Contents"
+    },
+    "message": {
+      "title": "TSV Converter",
+      "sub-title": "Convert TSV format to JSON format",
+      "conversion-failed": "Conversion failed items",
+      "consisted-as-number": "Consists only of 0-9, commas (,), periods (.)",
+      "ignore-everything": "Ignore all",
+      "empty-string": "Empty string",
+      "empty": "Empty",
+      "none-of-the-above": "None of the above",
+      "result-placeholder": "Conversion results will be displayed here."
+    },
+    "data-type": {
+      "boolean": "Boolean",
+      "number": "Number",
+      "string": "String"
+    },
+    "p": {
+      "features-h": "Features, etc.",
+      "typed-header1": "The data type (string, number, etc.) is automatically determined based on the second data, but can also be manually specified.",
+      "typed-header2": "In that case, please add a character to the column name's header (e.g., 'name, =rarity, etc.).",
+      "typed-header3": "The supported leading characters are as follows:",
+      "header-mode": "The forced header has the following modes:",
+      "break": "Also, if there are line breaks in the data, conversion will fail. Please use '\\n' instead."
+    }
+  },
+  "ett": {
+    "ui": {
+      "copy-to-clipboard": "Copy",
+      "previous-card": "Previous card",
+      "next-card": "Next card"
+    },
+    "error": {
+      "not-found-trait-with-effect": "No other traits with effects found"
     }
   }
 }

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, watch } from "vue";
+import { useI18n } from "vue-i18n";
 import {
   Card,
   cards,
@@ -21,6 +22,7 @@ import CardCard from "./CardCard.vue";
 import CommonDialog from "./CommonDialog.vue";
 import DialogNavigationButtons from "./DialogNavigationButtons.vue";
 
+const { t } = useI18n();
 const { getTranslatedCardName, getSharedExpansionName, getTranslatedName } =
   useTranslation();
 
@@ -100,7 +102,7 @@ defineEmits<{
     <div class="flex items-center">
       <div class="column">
         <template v-if="predicatedVariants.pass.length !== 1">
-          <h2>同型</h2>
+          <h2>{{ t("message.equivalent-cards") }}</h2>
           <div class="flex flex-wrap justify-center">
             <template v-for="cardId of predicatedVariants.pass">
               <CardCard
@@ -113,7 +115,7 @@ defineEmits<{
           </div>
         </template>
         <template v-if="predicatedVariants.fail.length !== 0">
-          <h2>同名/ex</h2>
+          <h2>{{ t("message.same-name-or-ex") }}</h2>
           <div class="flex flex-wrap justify-center">
             <template v-for="cardId of predicatedVariants.fail">
               <CardCard
@@ -129,8 +131,10 @@ defineEmits<{
           v-for="evolutionName of relations.evolutions"
         >
           <h2>
-            {{ evolutionStageNames[getEvolutionStage(evolutionName)] }}：{{
-              evolutionName
+            {{ t(evolutionStageNames[getEvolutionStage(evolutionName)]) }}：{{
+              getTranslatedCardName({
+                card: cards[cardRelations[evolutionName].cardIds[0]],
+              })
             }}
           </h2>
           <div class="flex flex-wrap justify-center">
@@ -143,9 +147,16 @@ defineEmits<{
           </div>
         </template>
         <template v-if="targetableNames !== undefined">
-          <h2>このカードで選べるカード</h2>
+          <h2>{{ t("message.choosable-cards") }}</h2>
           <template v-for="targetableName of targetableNames">
-            <h3>{{ targetableName }}</h3>
+            <h3>
+              {{
+                getTranslatedCardName({
+                  card: cards[cardRelations[targetableName].cardIds[0]],
+                  withSuffix,
+                })
+              }}
+            </h3>
             <div class="flex flex-wrap justify-center">
               <template v-for="cardId of cardRelations[targetableName].cardIds">
                 <CardCard
@@ -162,7 +173,7 @@ defineEmits<{
           </template>
         </template>
         <template v-if="relations.targetedBy !== undefined">
-          <h2>このカードを選べるカード</h2>
+          <h2>{{ t("message.choosable-cards") }}</h2>
           <div class="flex flex-wrap justify-center">
             <CardCard
               v-for="cardId of relations.targetedBy"

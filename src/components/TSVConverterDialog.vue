@@ -24,7 +24,7 @@ const getProperyPrefix = (data: string) => {
     ? "?"
     : data === "FALSE"
       ? "+"
-      : /(?:[0-9.,]+)/.test(data)
+      : /^[0-9.,]+$/.test(data)
         ? "="
         : data !== ""
           ? "'"

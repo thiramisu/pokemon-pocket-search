@@ -11,7 +11,10 @@ import Icon from "./components/Icon.vue";
 import SearchButton from "./components/SearchButton.vue";
 import TSVConverterDialog from "./components/TSVConverterDialog.vue";
 import ToggleButton from "./components/ToggleButton.vue";
+import { useI18n } from "vue-i18n";
+
 const { language, getTranslatedCardName } = useTranslation();
+const { locale } = useI18n();
 
 const pageTitle = import.meta.env.VITE_APP_TITLE;
 
@@ -50,6 +53,9 @@ watch(
   },
   { immediate: true }
 );
+watch(language, (newValue) => {
+  locale.value = newValue;
+});
 
 // 重複削除
 const cardNames = computed(

@@ -27,9 +27,12 @@ import CardSearchPokemonTypeTr from "./CardSearchPokemonTypeTr.vue";
 import CardSearchRangeSliderTr from "./CardSearchRangeSliderTr.vue";
 import SearchButton from "./SearchButton.vue";
 import CardSearchResult from "./CardSearchResult.vue";
+import { useI18n } from "vue-i18n";
 
 const { getSharedExpansionName, getTranslatedCardName, getTranslatedName } =
   useTranslation();
+
+const { t } = useI18n();
 
 /** width <= 1440px では true なら open, 1440px < width では true なら close */
 const filterPanelToggle = defineModel({ default: false });
@@ -586,7 +589,7 @@ watch(filteredCards, () => {
       <template #layout-button>
         <div class="layout-button">
           <SearchButton
-            text="検索条件"
+            :text="t('ui.button.filter')"
             title="検索条件の表示/非表示を切り替える"
             color="var(--color-attention)"
             :text-color="

@@ -1,4 +1,5 @@
 import { computed, ref, watch } from "vue";
+import { createI18n } from "vue-i18n";
 import {
   CardNameGetterOption,
   getCardName,
@@ -6,6 +7,8 @@ import {
   getTranslatedName,
   PokemonNameLanguages,
 } from "../data/types";
+import en from "../locales/en.json";
+import ja from "../locales/ja.json";
 
 /**
  * 言語
@@ -17,6 +20,15 @@ export const useTranslation = (() => {
     ) as PokemonNameLanguages;
     return ref<PokemonNameLanguages>(savedLanguage ?? "ja");
   })();
+  const i18n = {
+    legacy: false,
+    locale: languageRef.value,
+    fallbackLocale: "en",
+    messages: {
+      en,
+      ja,
+    },
+  };
 
   watch(
     languageRef,
@@ -58,6 +70,7 @@ export const useTranslation = (() => {
         ) =>
           getTranslatedEffect(target, language)
     ),
+    i18n: createI18n(i18n),
   } as const;
   return () => returnValue;
 })();

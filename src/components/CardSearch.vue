@@ -29,8 +29,12 @@ import SearchButton from "./SearchButton.vue";
 import CardSearchResult from "./CardSearchResult.vue";
 import { useI18n } from "vue-i18n";
 
-const { getSharedExpansionName, getTranslatedCardName, getTranslatedName } =
-  useTranslation();
+const {
+  getSharedExpansionName,
+  getTranslatedCardName,
+  getTranslatedEffect,
+  getTranslatedName,
+} = useTranslation();
 
 const { t } = useI18n();
 
@@ -52,11 +56,14 @@ const hasAbility = ref<boolean | undefined>(undefined);
 const attackCount = ref<number | undefined>(undefined);
 
 const cardText = ref("");
+const cardTextLowerCase = computed(() => cardText.value.toLowerCase());
 const includesText = (trait: Trait, text: string) =>
-  ("効果" in trait && trait.効果.includes(text)) ||
-  ("名前" in trait && trait.名前.includes(text));
+  ("効果" in trait &&
+    getTranslatedEffect.value(trait).toLowerCase().includes(text)) ||
+  ("名前" in trait &&
+    getTranslatedName.value(trait).toLowerCase().includes(text));
 const includesSearchText = (trait: Trait) =>
-  includesText(trait, cardText.value);
+  includesText(trait, cardTextLowerCase.value);
 
 const suggestionGroups = [
   ["相手のバトルポケモン", "相手のベンチポケモン"],

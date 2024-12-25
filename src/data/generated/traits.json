@@ -613,7 +613,7 @@
     "無色エネルギー数": 1,
     "威力": 50,
     "効果": "相手のバトルポケモンをどくにする。",
-    "効果_en": "This Pokémon takes －10 damage from attacks."
+    "効果_en": "Your opponent's Active Pokémon is now Poisoned."
   },
   {
     "カードID": 64,

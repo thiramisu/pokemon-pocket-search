@@ -76,8 +76,8 @@ export const getPacksByExpansionName = DataIndexArray(
 export const trainerCardCategories = [
   "グッズ",
   "ポケモンのどうぐ",
-  "サポート",
   "グッズ\n(化石)",
+  "サポート",
 ] as const;
 export type TrainerCardCategories = (typeof trainerCardCategories)[number];
 export type BaseCard = {

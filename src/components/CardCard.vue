@@ -10,6 +10,7 @@ import {
   Card,
   evolutionStageNames,
   getExpansionByPackName,
+  getTranslationKeyOfTrainerCardCategory,
 } from "../data/types";
 import { useTranslation } from "../composables/translation";
 import CardCardTraits from "./CardCardTraits.vue";
@@ -28,7 +29,7 @@ const props = defineProps<{
 const evolutionFrom = computed(() => getPreEvolution(props.card.名前));
 const cardType = computed(() =>
   "トレーナーズ" in props.card
-    ? props.card.トレーナーズ
+    ? t(getTranslationKeyOfTrainerCardCategory(props.card.トレーナーズ))
     : t(
         evolutionStageNames[
           evolutionFrom.value === undefined

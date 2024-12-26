@@ -8,7 +8,8 @@ import {
   evolutionStageNames,
   getEvolutionStage,
   trainerCardCategories,
-  TrainerCardCategories,
+  TrainerCardCategory,
+  getTranslationKeyOfTrainerCardCategory,
   expansions,
   dummyExpansion,
   getExpansionByName,
@@ -34,7 +35,7 @@ const { t } = useI18n();
 const filterPanelToggle = defineModel({ default: false });
 
 const evolutionStage = ref(new Set<number>());
-const selectedTrainerCategory = ref(new Set<TrainerCardCategories>());
+const selectedTrainerCategory = ref(new Set<TrainerCardCategory>());
 
 const cardName = ref("");
 const isEx = ref<true | undefined>(undefined);
@@ -355,7 +356,7 @@ watch(filteredCards, () => {
                 <SearchButton
                   v-for="category of trainerCardCategories"
                   :key="category"
-                  :text="category"
+                  :text="t(getTranslationKeyOfTrainerCardCategory(category))"
                   :filled="selectedTrainerCategory.has(category)"
                   @button-click="
                     toggleSetItem(selectedTrainerCategory, category)

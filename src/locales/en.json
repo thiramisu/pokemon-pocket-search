@@ -2,10 +2,16 @@
   "card-status": {
     "weakness": "Weakness",
     "retreat": "Retreat",
-    "subcategory": {
+    "evolution": {
       "basic": "Basic",
       "stage1": "Stage1",
       "stage2": "Stage2"
+    },
+    "trainer": {
+      "item": "Item",
+      "pokemon-tool": "Pokémon Tool",
+      "item-fossil": "Item\n(Fossil)",
+      "supporter": "Supporter"
     }
   },
   "pack": {

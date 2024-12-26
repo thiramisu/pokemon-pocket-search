@@ -2,10 +2,16 @@
   "card-status": {
     "weakness": "弱点",
     "retreat": "にげる",
-    "subcategory": {
+    "evolution": {
       "basic": "たね",
       "stage1": "1進化",
       "stage2": "2進化"
+    },
+    "trainer": {
+      "item": "グッズ",
+      "pokemon-tool": "ポケモンのどうぐ",
+      "item-fossil": "グッズ\n(化石)",
+      "supporter": "サポート"
     }
   },
   "pack": {

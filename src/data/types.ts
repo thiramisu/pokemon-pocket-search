@@ -10,6 +10,7 @@ import cardRelationData from "./generated/card-relations.json";
 import pokemonTranslationData from "./generated/pokemon-translations.json";
 import targetablesData from "./generated/targetables.json";
 import traitData from "./generated/traits.json";
+import ja from "../locales/ja.json";
 import { COLOR_LESS_JA } from "../const";
 
 /**
@@ -33,9 +34,9 @@ export function getEvolutionStage(pokemonName: string) {
       : 1;
 }
 export const evolutionStageNames = [
-  "card-status.subcategory.basic",
-  "card-status.subcategory.stage1",
-  "card-status.subcategory.stage2",
+  "card-status.evolution.basic",
+  "card-status.evolution.stage1",
+  "card-status.evolution.stage2",
 ] as const;
 
 /**
@@ -70,16 +71,18 @@ export const getPacksByExpansionName = DataIndexArray(
   (pack: Pack) => pack.エキスパンション名
 );
 
+export const trainerCardCategories = Object.values(ja["card-status"].trainer);
+export type TrainerCardCategory = (typeof trainerCardCategories)[number];
+export const getTranslationKeyOfTrainerCardCategory = DataIndex2(
+  Object.entries(ja["card-status"].trainer),
+  ([_, ja]: [string, string]) => ja,
+  ([translationKey, _]: [string, string]) =>
+    `card-status.trainer.${translationKey}`
+);
+
 /**
  * カード
  */
-export const trainerCardCategories = [
-  "グッズ",
-  "ポケモンのどうぐ",
-  "グッズ\n(化石)",
-  "サポート",
-] as const;
-export type TrainerCardCategories = (typeof trainerCardCategories)[number];
 export type BaseCard = {
   ID: number;
   パック: string;
@@ -96,7 +99,7 @@ export type PokemonCard = BaseCard & {
   ex?: true;
 };
 export type TrainerCard = BaseCard & {
-  トレーナーズ: TrainerCardCategories;
+  トレーナーズ: TrainerCardCategory;
 };
 export type FossilCard = TrainerCard & {
   トレーナーズ: (typeof trainerCardCategories)[3];

@@ -8,6 +8,12 @@
       "stage2": "Stage2"
     }
   },
+  "pack": {
+    "no-filtered": "All",
+    "shared-only": "(Shared Cards Only)",
+    "shared": "(Shared Card)",
+    "formatted-shared-pack-name": "({name})"
+  },
   "ui": {
     "sort": {
       "type-ascend": "Type Ascending",

@@ -15,7 +15,6 @@ import {
   getPackByName,
   withSuffix,
 } from "../data/types";
-import { SHARED_PACK } from "../const";
 import { partition } from "../utils";
 import { useTranslation } from "../composables/translation";
 import CardCard from "./CardCard.vue";
@@ -23,8 +22,7 @@ import CommonDialog from "./CommonDialog.vue";
 import DialogNavigationButtons from "./DialogNavigationButtons.vue";
 
 const { t } = useI18n();
-const { getTranslatedCardName, getSharedExpansionName, getTranslatedName } =
-  useTranslation();
+const { getTranslatedCardName, getTranslatedName } = useTranslation();
 
 const card = defineModel<Card>("card", { default: dummyCard });
 
@@ -34,9 +32,7 @@ const relations = computed(
   () => cardRelations[getCardName({ card: card.value, withSuffix })]
 );
 const targetableNames = computed(() => targetables[card.value.ID]);
-const expansionName = computed(() =>
-  getTranslatedName.value(getExpansionByPackName(card.value.パック))
-);
+const expansion = computed(() => getExpansionByPackName(card.value.パック));
 
 const predicatedVariants = computed(() =>
   partition(relations.value.cardIds, (cardId2) =>
@@ -89,11 +85,16 @@ defineEmits<{
       <CardCard :card />
       <div class="card-header">
         <h1>{{ getTranslatedCardName({ card }) }}</h1>
-        <div>{{ expansionName }}</div>
+        <div>{{ getTranslatedName(expansion) }}</div>
         <div>
           {{
-            card.パック === getSharedExpansionName(expansionName)
-              ? SHARED_PACK
+            card.パック ===
+            t(
+              "pack.formatted-shared-pack-name",
+              { name: expansion.名前 },
+              { locale: "ja" }
+            )
+              ? t("pack.shared")
               : getTranslatedName(getPackByName(card.パック))
           }}
         </div>

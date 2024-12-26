@@ -49,11 +49,6 @@ export const useTranslation = (() => {
           ...options,
         })
     ),
-    getSharedExpansionName: computed(
-      () =>
-        (expansionName: string, language = languageRef.value) =>
-          language === "en" ? `(${expansionName})` : `（${expansionName}）`
-    ),
     getTranslatedName: computed(
       () =>
         (

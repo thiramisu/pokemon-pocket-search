@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import { useI18n } from "vue-i18n";
-import { POKEMON_NO_WEAK } from "../const";
+import { POKEMON_NO_WEAK_JA } from "../const";
 import {
   getTraits,
   getPreEvolution,
+  colorLess,
   japaneseToTypes,
   Card,
   evolutionStageNames,
   getExpansionByPackName,
 } from "../data/types";
-import { colorLess } from "../data/types";
 import { useTranslation } from "../composables/translation";
 import CardCardTraits from "./CardCardTraits.vue";
 import PokemonTypeMark from "./PokemonTypeMark.vue";
@@ -107,7 +107,7 @@ const expansion = computed(() => getExpansionByPackName(props.card.パック));
         <span class="type-description text-left text-xs lh-100">{{
           t("card-status.weakness")
         }}</span>
-        <span v-if="card.弱点 === POKEMON_NO_WEAK" class="lh-100">-</span>
+        <span v-if="card.弱点 === POKEMON_NO_WEAK_JA" class="lh-100">-</span>
         <span v-else class="flex items-end">
           <PokemonTypeMark :pokemon-type="japaneseToTypes(card.弱点)" />
           <span class="additional-damage">+20</span>

@@ -10,7 +10,7 @@ import cardRelationData from "./generated/card-relations.json";
 import pokemonTranslationData from "./generated/pokemon-translations.json";
 import targetablesData from "./generated/targetables.json";
 import traitData from "./generated/traits.json";
-import { COLOR_LESS_JP } from "../const";
+import { COLOR_LESS_JA } from "../const";
 
 /**
  * 進化
@@ -179,7 +179,7 @@ export const japaneseToTypes = DataIndex(
   pokemonTypes,
   (pokemonType: PokemonType) => pokemonType.translations.ja
 );
-export const colorLess = japaneseToTypes(COLOR_LESS_JP);
+export const colorLess = japaneseToTypes(COLOR_LESS_JA);
 export const shortenToTypes = DataIndex(
   pokemonTypes,
   (pokemonType: PokemonType) => pokemonType.shorten

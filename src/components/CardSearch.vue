@@ -15,11 +15,7 @@ import {
   getPacksByExpansionName,
   getExpansionByPackName,
 } from "../data/types";
-import {
-  PACK_NO_FILTERED,
-  PACK_SHARED,
-  POKEMON_NAME_DATALIST_ID,
-} from "../const";
+import { POKEMON_NAME_DATALIST_ID } from "../const";
 import { toggleSetItem } from "../utils";
 import { sortFunction } from "../services/cardSorting";
 import { useTranslation } from "../composables/translation";
@@ -29,12 +25,8 @@ import SearchButton from "./SearchButton.vue";
 import CardSearchResult from "./CardSearchResult.vue";
 import { useI18n } from "vue-i18n";
 
-const {
-  getSharedExpansionName,
-  getTranslatedCardName,
-  getTranslatedEffect,
-  getTranslatedName,
-} = useTranslation();
+const { getTranslatedCardName, getTranslatedEffect, getTranslatedName } =
+  useTranslation();
 
 const { t } = useI18n();
 
@@ -101,6 +93,10 @@ const cardNumberMax = computed(() =>
   expansionName.value === undefined
     ? 0
     : getExpansionByName(expansionName.value).カード種類数
+);
+const sharedExpansionNameInJapanese = computed(
+  () => (name: string) =>
+    t("pack.formatted-shared-pack-name", { name }, { locale: "ja" })
 );
 
 const rarityMin = ref(-Infinity);
@@ -209,7 +205,7 @@ const filteredCards = computed(() =>
             card.パック === packName.value ||
             // エキスパンション内共通カード
             (card.パック ===
-              getSharedExpansionName.value(expansionName.value) &&
+              sharedExpansionNameInJapanese.value(expansionName.value) &&
               // 検索パック名に部分的にエキスパンション名が含まれる場合は完全一致以外除外する
               !packName.value?.includes(expansionName.value))) &&
           // コレクションナンバー
@@ -528,7 +524,7 @@ watch(filteredCards, () => {
                     "
                   >
                     <option :value="undefined" selected>
-                      {{ PACK_NO_FILTERED }}
+                      {{ t("pack.no-filtered") }}
                     </option>
 
                     <template
@@ -548,7 +544,7 @@ watch(filteredCards, () => {
                   <div class="select-container">
                     <select v-model="packName">
                       <option :value="undefined" selected>
-                        {{ PACK_NO_FILTERED }}
+                        {{ t("pack.no-filtered") }}
                       </option>
                       <template
                         v-for="pack of getPacksByExpansionName(expansionName)"
@@ -557,19 +553,25 @@ watch(filteredCards, () => {
                         <option
                           v-if="
                             pack.名前 !==
-                            getSharedExpansionName(expansionName, 'ja')
+                            sharedExpansionNameInJapanese(expansionName)
                           "
                           :value="pack.名前"
                         >
                           {{
                             getTranslatedName(pack).replace(
-                              getSharedExpansionName(expansionName),
+                              t("pack.formatted-shared-pack-name", {
+                                name: getTranslatedName(
+                                  getExpansionByName(expansionName)
+                                ),
+                              }),
                               ""
                             )
                           }}
                         </option>
                       </template>
-                      <option :value="null" selected>{{ PACK_SHARED }}</option>
+                      <option :value="null" selected>
+                        {{ t("pack.shared-only") }}
+                      </option>
                     </select>
                   </div>
                   <div class="flex items-center">

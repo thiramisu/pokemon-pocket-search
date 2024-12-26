@@ -8,6 +8,12 @@
       "stage2": "2進化"
     }
   },
+  "pack": {
+    "no-filtered": "すべて",
+    "shared-only": "（共通のみ）",
+    "shared": "（共通）",
+    "formatted-shared-pack-name": "（{name}）"
+  },
   "ui": {
     "sort": {
       "type-ascend": "タイプ昇順",

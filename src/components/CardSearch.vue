@@ -15,6 +15,7 @@ import {
   getExpansionByName,
   getPacksByExpansionName,
   getExpansionByPackName,
+  hasPostEvolution,
 } from "../data/types";
 import { POKEMON_NAME_DATALIST_ID } from "../const";
 import { toggleSetItem } from "../utils";
@@ -35,6 +36,13 @@ const { t } = useI18n();
 const filterPanelToggle = defineModel({ default: false });
 
 const evolutionStage = ref(new Set<number>());
+const evolutionProgresses = [
+  "card-status.evolution.final",
+  "card-status.evolution.intermidate",
+] as const;
+const evolutionProgress = ref<(typeof evolutionProgresses)[number] | undefined>(
+  undefined
+);
 const selectedTrainerCategory = ref(new Set<TrainerCardCategory>());
 
 const cardName = ref("");
@@ -111,6 +119,7 @@ const retreatCostMax = ref(Infinity);
 const isPokemonCardOptionActivated = () =>
   selectedPokemonTypes.value.size !== 0 ||
   evolutionStage.value.size !== 0 ||
+  evolutionProgress.value !== undefined ||
   isEx.value !== undefined ||
   hasAbility.value !== undefined ||
   attackCostEnergyColor.value !== undefined ||
@@ -148,6 +157,9 @@ const filteredCards = computed(() =>
           // 進化
           (evolutionStage.value.size === 0 ||
             evolutionStage.value.has(getEvolutionStage(card.名前))) &&
+          (evolutionProgress.value === undefined ||
+            (evolutionProgress.value === "card-status.evolution.final") ===
+              ("ex" in card || !hasPostEvolution(card.名前))) &&
           // ポケモンタイプ
           (selectedPokemonTypes.value.size === 0 ||
             selectedPokemonTypes.value.has(card.タイプ)) &&
@@ -327,12 +339,14 @@ watch(filteredCards, () => {
                 text="clear"
                 :disabled="
                   evolutionStage.size === 0 &&
+                  evolutionProgress === undefined &&
                   isEx === undefined &&
                   selectedTrainerCategory.size === 0
                 "
                 class="action-button"
                 @button-click="
                   evolutionStage.clear();
+                  evolutionProgress = undefined;
                   isEx = undefined;
                   selectedTrainerCategory.clear();
                 "
@@ -351,6 +365,18 @@ watch(filteredCards, () => {
                   text="ex"
                   :filled="isEx"
                   @button-click="isEx = isEx ? undefined : true"
+                />
+              </div>
+              <div class="flex flex-wrap">
+                <SearchButton
+                  v-for="text of evolutionProgresses"
+                  :key="text"
+                  :text="t(text)"
+                  :filled="evolutionProgress === text"
+                  @button-click="
+                    evolutionProgress =
+                      evolutionProgress === text ? undefined : text
+                  "
                 />
               </div>
               <div class="flex flex-wrap">

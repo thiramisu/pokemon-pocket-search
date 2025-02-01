@@ -5,7 +5,9 @@
     "evolution": {
       "basic": "たね",
       "stage1": "1進化",
-      "stage2": "2進化"
+      "stage2": "2進化",
+      "final": "最終進化",
+      "intermidate": "進化途中"
     },
     "trainer": {
       "item": "グッズ",

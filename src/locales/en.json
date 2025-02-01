@@ -5,7 +5,9 @@
     "evolution": {
       "basic": "Basic",
       "stage1": "Stage1",
-      "stage2": "Stage2"
+      "stage2": "Stage2",
+      "final": "Final Evolution",
+      "intermidate": "Intermidate Evolution"
     },
     "trainer": {
       "item": "Item",

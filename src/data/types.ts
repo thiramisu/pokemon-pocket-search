@@ -25,6 +25,12 @@ export function getPreEvolution(pokemonName: string) {
     ? evolutions[pokemonName]
     : undefined;
 }
+export const hasPostEvolution = (() => {
+  const preEvolvutions = new Set(Object.values(evolutions));
+  return function (pokemonName: string) {
+    return preEvolvutions.has(pokemonName);
+  };
+})();
 export function getEvolutionStage(pokemonName: string) {
   const evolutionFrom = getPreEvolution(pokemonName);
   return evolutionFrom === undefined

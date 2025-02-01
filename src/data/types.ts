@@ -289,7 +289,9 @@ export const findTranslatedCardNameByName = (
     (card) => getCardName({ card, withSuffix }) === cardName
   );
   if (card === undefined) {
-    console.log(`${cardName}の${language}での名前が見つかりませんでした`);
+    console.log(
+      `${cardName}の${language}での名前が見つからなかったので、未翻訳状態になります。`
+    );
     return cardName;
   }
   return getCardName({

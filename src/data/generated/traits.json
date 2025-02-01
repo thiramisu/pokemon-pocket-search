@@ -2081,7 +2081,7 @@
   {
     "カードID": 224,
     "効果": "自分のエネルギーゾーンから闘エネルギーを１個出し、「ゴローニャ」または「イワーク」につける。",
-    "効果_en": "Take a Fighting Energy from your Energy Zone and attach it to Golem or Onix."
+    "効果_en": "Take a Fighting Energy from your Energy Zone and attach it to Golem or Onix ."
   },
   {
     "カードID": 225,
@@ -2746,46 +2746,1493 @@
   },
   {
     "カードID": 296,
+    "名前": "ちょっとすいとる",
+    "名前_en": "Blot",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 0,
+    "威力": 10,
+    "効果": "このポケモンのHPを10回復。",
+    "効果_en": "Heal 10 damage from this Pokémon."
+  },
+  {
+    "カードID": 297,
+    "名前": "はっぱカッター",
+    "名前_en": "Razor Leaf",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 0,
+    "威力": 30
+  },
+  {
+    "カードID": 298,
+    "名前": "リーフステップ",
+    "名前_en": "Leaf Step",
+    "一致エネルギー数": 2,
+    "無色エネルギー数": 0,
+    "威力": 80
+  },
+  {
+    "カードID": 299,
+    "名前": "つるのムチ",
+    "名前_en": "Vine Whip",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 1,
+    "威力": 30
+  },
+  {
+    "カードID": 300,
+    "名前": "メガドレイン",
+    "名前_en": "Mega Drain",
+    "一致エネルギー数": 3,
+    "無色エネルギー数": 1,
+    "威力": 90,
+    "効果": "このポケモンのHPを30回復。",
+    "効果_en": "Heal 30 damage from this Pokémon."
+  },
+  {
+    "カードID": 301,
+    "名前": "はばたく",
+    "名前_en": "Flap",
+    "一致エネルギー数": 0,
+    "無色エネルギー数": 1,
+    "威力": 20
+  },
+  {
+    "カードID": 302,
+    "名前": "エアスラッシュ",
+    "名前_en": "Air Slash",
+    "一致エネルギー数": 0,
+    "無色エネルギー数": 3,
+    "威力": 120,
+    "効果": "このポケモンからエネルギーをランダムに１個トラッシュ。",
+    "効果_en": "Discard a random Energy from this Pokémon."
+  },
+  {
+    "カードID": 303,
+    "名前": "チクチクさす",
+    "名前_en": "Sting",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 0,
+    "威力": 20
+  },
+  {
+    "カードID": 304,
+    "名前": "どくのムチ",
+    "名前_en": "Poisonous Whip",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 1,
+    "威力": 50,
+    "効果": "相手のバトルポケモンをどくにする。",
+    "効果_en": "Your opponent's Active Pokémon is now Poisoned."
+  },
+  {
+    "カードID": 305,
+    "名前": "かみつく",
+    "名前_en": "Bite",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 1,
+    "威力": 30
+  },
+  {
+    "カードID": 306,
+    "名前": "はっぱカッター",
+    "名前_en": "Razor Leaf",
+    "一致エネルギー数": 2,
+    "無色エネルギー数": 1,
+    "威力": 60
+  },
+  {
+    "カードID": 307,
+    "名前": "ハードプラント",
+    "名前_en": "Frenzy Plant",
+    "一致エネルギー数": 2,
+    "無色エネルギー数": 2,
+    "威力": 150,
+    "効果": "次の自分の番、このポケモンは「ハードプラント」が使えない。",
+    "効果_en": "During your next turn, this Pokémon can't use Frenzy Plant."
+  },
+  {
+    "カードID": 308,
+    "名前": "むしくい",
+    "名前_en": "Bug Bite",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 0,
+    "威力": 20
+  },
+  {
+    "カードID": 309,
+    "名前": "トランスメロディ",
+    "名前_en": "Entrancing Melody",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 1,
+    "威力": 50,
+    "効果": "相手のバトルポケモンをこんらんにする。",
+    "効果_en": "Your opponent's Active Pokémon is now Confused."
+  },
+  {
+    "カードID": 310,
+    "名前": "たいあたり",
+    "名前_en": "Tackle",
+    "一致エネルギー数": 0,
+    "無色エネルギー数": 1,
+    "威力": 10
+  },
+  {
+    "カードID": 311,
+    "名前": "はっぱぎり",
+    "名前_en": "Leaf Cutter",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 2,
+    "威力": 60,
+    "効果": "コインを１回投げオモテなら、30ダメージ追加。",
+    "効果_en": "Flip a coin. If heads, this attack does 30 more damage."
+  },
+  {
+    "カードID": 312,
+    "名前": "なかまをよぶ",
+    "名前_en": "Call for Family",
+    "一致エネルギー数": 0,
+    "無色エネルギー数": 1,
+    "威力": 0,
+    "効果": "自分の山札からたねポケモンをランダムに１枚、ベンチに出す。",
+    "効果_en": "Put 1 random Basic Pokémon from your deck onto your Bench."
+  },
+  {
+    "カードID": 313,
+    "名前": "つきさす",
+    "名前_en": "Pierce",
+    "一致エネルギー数": 2,
+    "無色エネルギー数": 0,
+    "威力": 70
+  },
+  {
+    "カードID": 314,
+    "名前": "ウィップダウン",
+    "名前_en": "Flog",
+    "一致エネルギー数": 2,
+    "無色エネルギー数": 1,
+    "威力": 40,
+    "効果": "コインを１回投げオモテなら、50ダメージ追加。",
+    "効果_en": "Flip a coin. If heads, this attack does 50 more damage."
+  },
+  {
+    "カードID": 315,
+    "名前": "はっぱサイクロン",
+    "名前_en": "Leaft Cyclone",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 1,
+    "威力": 90,
+    "効果": "次の自分の番、このポケモンはワザが使えない。",
+    "効果_en": "During your next turn, this Pokémon can't attack."
+  },
+  {
+    "カードID": 316,
+    "名前": "エナジーカット",
+    "名前_en": "Energy Cutoff",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 1,
+    "威力": 30,
+    "効果": "コインを１回投げオモテなら、相手のバトルポケモンからエネルギーをランダムに１個トラッシュ。",
+    "効果_en": "Flip a coin. If heads, discard a random Energy from your opponent's Active Pokémon."
+  },
+  {
+    "カードID": 317,
+    "名前": "かおるはなぞの",
+    "名前_en": "Fragrant Flower Garden",
+    "効果": "自分の番に１回使える。自分のポケモン全員のHPを10回復。",
+    "効果_en": "Once during your turn, you may heal 10 damage from each of your Pokémon."
+  },
+  {
+    "カードID": 317,
+    "名前": "はねまわる",
+    "名前_en": "Flop",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 1,
+    "威力": 30
+  },
+  {
+    "カードID": 318,
+    "名前": "もえあがる",
+    "名前_en": "Stoke",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 0,
+    "威力": 0,
+    "効果": "自分のエネルギーゾーンから炎エネルギーを１個出し、このポケモンにつける。",
+    "効果_en": "Take a Fire Energy from your Energy Zone and attach it to this Pokémon."
+  },
+  {
+    "カードID": 319,
+    "名前": "バーストインフェルノ",
+    "名前_en": "Bursting Inferno",
+    "一致エネルギー数": 4,
+    "無色エネルギー数": 0,
+    "威力": 100,
+    "効果": "相手のバトルポケモンをやけどにする。",
+    "効果_en": "Your opponent's Active Pokémon is now Burned."
+  },
+  {
+    "カードID": 320,
+    "名前": "ほのお",
+    "名前_en": "Flare",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 0,
+    "威力": 20
+  },
+  {
+    "カードID": 321,
+    "名前": "やきこがす",
+    "名前_en": "Searing Flame",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 1,
+    "威力": 30,
+    "効果": "相手のバトルポケモンをやけどにする。",
+    "効果_en": "Your opponent's Active Pokémon is now Burned."
+  },
+  {
+    "カードID": 322,
+    "名前": "ひっかく",
+    "名前_en": "Scratch",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 0,
+    "威力": 20
+  },
+  {
+    "カードID": 323,
+    "名前": "ほのおパンチ",
+    "名前_en": "Fiery Punch",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 0,
+    "威力": 30
+  },
+  {
+    "カードID": 324,
+    "名前": "フレアドライブ",
+    "名前_en": "Flare Blitz",
+    "一致エネルギー数": 2,
+    "無色エネルギー数": 0,
+    "威力": 140,
+    "効果": "このポケモンから炎エネルギーをすべてトラッシュ。",
+    "効果_en": "Discard all Fire Energy from this Pokémon."
+  },
+  {
+    "カードID": 325,
+    "名前": "ヒートブレス",
+    "名前_en": "Heat Breath",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 1,
+    "威力": 30,
+    "効果": "コインを１回投げオモテなら、30ダメージ追加。",
+    "効果_en": "Flip a coin. If heads, this attack does 30 more damage."
+  },
+  {
+    "カードID": 326,
+    "名前": "ずつき",
+    "名前_en": "Headbutt",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 1,
+    "威力": 40
+  },
+  {
+    "カードID": 327,
+    "名前": "あついしぼう",
+    "名前_en": "Thick Fat",
+    "効果": "このポケモンが、炎または水ポケモンから受けるワザのダメージを-20する。",
+    "効果_en": "This Pokémon takes －20 damage from attacks from Fire or Water Pokémon."
+  },
+  {
+    "カードID": 327,
+    "名前": "ぶちかます",
+    "名前_en": "Hammer In",
+    "一致エネルギー数": 2,
+    "無色エネルギー数": 1,
+    "威力": 60
+  },
+  {
+    "カードID": 328,
+    "名前": "あついしぼう",
+    "名前_en": "Thick Fat",
+    "効果": "このポケモンが、炎または水ポケモンから受けるワザのダメージを-30する。",
+    "効果_en": "This Pokémon takes －30 damage from attacks from Fire or Water Pokémon."
+  },
+  {
+    "カードID": 328,
+    "名前": "フロストダンプ",
+    "名前_en": "Frosty Flattening",
+    "一致エネルギー数": 2,
+    "無色エネルギー数": 2,
+    "威力": 120
+  },
+  {
+    "カードID": 329,
+    "名前": "クリスタルボディ",
+    "名前_en": "Crystal Body",
+    "効果": "このポケモンは、相手のポケモンが使うワザの効果を受けない。",
+    "効果_en": "Prevent all effects of attacks used by your opponent's Pokémon done to this Pokémon."
+  },
+  {
+    "カードID": 329,
+    "名前": "フロストスマッシュ",
+    "名前_en": "Frost Smash",
+    "一致エネルギー数": 2,
+    "無色エネルギー数": 0,
+    "威力": 50
+  },
+  {
+    "カードID": 330,
+    "名前": "ひとやすみ",
+    "名前_en": "Nap",
+    "一致エネルギー数": 0,
+    "無色エネルギー数": 1,
+    "威力": 0,
+    "効果": "このポケモンのHPを20回復。",
+    "効果_en": "Heal 20 damage from this Pokémon."
+  },
+  {
+    "カードID": 331,
+    "名前": "なみのり",
+    "名前_en": "Surf",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 1,
+    "威力": 30
+  },
+  {
+    "カードID": 332,
+    "名前": "アクアジェット",
+    "名前_en": "Aqua Jet",
+    "一致エネルギー数": 2,
+    "無色エネルギー数": 1,
+    "威力": 80,
+    "効果": "相手のベンチポケモン１匹にも30ダメージ。",
+    "効果_en": "This attack also does 30 damage to 1 of your opponent's Benched Pokémon."
+  },
+  {
+    "カードID": 333,
+    "名前": "みずでっぽう",
+    "名前_en": "Water Gun",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 0,
+    "威力": 20
+  },
+  {
+    "カードID": 334,
+    "名前": "ジェットスクリュー",
+    "名前_en": "Jet Screw",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 0,
+    "威力": 30,
+    "効果": "コインを１回投げオモテなら、30ダメージ追加。",
+    "効果_en": "Flip a coin. If heads, this attack does 30 more damage."
+  },
+  {
+    "カードID": 335,
+    "名前": "どろかけ",
+    "名前_en": "Mud-Slap",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 1,
+    "威力": 30
+  },
+  {
+    "カードID": 336,
+    "名前": "だくりゅう",
+    "名前_en": "Muddy Water",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 2,
+    "威力": 60,
+    "効果": "相手のベンチポケモン１匹にも20ダメージ。",
+    "効果_en": "This attack also does 20 damage to 1 of your opponent's Benched Pokémon."
+  },
+  {
+    "カードID": 337,
+    "名前": "ゆうがにおよぐ",
+    "名前_en": "Elegant Swim",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 0,
+    "威力": 10,
+    "効果": "コインを１回投げオモテなら、次の相手の番、このポケモンはワザのダメージや効果を受けない。",
+    "効果_en": "Flip a coin. If heads, during your opponent's next turn, prevent all damage from―and effects of―attacks done to this Pokémon."
+  },
+  {
+    "カードID": 338,
+    "名前": "たきのぼり",
+    "名前_en": "Waterfall",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 0,
+    "威力": 50
+  },
+  {
+    "カードID": 339,
+    "名前": "こおりのつぶて",
+    "名前_en": "Ice Shard",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 0,
+    "威力": 10,
+    "効果": "相手のポケモンが闘ポケモンなら、30ダメージ追加。",
+    "効果_en": "If your opponent's Active Pokémon is a Fighting Pokémon, this attack does 30 more damage."
+  },
+  {
+    "カードID": 340,
+    "名前": "こおりのいぶき",
+    "名前_en": "Frost Breath",
+    "一致エネルギー数": 3,
+    "無色エネルギー数": 1,
+    "威力": 120
+  },
+  {
+    "カードID": 341,
+    "名前": "れいとうビーム",
+    "名前_en": "Ice Beam",
+    "一致エネルギー数": 2,
+    "無色エネルギー数": 0,
+    "威力": 60,
+    "効果": "コインを１回投げオモテなら、相手のバトルポケモンをマヒにする。",
+    "効果_en": "Flip a coin. If heads, your opponent's Active Pokémon is now Paralyzed."
+  },
+  {
+    "カードID": 342,
+    "名前": "スプラッシュ",
+    "名前_en": "Wave Splash",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 0,
+    "威力": 30
+  },
+  {
+    "カードID": 343,
+    "名前": "ふぶき",
+    "名前_en": "Blizzard",
+    "一致エネルギー数": 2,
+    "無色エネルギー数": 0,
+    "威力": 30,
+    "効果": "相手のベンチポケモン全員にも10ダメージ。",
+    "効果_en": "This attack also does 10 damage to each of your opponent's Benched Pokémon."
+  },
+  {
+    "カードID": 344,
+    "名前": "きりさく",
+    "名前_en": "Slash",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 0,
+    "威力": 30
+  },
+  {
+    "カードID": 344,
+    "名前": "ディメンションストーム",
+    "名前_en": "Dimensional Storm",
+    "一致エネルギー数": 3,
+    "無色エネルギー数": 1,
+    "威力": 150,
+    "効果": "このポケモンから水エネルギーを３個トラッシュし、相手のベンチポケモン全員にも20ダメージ。",
+    "効果_en": "Discard 3 Water Energy from this Pokémon. This attack also does 20 damage to each of your opponent's Benched Pokémon."
+  },
+  {
+    "カードID": 345,
+    "名前": "うみのおくりもの",
+    "名前_en": "Oceanic Gift",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 0,
+    "威力": 0,
+    "効果": "自分のベンチポケモンを２匹選び、エネルギーゾーンから水エネルギーを出し、１個ずつつける。",
+    "効果_en": "Choose 2 of your Benched Pokémon. For each of those Pokémon, take a Water Energy from your Energy Zone and attach it to that Pokémon."
+  },
+  {
+    "カードID": 346,
+    "名前": "ぶつかる",
+    "名前_en": "Ram",
+    "一致エネルギー数": 0,
+    "無色エネルギー数": 1,
+    "威力": 10
+  },
+  {
+    "カードID": 347,
+    "名前": "ピッカリだま",
+    "名前_en": "Lightning Ball",
+    "一致エネルギー数": 2,
+    "無色エネルギー数": 0,
+    "威力": 50
+  },
+  {
+    "カードID": 348,
+    "名前": "サンダーブラスト",
+    "名前_en": "Thunder Blast",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 2,
+    "威力": 110,
+    "効果": "このポケモンから雷エネルギーを１個トラッシュ。",
+    "効果_en": "Discard a Lightning Energy from this Pokémon."
+  },
+  {
+    "カードID": 349,
+    "名前": "ばくはつ",
+    "名前_en": "Big Explosion",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 0,
+    "威力": 30,
+    "効果": "このポケモンにも10ダメージ。",
+    "効果_en": "This Pokémon also does 10 damage to itself."
+  },
+  {
+    "カードID": 350,
+    "名前": "ボールアタック",
+    "名前_en": "Rolling Attack",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 0,
+    "威力": 50
+  },
+  {
+    "カードID": 351,
+    "名前": "じゅうでん",
+    "名前_en": "Charge",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 0,
+    "威力": 0,
+    "効果": "自分のエネルギーゾーンから雷エネルギーを１個出し、このポケモンにつける。",
+    "効果_en": "Take a Lightning Energy from your Energy Zone and attach it to this Pokémon."
+  },
+  {
+    "カードID": 352,
+    "名前": "エキサイトボルト",
+    "名前_en": "Exciting Voltage",
+    "一致エネルギー数": 2,
+    "無色エネルギー数": 0,
+    "威力": 40,
+    "効果": "追加で雷エネルギーが２個ついているなら、80ダメージ追加。",
+    "効果_en": "If this Pokémon has at least 2 extra Lightning Energy attached, this attack does 80 more damage."
+  },
+  {
+    "カードID": 353,
+    "名前": "かくれる",
+    "名前_en": "Hide",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 0,
+    "威力": 0,
+    "効果": "コインを１回投げオモテなら、次の相手の番、このポケモンはワザのダメージや効果を受けない。",
+    "効果_en": "Flip a coin. If heads, during your opponent's next turn, prevent all damage from―and effects of―attacks done to this Pokémon."
+  },
+  {
+    "カードID": 354,
+    "名前": "でんきのツメ",
+    "名前_en": "Electric Claws",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 1,
+    "威力": 40
+  },
+  {
+    "カードID": 355,
+    "名前": "ボルテージアロー",
+    "名前_en": "Volt Bolt",
+    "一致エネルギー数": 3,
+    "無色エネルギー数": 0,
+    "威力": 0,
+    "効果": "このポケモンから雷エネルギーをすべてトラッシュし、相手のポケモン１匹に120ダメージ。",
+    "効果_en": "Discard all Lightning Energy from this Pokémon. This attack does 120 damage to 1 of your opponent's Pokémon."
+  },
+  {
+    "カードID": 356,
+    "名前": "ガジェットスパーク",
+    "名前_en": "Sparking Gadget",
+    "一致エネルギー数": 2,
+    "無色エネルギー数": 0,
+    "威力": 40,
+    "効果": "このポケモンに「ポケモンのどうぐ」がついているなら、40ダメージ追加。",
+    "効果_en": "If this Pokémon has a Pokémon Tool attacked, this attack does 40 more damage."
+  },
+  {
+    "カードID": 357,
+    "名前": "アサルトレーザー",
+    "名前_en": "Assault Laser",
+    "一致エネルギー数": 0,
+    "無色エネルギー数": 1,
+    "威力": 20,
+    "効果": "相手のバトルポケモンに「ポケモンのどうぐ」がついているなら、30ダメージ追加。",
+    "効果_en": "If your opponent's Active Pokémon has a Pokémon Tool attached, this attack does 30 more damage."
+  },
+  {
+    "カードID": 358,
+    "名前": "はたく",
+    "名前_en": "Pound",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 0,
+    "威力": 20
+  },
+  {
+    "カードID": 359,
+    "名前": "ようせいのかぜ",
+    "名前_en": "Fairy Wind",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 0,
+    "威力": 40
+  },
+  {
+    "カードID": 360,
+    "名前": "オーバースマッシュ",
+    "名前_en": "Overdrive Smash",
+    "一致エネルギー数": 2,
+    "無色エネルギー数": 0,
+    "威力": 60,
+    "効果": "次の自分の番、このポケモンの「オーバースマッシュ」のダメージを+60する。",
+    "効果_en": "During your next turn, this Pokémon's Overdrive Smash attack does ＋60 damage."
+  },
+  {
+    "カードID": 361,
+    "名前": "つぶやく",
+    "名前_en": "Mumble",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 0,
+    "威力": 20
+  },
+  {
+    "カードID": 362,
+    "名前": "マジカルトリップ",
+    "名前_en": "Magical Delusion",
+    "一致エネルギー数": 2,
+    "無色エネルギー数": 0,
+    "威力": 70,
+    "効果": "相手のバトルポケモンをこんらんにする。",
+    "効果_en": "Your opponent's Active Pokémon is now Confused."
+  },
+  {
+    "カードID": 363,
+    "名前": "テレポート",
+    "名前_en": "Teleport",
+    "一致エネルギー数": 0,
+    "無色エネルギー数": 1,
+    "威力": 0,
+    "効果": "このポケモンをベンチポケモンと入れ替える。",
+    "効果_en": "Switch this Pokémon with 1 of your Benched Pokémon."
+  },
+  {
+    "カードID": 364,
+    "名前": "ビンタ",
+    "名前_en": "Slap",
+    "一致エネルギー数": 0,
+    "無色エネルギー数": 1,
+    "威力": 20
+  },
+  {
+    "カードID": 365,
+    "名前": "おにび",
+    "名前_en": "Will-O-Wisp",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 0,
+    "威力": 20
+  },
+  {
+    "カードID": 366,
+    "名前": "サイコパンチ",
+    "名前_en": "Psypunch",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 2,
+    "威力": 50
+  },
+  {
+    "カードID": 367,
+    "名前": "シャドーホール",
+    "名前_en": "Shadow Void",
+    "効果": "自分の番に何回でも使える。ダメージを受けている自分のポケモンを１匹選び、選んだポケモンが受けているダメージをすべて、このポケモンに移し替える。",
+    "効果_en": "As often as you like during your turn, you may choose 1 of your Pokémon that has damage on it, and move all of its damage to this Pokémon."
+  },
+  {
+    "カードID": 367,
+    "名前": "ソウルイート",
+    "名前_en": "Devour Soul",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 2,
+    "威力": 70
+  },
+  {
+    "カードID": 368,
+    "名前": "ふくらむ",
+    "名前_en": "Expand",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 0,
+    "威力": 10,
+    "効果": "次の相手の番、このポケモンが受けるワザのダメージを-20する。",
+    "効果_en": "During your opponent's next turn, this Pokémon takes －20 damage from attacks."
+  },
+  {
+    "カードID": 369,
+    "名前": "バルーンアタック",
+    "名前_en": "Balloon Strike",
+    "一致エネルギー数": 2,
+    "無色エネルギー数": 0,
+    "威力": 60
+  },
+  {
+    "カードID": 370,
+    "名前": "マインドブースト",
+    "名前_en": "Mind Boost",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 0,
+    "威力": 20,
+    "効果": "自分のエネルギーゾーンから超エネルギーを１個出し、「エムリット」または「アグノム」につける。",
+    "効果_en": "Take a Psychic Energy from your Energy Zone and attach it to Mesprit or Azelf ."
+  },
+  {
+    "カードID": 371,
+    "名前": "ゴッドブラスト",
+    "名前_en": "Supreme Blast",
+    "一致エネルギー数": 3,
+    "無色エネルギー数": 0,
+    "威力": 160,
+    "効果": "このワザは、自分のベンチに「ユクシー」「アグノム」がいるときにしか使えない。このポケモンからエネルギーをすべてトラッシュ。",
+    "効果_en": "You can use this attack only if you have Uxie and Azelf on your Bench. Discard all Energy from this Pokémon."
+  },
+  {
+    "カードID": 372,
+    "名前": "サイコアロー",
+    "名前_en": "Psychic Arrow",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 0,
+    "威力": 0,
+    "効果": "相手のポケモン１匹に20ダメージ。",
+    "効果_en": "This attack does 20 damage to 1 of your opponent's Pokémon."
+  },
+  {
+    "カードID": 373,
+    "名前": "ふゆう",
+    "名前_en": "Levitate",
+    "効果": "このポケモンにエネルギーがついているなら、このポケモンのにげるためのエネルギーを、すべてなくす。",
+    "効果_en": "If this Pokémon has any Energy attached, it has no Retreat Cost."
+  },
+  {
+    "カードID": 373,
+    "名前": "ホロウショット",
+    "名前_en": "Spooky Shot",
+    "一致エネルギー数": 2,
+    "無色エネルギー数": 1,
+    "威力": 70
+  },
+  {
+    "カードID": 374,
+    "名前": "ムーンライトゲイン",
+    "名前_en": "Moonlight Gain",
+    "一致エネルギー数": 2,
+    "無色エネルギー数": 0,
+    "威力": 50,
+    "効果": "このポケモンのHPを20回復。",
+    "効果_en": "Heal 20 damage from this Pokémon."
+  },
+  {
+    "カードID": 375,
+    "名前": "つのでつく",
+    "名前_en": "Horn Attack",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 1,
+    "威力": 40
+  },
+  {
+    "カードID": 376,
+    "名前": "たたきつぶす",
+    "名前_en": "Wrack Down",
+    "一致エネルギー数": 2,
+    "無色エネルギー数": 1,
+    "威力": 70
+  },
+  {
+    "カードID": 377,
+    "名前": "マウンテンスイング",
+    "名前_en": "Mountain Swing",
+    "一致エネルギー数": 3,
+    "無色エネルギー数": 1,
+    "威力": 150,
+    "効果": "自分の山札を上から３枚トラッシュ。",
+    "効果_en": "Discard the top 3 cards from your deck."
+  },
+  {
+    "カードID": 378,
+    "名前": "つきさす",
+    "名前_en": "Pierce",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 0,
+    "威力": 20
+  },
+  {
+    "カードID": 379,
+    "名前": "アクロバット",
+    "名前_en": "Acrobatics",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 0,
+    "威力": 20,
+    "効果": "コインを２回投げ、オモテの数×20ダメージ追加。",
+    "効果_en": "Flip 2 coins. This attack does 20 more damage for each heads."
+  },
+  {
+    "カードID": 380,
+    "名前": "かいてんアタック",
+    "名前_en": "Spinning Attack",
+    "一致エネルギー数": 2,
+    "無色エネルギー数": 0,
+    "威力": 50
+  },
+  {
+    "カードID": 381,
+    "名前": "ぶつかる",
+    "名前_en": "Ram",
+    "一致エネルギー数": 0,
+    "無色エネルギー数": 2,
+    "威力": 30
+  },
+  {
+    "カードID": 382,
+    "名前": "かたいからだ",
+    "名前_en": "Exoskeleton",
+    "効果": "このポケモンが受けるワザのダメージを-20する。",
+    "効果_en": "This Pokémon takes －20 damage from attacks."
+  },
+  {
+    "カードID": 382,
+    "名前": "ロックスマッシュ",
+    "名前_en": "Boulder Crush",
+    "一致エネルギー数": 3,
+    "無色エネルギー数": 1,
+    "威力": 100
+  },
+  {
+    "カードID": 383,
+    "名前": "ずつき",
+    "名前_en": "Headbutt",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 0,
+    "威力": 50
+  },
+  {
+    "カードID": 384,
+    "名前": "もろはのずつき",
+    "名前_en": "Head Smash",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 0,
+    "威力": 130,
+    "効果": "このワザのダメージで、相手のポケモンがきぜつしたなら、このポケモンにも50ダメージ。",
+    "効果_en": "If your opponent's Pokémon is Knocked Out by damage from this attack, this Pokémon also does 50 damage to itself."
+  },
+  {
+    "カードID": 385,
+    "名前": "ランドクラッシュ",
+    "名前_en": "Land Crush",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 2,
+    "威力": 70
+  },
+  {
+    "カードID": 386,
+    "名前": "ジャブ",
+    "名前_en": "Jab",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 0,
+    "威力": 20
+  },
+  {
+    "カードID": 387,
+    "名前": "ファイティングコーチ",
+    "名前_en": "Fighting Coach",
+    "効果": "このポケモンがいるかぎり、自分の闘ポケモンが使うワザの、相手のバトルポケモンへのダメージを+20する。",
+    "効果_en": "Attacks used by your Fighting Pokémon do ＋20 damage to your opponent's Active Pokémon."
+  },
+  {
+    "カードID": 387,
+    "名前": "サブマリンブロー",
+    "名前_en": "Submarine Blow",
+    "一致エネルギー数": 2,
+    "無色エネルギー数": 0,
+    "威力": 40
+  },
+  {
+    "カードID": 388,
+    "名前": "ころがりタックル",
+    "名前_en": "Rolling Tackle",
+    "一致エネルギー数": 2,
+    "無色エネルギー数": 1,
+    "威力": 60
+  },
+  {
+    "カードID": 389,
+    "名前": "グラウンドプレス",
+    "名前_en": "Earthen Press",
+    "一致エネルギー数": 3,
+    "無色エネルギー数": 1,
+    "威力": 120
+  },
+  {
+    "カードID": 390,
+    "名前": "エナジーブレード",
+    "名前_en": "Energized Blade",
+    "一致エネルギー数": 2,
+    "無色エネルギー数": 0,
+    "威力": 70,
+    "効果": "相手のバトルポケモンのエネルギーの数×20ダメージ追加。",
+    "効果_en": "This attack does 20 more damage for each Energy attached to your opponent's Active Pokémon."
+  },
+  {
+    "カードID": 391,
+    "名前": "つつく",
+    "名前_en": "Peck",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 0,
+    "威力": 20
+  },
+  {
+    "カードID": 392,
+    "名前": "ちょくげきひこう",
+    "名前_en": "Skill Dive",
+    "一致エネルギー数": 2,
+    "無色エネルギー数": 0,
+    "威力": 0,
+    "効果": "相手のポケモン１匹に50ダメージ。",
+    "効果_en": "This attack does 50 damage to 1 of your opponent's Pokémon."
+  },
+  {
+    "カードID": 393,
+    "名前": "ダブルひっかき",
+    "名前_en": "Double Scratch",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 0,
+    "威力": 20,
+    "効果": "コインを２回投げ、オモテの数×20ダメージ。",
+    "効果_en": "Flip 2 coins. This attack does 20 damage for each heads."
+  },
+  {
+    "カードID": 394,
+    "名前": "スクラッチネイル",
+    "名前_en": "Scratching Nails",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 0,
+    "威力": 30,
+    "効果": "相手のバトルポケモンがダメージを受けているなら、40ダメージ追加。",
+    "効果_en": "Your opponent's Active Pokémon If has damage on it, this attack does 40 more damage."
+  },
+  {
+    "カードID": 395,
+    "名前": "かみつく",
+    "名前_en": "Bite",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 0,
+    "威力": 20
+  },
+  {
+    "カードID": 396,
+    "名前": "やみのキバ",
+    "名前_en": "Darkness Fang",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 1,
+    "威力": 60
+  },
+  {
+    "カードID": 397,
+    "名前": "ひっかく",
+    "名前_en": "Scratch",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 0,
+    "威力": 10
+  },
+  {
+    "カードID": 398,
+    "名前": "どくガス",
+    "名前_en": "Poison Gas",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 1,
+    "威力": 50,
+    "効果": "相手のバトルポケモンをどくにする。",
+    "効果_en": "Your opponent's Active Pokémon is now Poisoned."
+  },
+  {
+    "カードID": 399,
+    "名前": "うずまくわざわい",
+    "名前_en": "Swirling Disaster",
+    "一致エネルギー数": 0,
+    "無色エネルギー数": 1,
+    "威力": 0,
+    "効果": "相手のポケモン全員に10ダメージ。",
+    "効果_en": "This attack does 10 damage to each of your opponent's Pokémon."
+  },
+  {
+    "カードID": 400,
+    "名前": "つきさす",
+    "名前_en": "Pierce",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 1,
+    "威力": 30
+  },
+  {
+    "カードID": 401,
+    "名前": "クロスポイズン",
+    "名前_en": "Cross Poison",
+    "一致エネルギー数": 3,
+    "無色エネルギー数": 0,
+    "威力": 40,
+    "効果": "コインを４回投げ、オモテの数×40ダメージ。オモテが２回以上なら、相手のバトルポケモンをどくにする。",
+    "効果_en": "Flip 4 coins. This attack does 40 damage for each heads. If at least 2 of them are heads, your opponent's Active Pokémon is now Poisoned."
+  },
+  {
+    "カードID": 402,
+    "名前": "みんなでしばく",
+    "名前_en": "Group Beatdown",
+    "一致エネルギー数": 2,
+    "無色エネルギー数": 0,
+    "威力": 20,
+    "効果": "自分の場のポケモンの数ぶんコインを投げ、オモテの数×20ダメージ。",
+    "効果_en": "Flip a coin for each Pokémon you have in play, this attack does 20 damage for each heads."
+  },
+  {
+    "カードID": 403,
+    "名前": "みんなでしばく",
+    "名前_en": "Group Beatdown",
+    "一致エネルギー数": 2,
+    "無色エネルギー数": 0,
+    "威力": 40,
+    "効果": "自分の場のポケモンの数ぶんコインを投げ、オモテの数×40ダメージ。",
+    "効果_en": "Flip a coin for each Pokémon you have in play, this attack does 40 damage for each heads."
+  },
+  {
+    "カードID": 404,
+    "名前": "ダークホール",
+    "名前_en": "Dark Void",
+    "一致エネルギー数": 2,
+    "無色エネルギー数": 1,
+    "威力": 60,
+    "効果": "相手のバトルポケモンをねむりにする。",
+    "効果_en": "Your opponent's Active Pokémon is now Asleep."
+  },
+  {
+    "カードID": 405,
+    "名前": "ナイトメアオーラ",
+    "名前_en": "Nightmare Aura",
+    "効果": "自分のエネルギーゾーンからこのポケモンに悪エネルギーをつけるたび、相手のバトルポケモンに20ダメージ。",
+    "効果_en": "Whenever you attach a Darkness Energy from your Energy Zone to this Pokémon, do 20 damage to your opponent's Active Pokémon."
+  },
+  {
+    "カードID": 405,
+    "名前": "ダークプリズム",
+    "名前_en": "Dark Prism",
+    "一致エネルギー数": 2,
+    "無色エネルギー数": 1,
+    "威力": 80
+  },
+  {
+    "カードID": 406,
+    "名前": "メタルアームズ",
+    "名前_en": "Metal Arms",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 0,
+    "威力": 20,
+    "効果": "このポケモンに「ポケモンのどうぐ」がついているなら、30ダメージ追加。",
+    "効果_en": "If this Pokémon has a Pokémon Tool attacked, this attack does 30 more damage."
+  },
+  {
+    "カードID": 407,
+    "名前": "メタルクロー",
+    "名前_en": "Metal Claw",
+    "一致エネルギー数": 3,
+    "無色エネルギー数": 0,
+    "威力": 90
+  },
+  {
+    "カードID": 408,
+    "名前": "ずつき",
+    "名前_en": "Headbutt",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 1,
+    "威力": 50
+  },
+  {
+    "カードID": 409,
+    "名前": "がんめんガード",
+    "名前_en": "Guarded Grill",
+    "効果": "このポケモンがワザのダメージを受けるとき、自分はコインを１回投げる。オモテなら、このポケモンが受けるワザのダメージを-100する。",
+    "効果_en": "If any damage is done to this Pokémon by attacks, flip a coin. If heads, this Pokémon takes －100 damage from that attack."
+  },
+  {
+    "カードID": 409,
+    "名前": "ヘッドバング",
+    "名前_en": "Headbang",
+    "一致エネルギー数": 2,
+    "無色エネルギー数": 1,
+    "威力": 80
+  },
+  {
+    "カードID": 410,
+    "名前": "アイアンヘッド",
+    "名前_en": "Iron Head",
+    "一致エネルギー数": 2,
+    "無色エネルギー数": 0,
+    "威力": 50,
+    "効果": "ウラが出るまでコインを投げ、オモテの数×30ダメージ追加。",
+    "効果_en": "Flip a coin until you get tails. This attack does 30 more damage for each heads."
+  },
+  {
+    "カードID": 411,
+    "名前": "たいあたり",
+    "名前_en": "Tackle",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 1,
+    "威力": 30
+  },
+  {
+    "カードID": 412,
+    "名前": "ガードプレス",
+    "名前_en": "Guard Press",
+    "一致エネルギー数": 2,
+    "無色エネルギー数": 1,
+    "威力": 60,
+    "効果": "次の相手の番、このポケモンが受けるワザのダメージを-20する。",
+    "効果_en": "During your opponent's next turn, this Pokémon takes －20 damage from attacks."
+  },
+  {
+    "カードID": 413,
+    "名前": "トリプルノーズ",
+    "名前_en": "Triple Nose",
+    "一致エネルギー数": 3,
+    "無色エネルギー数": 1,
+    "威力": 30,
+    "効果": "コインを３回投げ、オモテの数×50ダメージ追加。",
+    "効果_en": "Flip 3 coins. This attack does 50 more damage for each heads."
+  },
+  {
+    "カードID": 414,
+    "名前": "メタルターボ",
+    "名前_en": "Metallic Turbo",
+    "一致エネルギー数": 2,
+    "無色エネルギー数": 0,
+    "威力": 30,
+    "効果": "自分のエネルギーゾーンから鋼エネルギーを２個出し、ベンチポケモン１匹につける。",
+    "効果_en": "Take 2 Metal Energy from your Energy Zone and attach it to 1 of your Benched Pokémon."
+  },
+  {
+    "カードID": 414,
+    "名前": "ヘビーインパクト",
+    "名前_en": "Heavy Impact",
+    "一致エネルギー数": 2,
+    "無色エネルギー数": 2,
+    "威力": 100
+  },
+  {
+    "カードID": 415,
+    "名前": "こうてつタックル",
+    "名前_en": "Steel Tackle",
+    "一致エネルギー数": 3,
+    "無色エネルギー数": 0,
+    "威力": 110,
+    "効果": "このポケモンにも20ダメージ。",
+    "効果_en": "This Pokémon also does 20 damage to itself."
+  },
+  {
+    "カードID": 416,
+    "名前": "かじる",
+    "名前_en": "Gnaw",
+    "一致エネルギー数": 0,
+    "無色エネルギー数": 1,
+    "威力": 20
+  },
+  {
+    "カードID": 417,
+    "名前": "きりさく",
+    "名前_en": "Slash",
+    "一致エネルギー数": 0,
+    "無色エネルギー数": 0,
+    "必要エネルギー上書き": "WF",
+    "威力": 60
+  },
+  {
+    "カードID": 418,
+    "名前": "あらけずり",
+    "名前_en": "Reckless Shearing",
+    "効果": "自分の番に、自分の手札を１枚トラッシュするなら、１回使える。自分の山札を１枚引く。",
+    "効果_en": "You must discard a card from your hand in order to use this Ability. Once during your turn, you may draw a card."
+  },
+  {
+    "カードID": 418,
+    "名前": "ドラゴンクロー",
+    "名前_en": "Dragon Claw",
+    "一致エネルギー数": 0,
+    "無色エネルギー数": 0,
+    "必要エネルギー上書き": "WF",
+    "威力": 100
+  },
+  {
+    "カードID": 419,
+    "名前": "ベロではたく",
+    "名前_en": "Tongue Slap",
+    "一致エネルギー数": 0,
+    "無色エネルギー数": 3,
+    "威力": 50
+  },
+  {
+    "カードID": 420,
+    "名前": "ベロベロラッシュ",
+    "名前_en": "Licking Fury",
+    "一致エネルギー数": 0,
+    "無色エネルギー数": 4,
+    "威力": 100,
+    "効果": "ウラが出るまでコインを投げ、オモテの数×40ダメージ追加。",
+    "効果_en": "Flip a coin until you get tails. This attack does 40 more damage for each heads."
+  },
+  {
+    "カードID": 421,
+    "名前": "でんこうせっか",
+    "名前_en": "Quick Attack",
+    "一致エネルギー数": 0,
+    "無色エネルギー数": 1,
+    "威力": 10,
+    "効果": "コインを１回投げオモテなら、20ダメージ追加。",
+    "効果_en": "Flip a coin. If heads, this attack does 20 more damage."
+  },
+  {
+    "カードID": 422,
+    "名前": "ビーム",
+    "名前_en": "Beam",
+    "一致エネルギー数": 0,
+    "無色エネルギー数": 1,
+    "威力": 20
+  },
+  {
+    "カードID": 423,
+    "名前": "かくばる",
+    "名前_en": "Sharpen",
+    "一致エネルギー数": 0,
+    "無色エネルギー数": 1,
+    "威力": 30
+  },
+  {
+    "カードID": 424,
+    "名前": "バグビーム",
+    "名前_en": "Buggy Beam",
+    "一致エネルギー数": 0,
+    "無色エネルギー数": 3,
+    "威力": 80,
+    "効果": "相手の次に発生するエネルギーのタイプを、草炎水雷超闘悪鋼の中からランダムな１つに変える。",
+    "効果_en": "Change the type of the next Energy that will be generated for you opponent to 1 of the following at random: Grass, Fire, Water, Lightning, Psychic, Fighting, Darkness, or Metal."
+  },
+  {
+    "カードID": 425,
+    "名前": "しっぽパンチ",
+    "名前_en": "Tail Jab",
+    "一致エネルギー数": 0,
+    "無色エネルギー数": 1,
+    "威力": 20
+  },
+  {
+    "カードID": 426,
+    "名前": "ダブルアタック",
+    "名前_en": "Double Hit",
+    "一致エネルギー数": 0,
+    "無色エネルギー数": 1,
+    "威力": 40,
+    "効果": "コインを２回投げ、オモテの数×40ダメージ。",
+    "効果_en": "Flip 2 coins. This attack does 40 damage for each heads."
+  },
+  {
+    "カードID": 427,
+    "名前": "ついばむ",
+    "名前_en": "Pluck",
+    "一致エネルギー数": 0,
+    "無色エネルギー数": 1,
+    "威力": 20,
+    "効果": "ダメージを与える前に、相手のバトルポケモンから「ポケモンのどうぐ」をトラッシュ。",
+    "効果_en": "Before doing damage, discard all Pokémon Tools from your opponent's Active Pokémon."
+  },
+  {
+    "カードID": 428,
+    "名前": "つばさでうつ",
+    "名前_en": "Wing Attack",
+    "一致エネルギー数": 0,
+    "無色エネルギー数": 1,
+    "威力": 40
+  },
+  {
+    "カードID": 429,
+    "名前": "わしづかみ",
+    "名前_en": "Clutch",
+    "一致エネルギー数": 0,
+    "無色エネルギー数": 3,
+    "威力": 80,
+    "効果": "次の相手の番、このワザを受けたポケモンはにげるができない。",
+    "効果_en": "During your opponent's next turn, the Defending Pokémoncan't retreat."
+  },
+  {
+    "カードID": 430,
+    "名前": "いかりのまえば",
+    "名前_en": "Super Fang",
+    "一致エネルギー数": 0,
+    "無色エネルギー数": 2,
+    "威力": 0,
+    "効果": "相手のバトルポケモンの残りHPを、半分（切り捨て）にする。",
+    "効果_en": "Halve your opponent's Active Pokémon's remaining HP, rounded down."
+  },
+  {
+    "カードID": 431,
+    "名前": "ころがりタックル",
+    "名前_en": "Rolling Tackle",
+    "一致エネルギー数": 0,
+    "無色エネルギー数": 2,
+    "威力": 60
+  },
+  {
+    "カードID": 432,
+    "名前": "はねる",
+    "名前_en": "Splash",
+    "一致エネルギー数": 0,
+    "無色エネルギー数": 1,
+    "威力": 10
+  },
+  {
+    "カードID": 433,
+    "名前": "とびげり",
+    "名前_en": "Jump Kick",
+    "一致エネルギー数": 0,
+    "無色エネルギー数": 1,
+    "威力": 20,
+    "効果": "相手のベンチポケモン１匹にも20ダメージ。",
+    "効果_en": "This attack also does 20 damage to 1 of your opponent's Benched Pokémon."
+  },
+  {
+    "カードID": 434,
+    "名前": "きどる",
+    "名前_en": "Pose",
+    "一致エネルギー数": 0,
+    "無色エネルギー数": 1,
+    "威力": 40,
+    "効果": "コインを１回投げウラなら、このワザは失敗。",
+    "効果_en": "Flip a coin. If tails, this attack does nothing."
+  },
+  {
+    "カードID": 435,
+    "名前": "じゃまする",
+    "名前_en": "Interrupt",
+    "一致エネルギー数": 0,
+    "無色エネルギー数": 3,
+    "威力": 60,
+    "効果": "相手の手札のオモテをすべて見て、その中からカードを１枚選び、山札にもどす。",
+    "効果_en": "Your opponent reveals their hand. Choose a card you find there and shuffle it into your opponent's deck."
+  },
+  {
+    "カードID": 436,
+    "名前": "みだれづき",
+    "名前_en": "Fury Attack",
+    "一致エネルギー数": 0,
+    "無色エネルギー数": 1,
+    "威力": 20,
+    "効果": "コインを３回投げ、オモテの数×20ダメージ。",
+    "効果_en": "Flip 3 coins. This attack does 20 damage for each heads."
+  },
+  {
+    "カードID": 437,
+    "名前": "せんぷう",
+    "名前_en": "Spin Storm",
+    "一致エネルギー数": 0,
+    "無色エネルギー数": 2,
+    "威力": 0,
+    "効果": "コインを１回投げオモテなら、相手のバトルポケモンを手札にもどす。",
+    "効果_en": "Flip a coin. If heads, put your opponent's Active Pokémon into their hand."
+  },
+  {
+    "カードID": 438,
+    "名前": "レイジングハンマー",
+    "名前_en": "Raging Hammer",
+    "一致エネルギー数": 0,
+    "無色エネルギー数": 4,
+    "威力": 50,
+    "効果": "このポケモンが受けているダメージぶん、ダメージ追加。",
+    "効果_en": "This attack does more damage equal to the damage this Pokémon has on it."
+  },
+  {
+    "カードID": 439,
+    "効果": "このカードは、HP40の無色タイプのたねポケモンとして、場に出すことができる。\n自分の番の中でなら、場に出ているこのカードをトラッシュしてよい。\nこのカードはにげるができない。",
+    "効果_en": "Play this card as if it were a 40-HP Basic Colorless Pokémon.\nAt any time during your turn, you may discard this card from play.\nThis card can't retreat."
+  },
+  {
+    "カードID": 440,
+    "効果": "このカードは、HP40の無色タイプのたねポケモンとして、場に出すことができる。\n自分の番の中でなら、場に出ているこのカードをトラッシュしてよい。\nこのカードはにげるができない。",
+    "効果_en": "Play this card as if it were a 40-HP Basic Colorless Pokémon.\nAt any time during your turn, you may discard this card from play.\nThis card can't retreat."
+  },
+  {
+    "カードID": 441,
+    "効果": "自分の手札からポケモンを１枚選び、山札にあるランダムなポケモン１枚と入れ替える。",
+    "効果_en": "Choose a Pokémon in your hand and switch it with a random Pokémon in your deck."
+  },
+  {
+    "カードID": 442,
+    "効果": "このカードをつけているポケモンの最大HPを+20する。",
+    "効果_en": "The Pokémon this card is attached to gets ＋20 HP."
+  },
+  {
+    "カードID": 443,
+    "効果": "このカードをつけているポケモンが、バトル場で相手のポケモンからワザのダメージを受けたとき、ワザを使ったポケモンに20ダメージ。",
+    "効果_en": "If the Pokémon this card is attached to is in the Active Spot and is damaged by an attack from your opponent's Pokémon, do 20 damage to the Attacking Pokémon."
+  },
+  {
+    "カードID": 444,
+    "効果": "おたがいの番の終わりに、このカードをつけているポケモンが特殊状態なら、そのポケモンの特殊状態をすべて回復。その後、このカードをトラッシュ。",
+    "効果_en": "At the end of each turn, if the Pokémon this card is attached to is affected by any Special Conditions, it recovers from all of them, and discard this card."
+  },
+  {
+    "カードID": 445,
+    "効果": "相手のベンチのダメージを受けているポケモンを１匹選び、バトルポケモンと入れ替える。",
+    "効果_en": "Switch 1 of your opponent's Benched Pokémon that has damage on it to the Active Spot."
+  },
+  {
+    "カードID": 446,
+    "効果": "自分の山札から「ニャルマー」「スカンプー」「グレッグル」をランダムに１枚、手札に加える。",
+    "効果_en": "aaaa"
+  },
+  {
+    "カードID": 447,
+    "効果": "この番、自分の「ガブリアス」「トゲキッス」が使うワザの、相手のバトルポケモンへのダメージを+50する。",
+    "効果_en": "During this turn, your Garchomp or Togekiss attacks used by do ＋50 damage to your opponent's Active Pokémon."
+  },
+  {
+    "カードID": 448,
+    "効果": "自分の「エレキブル」または「レントラー」を１匹選ぶ。自分のトラッシュから雷エネルギーを２個、そのポケモンにつける。",
+    "効果_en": "Choose 1 of your Electivire or Luxray. Attach 2 Lighting Energy from your Discard pile and to that Pokémon ."
+  },
+  {
+    "カードID": 449,
+    "効果": "自分のベンチポケモンからエネルギーを１個選び、バトルポケモンにつけ替える。",
+    "効果_en": "Move an Energy from 1 of your Benched Pokémon to your Active Pokémon."
+  },
+  {
+    "カードID": 450,
+    "効果": "相手の手札をすべて山札にもどす。相手は相手自身の勝つために必要な残りポイントの数ぶん、山札を引く。",
+    "効果_en": "Your opponent shuffles their hand into their deck and draws a card for each of their remaining points needed to win."
+  },
+  {
+    "カードID": 451,
     "効果": "自分のポケモン１匹のHPを20回復。",
     "効果_en": "Heal 20 damage from 1 of your Pokémon."
   },
   {
-    "カードID": 297,
+    "カードID": 452,
     "効果": "この番、自分のバトルポケモンのにげるためのエネルギーを、１個少なくする。",
     "効果_en": "During this turn, the Retreat Cost of your Active Pokémon is 1 less."
   },
   {
-    "カードID": 298,
+    "カードID": 453,
     "効果": "相手の手札のオモテをすべて見る。",
     "効果_en": "Your opponent reveals their hand."
   },
   {
-    "カードID": 299,
+    "カードID": 454,
     "効果": "自分の山札を上から３枚見て、もとにもどす。",
     "効果_en": "Look at the top 3 cards of your deck."
   },
   {
-    "カードID": 300,
+    "カードID": 455,
     "効果": "自分の山札からたねポケモンをランダムに１枚、手札に加える。",
     "効果_en": "Put a random Basic Pokémon your deck into your hand."
   },
   {
-    "カードID": 301,
+    "カードID": 456,
     "効果": "相手の手札をすべて山札にもどす。相手は山札を３枚引く。",
     "効果_en": "Your opponent shuffles their hand into their deck and draws 3 cards."
   },
   {
-    "カードID": 302,
+    "カードID": 457,
     "効果": "自分の山札を２枚引く。",
     "効果_en": "Draw 2 cards."
   },
   {
-    "カードID": 303,
+    "カードID": 458,
     "効果": "自分の山札を上から３枚見て、もとにもどす。",
     "効果_en": "Look at the top 3 cards of your deck."
   },
   {
-    "カードID": 304,
+    "カードID": 459,
     "名前": "かじる",
     "名前_en": "Gnaw",
     "一致エネルギー数": 1,
@@ -2793,7 +4240,7 @@
     "威力": 20
   },
   {
-    "カードID": 305,
+    "カードID": 460,
     "名前": "パワーブラスト",
     "名前_en": "Power Blast",
     "一致エネルギー数": 2,
@@ -2803,7 +4250,7 @@
     "効果_en": "Discard 2 Psychic Energy from this Pokémon."
   },
   {
-    "カードID": 306,
+    "カードID": 461,
     "名前": "ひっぱたく",
     "名前_en": "Gentle Slap",
     "一致エネルギー数": 0,
@@ -2811,7 +4258,7 @@
     "威力": 60
   },
   {
-    "カードID": 307,
+    "カードID": 462,
     "名前": "ネコにこばん",
     "名前_en": "Pay Day",
     "一致エネルギー数": 0,
@@ -2821,14 +4268,14 @@
     "効果_en": "Draw a card."
   },
   {
-    "カードID": 308,
+    "カードID": 463,
     "名前": "パウダーヒール",
     "名前_en": "Powder Heal",
     "効果": "自分の番に１回使える。自分のポケモン全員のHPを20回復。",
     "効果_en": "Once during your turn, you may heal 20 damage from each of your Pokémon."
   },
   {
-    "カードID": 308,
+    "カードID": 463,
     "名前": "かぜおこし",
     "名前_en": "Gust",
     "一致エネルギー数": 1,
@@ -2836,7 +4283,7 @@
     "威力": 60
   },
   {
-    "カードID": 309,
+    "カードID": 464,
     "名前": "バブルドレイン",
     "名前_en": "Bubble Drain",
     "一致エネルギー数": 2,
@@ -2846,7 +4293,7 @@
     "効果_en": "Heal 20 damage from this Pokémon."
   },
   {
-    "カードID": 310,
+    "カードID": 465,
     "名前": "かじる",
     "名前_en": "Gnaw",
     "一致エネルギー数": 1,
@@ -2854,7 +4301,7 @@
     "威力": 20
   },
   {
-    "カードID": 311,
+    "カードID": 466,
     "名前": "ビンタ",
     "名前_en": "Slap",
     "一致エネルギー数": 1,
@@ -2862,7 +4309,7 @@
     "威力": 20
   },
   {
-    "カードID": 312,
+    "カードID": 467,
     "名前": "とつげき",
     "名前_en": "Reckless Charge",
     "一致エネルギー数": 1,
@@ -2872,7 +4319,7 @@
     "効果_en": "This Pokémon also does 10 damage to itself."
   },
   {
-    "カードID": 313,
+    "カードID": 468,
     "名前": "メガドレイン",
     "名前_en": "Mega Drain",
     "一致エネルギー数": 2,
@@ -2882,14 +4329,14 @@
     "効果_en": "Heal 30 damage from this Pokémon."
   },
   {
-    "カードID": 314,
+    "カードID": 469,
     "名前": "みずしゅりけん",
     "名前_en": "Water Shuriken",
     "効果": "自分の番に１回使える。相手のポケモン１匹に20ダメージ。",
     "効果_en": "Once during your turn, you may do 20 damage to 1 of your opponent's Pokémon."
   },
   {
-    "カードID": 314,
+    "カードID": 469,
     "名前": "かすみぎり",
     "名前_en": "Mist Slash",
     "一致エネルギー数": 1,
@@ -2897,7 +4344,7 @@
     "威力": 60
   },
   {
-    "カードID": 315,
+    "カードID": 470,
     "名前": "ふいをつく",
     "名前_en": "Surprise Attack",
     "一致エネルギー数": 1,
@@ -2907,7 +4354,7 @@
     "効果_en": "Flip a coin. If tails, this attack does nothing."
   },
   {
-    "カードID": 316,
+    "カードID": 471,
     "名前": "ランドクラッシュ",
     "名前_en": "Land Crush",
     "一致エネルギー数": 3,
@@ -2915,7 +4362,7 @@
     "威力": 70
   },
   {
-    "カードID": 317,
+    "カードID": 472,
     "名前": "うたう",
     "名前_en": "Sing",
     "一致エネルギー数": 0,
@@ -2925,7 +4372,7 @@
     "効果_en": "Your opponent's Active Pokémon is now Asleep."
   },
   {
-    "カードID": 318,
+    "カードID": 473,
     "名前": "つるのムチ",
     "名前_en": "Vine Whip",
     "一致エネルギー数": 1,
@@ -2933,7 +4380,7 @@
     "威力": 40
   },
   {
-    "カードID": 319,
+    "カードID": 474,
     "名前": "ピッカリだま",
     "名前_en": "Lightning Ball",
     "一致エネルギー数": 1,
@@ -2941,7 +4388,7 @@
     "威力": 20
   },
   {
-    "カードID": 320,
+    "カードID": 475,
     "名前": "れっかのまい",
     "名前_en": "Inferno Dance",
     "一致エネルギー数": 1,
@@ -2951,7 +4398,7 @@
     "効果_en": "Flip 3 coins. Take an amount of Fire Energy from your Energy Zone equal to the number of heads and attach it to your Benched Fire Pokémon in any way you like."
   },
   {
-    "カードID": 320,
+    "カードID": 475,
     "名前": "ヒートブラスト",
     "名前_en": "Heat Blast",
     "一致エネルギー数": 1,
@@ -2959,7 +4406,7 @@
     "威力": 70
   },
   {
-    "カードID": 321,
+    "カードID": 476,
     "名前": "かじる",
     "名前_en": "Gnaw",
     "一致エネルギー数": 1,
@@ -2967,7 +4414,7 @@
     "威力": 20
   },
   {
-    "カードID": 322,
+    "カードID": 477,
     "名前": "たいあたり",
     "名前_en": "Tackle",
     "一致エネルギー数": 1,
@@ -2975,7 +4422,7 @@
     "威力": 20
   },
   {
-    "カードID": 323,
+    "カードID": 478,
     "名前": "かさいりゅう",
     "名前_en": "Volcanic Ash",
     "一致エネルギー数": 2,
@@ -2985,7 +4432,7 @@
     "効果_en": "Discard 2 Fire Energy from this Pokémon. this attack does 80 damage to 1 of your opponent's Pokémon."
   },
   {
-    "カードID": 324,
+    "カードID": 479,
     "名前": "ハイドロポンプ",
     "名前_en": "Hydro Pump",
     "一致エネルギー数": 2,
@@ -2995,7 +4442,7 @@
     "効果_en": "If this Pokémon has at least 2 extra Water Energy attached, this attack does 60 more damage."
   },
   {
-    "カードID": 325,
+    "カードID": 480,
     "名前": "なきごえ",
     "名前_en": "Growl",
     "一致エネルギー数": 0,
@@ -3005,7 +4452,7 @@
     "効果_en": "During your opponent's next turn, attacks used by the Defending Pokémon do －20 damage."
   },
   {
-    "カードID": 326,
+    "カードID": 481,
     "名前": "ともだちのわ",
     "名前_en": "Do the Wave",
     "一致エネルギー数": 0,
@@ -3015,7 +4462,7 @@
     "効果_en": "This attack does 30 damage for each of your Benched Pokémon."
   },
   {
-    "カードID": 327,
+    "カードID": 482,
     "名前": "ひのこ",
     "名前_en": "Ember",
     "一致エネルギー数": 1,
@@ -3025,9 +4472,88 @@
     "効果_en": "Discard a Fire Energy from this Pokémon."
   },
   {
-    "カードID": 328,
+    "カードID": 483,
     "名前": "みずでっぽう",
     "名前_en": "Water Gun",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 0,
+    "威力": 20,
+    "効果": "このポケモンのHPを20回復。",
+    "効果_en": "Heal 20 damage from this Pokémon."
+  },
+  {
+    "カードID": 484,
+    "名前": "ひとやすみ",
+    "名前_en": "Nap",
+    "一致エネルギー数": 0,
+    "無色エネルギー数": 1,
+    "威力": 0
+  },
+  {
+    "カードID": 485,
+    "名前": "かみつく",
+    "名前_en": "Bite",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 1,
+    "威力": 30
+  },
+  {
+    "カードID": 486,
+    "名前": "エキサイトボルト",
+    "名前_en": "Exciting Voltage",
+    "一致エネルギー数": 2,
+    "無色エネルギー数": 0,
+    "威力": 40,
+    "効果": "追加で雷エネルギーが２個ついているなら、80ダメージ追加。",
+    "効果_en": "If this Pokémon has at least 2 extra Lightning Energy attached, this attack does 80 more damage."
+  },
+  {
+    "カードID": 487,
+    "名前": "みかづきのはごろも",
+    "名前_en": "Lunar Plumage",
+    "効果": "自分のエネルギーゾーンからこのポケモンに超エネルギーをつけるたび、このポケモンのHPを20回復。",
+    "効果_en": "Whenever you attach a Psychic Energy from your Energy Zone to this Pokémon, heal 20 damage from this Pokémon."
+  },
+  {
+    "カードID": 487,
+    "名前": "サイコフラッシュ",
+    "名前_en": "Psychic Flash",
+    "一致エネルギー数": 2,
+    "無色エネルギー数": 1,
+    "威力": 80
+  },
+  {
+    "カードID": 488,
+    "名前": "あやしいひかり",
+    "名前_en": "Confuse Ray",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 0,
+    "威力": 0,
+    "効果": "相手のバトルポケモンをこんらんにする。",
+    "効果_en": "Your opponent's Active Pokémon is now Confused."
+  },
+  {
+    "カードID": 489,
+    "名前": "メタルアームズ",
+    "名前_en": "Metal Arms",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 0,
+    "威力": 20,
+    "効果": "このポケモンに「ポケモンのどうぐ」がついているなら、30ダメージ追加。",
+    "効果_en": "If this Pokémon has a Pokémon Tool attacked, this attack does 30 more damage."
+  },
+  {
+    "カードID": 490,
+    "名前": "ひっかく",
+    "名前_en": "Scratch",
+    "一致エネルギー数": 1,
+    "無色エネルギー数": 0,
+    "威力": 20
+  },
+  {
+    "カードID": 491,
+    "名前": "はたく",
+    "名前_en": "Pound",
     "一致エネルギー数": 1,
     "無色エネルギー数": 0,
     "威力": 20

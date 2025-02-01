@@ -46,8 +46,10 @@
       "energy": "エネルギー",
       "coin": "コイン",
       "poisoned": "どく",
+      "burned": "やけど",
       "paralyzed": "マヒ",
       "asleep": "ねむり",
+      "confused": "こんらん",
       "more-damage": "ダメージ追加",
       "heal": "回復"
     },

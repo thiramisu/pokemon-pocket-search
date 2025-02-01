@@ -46,8 +46,10 @@
       "energy": "Energy",
       "coin": "coin",
       "poisoned": "Poisoned",
+      "burned": "Burned",
       "paralyzed": "Paralyzed",
       "asleep": "Asleep",
+      "confused": "Confused",
       "more-damage": "more damage",
       "heal": "heal"
     },

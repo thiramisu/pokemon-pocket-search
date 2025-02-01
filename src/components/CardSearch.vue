@@ -69,7 +69,8 @@ const suggestionGroups = [
     "ui.suggestion.energy",
     "ui.suggestion.coin",
   ],
-  ["ui.suggestion.poisoned", "ui.suggestion.paralyzed", "ui.suggestion.asleep"],
+  ["ui.suggestion.poisoned", "ui.suggestion.burned"],
+  ["ui.suggestion.paralyzed", "ui.suggestion.asleep", "ui.suggestion.confused"],
   ["ui.suggestion.more-damage", "ui.suggestion.heal"],
 ] as const;
 type Suggestion = (typeof suggestionGroups)[number][number];

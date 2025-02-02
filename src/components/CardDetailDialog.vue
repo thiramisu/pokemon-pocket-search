@@ -207,6 +207,7 @@ defineEmits<{
   .column-grid {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;
+    place-items: center;
   }
   .card-header {
     order: -1;

@@ -148,7 +148,7 @@ defineEmits<{
           </div>
         </template>
         <template v-if="targetableNames !== undefined">
-          <h2>{{ t("message.choosable-cards") }}</h2>
+          <h2>{{ t("message.targetable-cards") }}</h2>
           <template v-for="targetableName of targetableNames">
             <h3>
               {{

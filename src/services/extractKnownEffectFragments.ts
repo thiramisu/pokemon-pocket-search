@@ -145,6 +145,10 @@ const getKnownWordsAndConverters = (): KnownEffectFragment[] =>
     // コイン
     [/コインを１回投げ、/g, "flip a coin. "],
     [/コインを１回投げ/g, "flip a coin. "],
+    [
+      /コインを２回投げ、すべてオモテなら、/g,
+      "flip 2 coins. If both of them are heads, ",
+    ],
     [/ウラが出るまでコインを投げ、/g, "flip a coin until you get tails. "],
     [
       /自分の場のポケモンの数ぶんコインを投げ、/g,
@@ -178,6 +182,10 @@ const getKnownWordsAndConverters = (): KnownEffectFragment[] =>
         `this attack does ${damage} more damage for each Energy attached to your opponent's Active Pokémon`,
     ],
     [
+      /相手のバトルポケモンが「ポケモンex」なら、/g,
+      "if your opponent's Active Pokémon is a Pokémon ex, ",
+    ],
+    [
       /(\d+)ダメージ追加/g,
       (_, additionalDamage) =>
         `this attack does ${additionalDamage} more damage`,
@@ -186,6 +194,11 @@ const getKnownWordsAndConverters = (): KnownEffectFragment[] =>
       /が使うワザの、相手のバトルポケモンへのダメージを\+(\d+)する/g,
       (_, additionalDamage) =>
         `attacks used by do ＋${additionalDamage} damage to your opponent's Active Pokémon`,
+    ],
+    // 被弾
+    [
+      /このポケモンがダメージを受けているなら、/g,
+      "if this Pokémon has damage on it, ",
     ],
     // 自傷
     [
@@ -235,6 +248,10 @@ const getKnownWordsAndConverters = (): KnownEffectFragment[] =>
         `discard all ${toEnglishType(energy)} Energy from this Pokémon`,
     ],
     [
+      /このポケモンからエネルギーをランダムに１個トラッシュ/g,
+      "Discard a random Energy from this Pokémon",
+    ],
+    [
       /相手のバトルポケモンからエネルギーをランダムに１個トラッシュ/g,
       (_) => `discard a random Energy from your opponent's Active Pokémon`,
     ],
@@ -263,6 +280,13 @@ const getKnownWordsAndConverters = (): KnownEffectFragment[] =>
     ],
     [/につける/g, "and attach it to "],
     [/つけ替える/g, "Move Energy from your Benched Pokémon to "],
+    // エネルギー軽減
+    [/にげるためのエネルギーを、すべてなくす/g, " has no Retreat Cost"],
+    [
+      /ワザを使うためのエネルギーを、無色エネルギー([１-９])個ぶん少なくする/g,
+      (_, energyCount) =>
+        `attacks used by _ cost ${toHankakuDigit(energyCount)} less Colorless Energy`,
+    ],
     // 山札
     [/自分の山札を上から１枚見/g, "look at the top card of your deck"],
     [
@@ -302,6 +326,10 @@ const getKnownWordsAndConverters = (): KnownEffectFragment[] =>
       // 英語版には対応するテキストがない
       "",
     ],
+    [
+      /自分の場に「アルセウス」または「アルセウスex」がいるなら、/g,
+      "if you have Arceus or Arceus ex in play, ",
+    ],
     // 妨害
     [
       /このワザを受けたポケモンが使うワザのダメージを-(\d+)する。/g,
@@ -322,6 +350,12 @@ const getKnownWordsAndConverters = (): KnownEffectFragment[] =>
       /相手の手札をすべて山札にもどす。/g,
       "Your opponent shuffles their hand into their deck. ",
     ],
+    [
+      /次の相手の番、このワザを受けたポケモンがワザを使うとき、相手はコインを１回投げる。ウラならそのワザは失敗。/g,
+      "during your opponent's next turn, if the Defending Pokémon tries to use an attack, your opponent flips a coin. If tails, that attack doesn't happen.",
+    ],
+    // 残存デメリット
+    [/このポケモンはワザが使えない。/g, "this Pokémon can't attack."],
     // 入れ替え・にげる
     [
       /このポケモンをベンチポケモンと入れ替える/g,

@@ -2782,5 +2782,229 @@
     "ko": "레지기가스",
     "ja": "レジギガス",
     "zh-Hant": "雷吉奇卡斯"
+  },
+  "ヘラクロス": {
+    "en": "Heracross",
+    "fr": "Scarhino",
+    "de": "Skaraborn",
+    "ko": "헤라크로스",
+    "ja": "ヘラクロス",
+    "zh-Hant": "赫拉剋羅斯"
+  },
+  "ガーメイル": {
+    "en": "Mothim",
+    "fr": "Papilord",
+    "de": "Moterpel",
+    "ko": "나메일",
+    "ja": "ガーメイル",
+    "zh-Hant": "紳士蛾"
+  },
+  "チェリンボ": {
+    "en": "Cherubi",
+    "fr": "Ceribou",
+    "de": "Kikugi",
+    "ko": "체리버",
+    "ja": "チェリンボ",
+    "zh-Hant": "櫻花寶"
+  },
+  "チェリム": {
+    "en": "Cherrim",
+    "fr": "Ceriflor",
+    "de": "Kinoso",
+    "ko": "체리꼬",
+    "ja": "チェリム",
+    "zh-Hant": "櫻花兒"
+  },
+  "デルビル": {
+    "en": "Houndour",
+    "fr": "Malosse",
+    "de": "Hunduster",
+    "ko": "델빌",
+    "ja": "デルビル",
+    "zh-Hant": "戴魯比"
+  },
+  "ヘルガー": {
+    "en": "Houndoom",
+    "fr": "Démolosse",
+    "de": "Hundemon",
+    "ko": "헬가",
+    "ja": "ヘルガー",
+    "zh-Hant": "黑魯加"
+  },
+  "マリル": {
+    "en": "Marill",
+    "fr": "Marill",
+    "de": "Marill",
+    "ko": "마릴",
+    "ja": "マリル",
+    "zh-Hant": "瑪力露"
+  },
+  "マリルリ": {
+    "en": "Azumarill",
+    "fr": "Azumarill",
+    "de": "Azumarill",
+    "ko": "마릴리",
+    "ja": "マリルリ",
+    "zh-Hant": "瑪力露麗"
+  },
+  "ドジョッチ": {
+    "en": "Barboach",
+    "fr": "Barloche",
+    "de": "Schmerbe",
+    "ko": "미꾸리",
+    "ja": "ドジョッチ",
+    "zh-Hant": "泥泥鰍"
+  },
+  "ナマズン": {
+    "en": "Whiscash",
+    "fr": "Barbicha",
+    "de": "Welsar",
+    "ko": "메깅",
+    "ja": "ナマズン",
+    "zh-Hant": "鯰魚王"
+  },
+  "ユキワラシ": {
+    "en": "Snorunt",
+    "fr": "Stalgamin",
+    "de": "Schneppke",
+    "ko": "눈꼬마",
+    "ja": "ユキワラシ",
+    "zh-Hant": "雪童子"
+  },
+  "ユキメノコ": {
+    "en": "Froslass",
+    "fr": "Momartik",
+    "de": "Frosdedje",
+    "ko": "눈여아",
+    "ja": "ユキメノコ",
+    "zh-Hant": "雪妖女"
+  },
+  "フィオネ": {
+    "en": "Phione",
+    "fr": "Phione",
+    "de": "Phione",
+    "ko": "피오네",
+    "ja": "フィオネ",
+    "zh-Hant": "霏歐納"
+  },
+  "ラクライ": {
+    "en": "Electrike",
+    "fr": "Dynavolt",
+    "de": "Frizelbliz",
+    "ko": "썬더라이",
+    "ja": "ラクライ",
+    "zh-Hant": "落雷獸"
+  },
+  "ライボルト": {
+    "en": "Manectric",
+    "fr": "Élecsprint",
+    "de": "Voltenso",
+    "ko": "썬더볼트",
+    "ja": "ライボルト",
+    "zh-Hant": "雷電獸"
+  },
+  "アンノーン": {
+    "en": "Unown",
+    "fr": "Zarbi",
+    "de": "Icognito",
+    "ko": "안농",
+    "ja": "アンノーン",
+    "zh-Hant": "未知圖騰"
+  },
+  "ウソッキー": {
+    "en": "Sudowoodo",
+    "fr": "Simularbre",
+    "de": "Mogelbaum",
+    "ko": "꼬지모",
+    "ja": "ウソッキー",
+    "zh-Hant": "樹才怪"
+  },
+  "ゴマゾウ": {
+    "en": "Phanpy",
+    "fr": "Phanpy",
+    "de": "Phanpy",
+    "ko": "코코리",
+    "ja": "ゴマゾウ",
+    "zh-Hant": "小小象"
+  },
+  "ドンファン": {
+    "en": "Donphan",
+    "fr": "Donphan",
+    "de": "Donphan",
+    "ko": "코리갑",
+    "ja": "ドンファン",
+    "zh-Hant": "頓甲"
+  },
+  "ヨーギラス": {
+    "en": "Larvitar",
+    "fr": "Embrylex",
+    "de": "Larvitar",
+    "ko": "애버라스",
+    "ja": "ヨーギラス",
+    "zh-Hant": "由基拉"
+  },
+  "サナギラス": {
+    "en": "Pupitar",
+    "fr": "Ymphect",
+    "de": "Pupitar",
+    "ko": "데기라스",
+    "ja": "サナギラス",
+    "zh-Hant": "沙基拉"
+  },
+  "バンギラス": {
+    "en": "Tyranitar",
+    "fr": "Tyranocif",
+    "de": "Despotar",
+    "ko": "마기라스",
+    "ja": "バンギラス",
+    "zh-Hant": "班吉拉"
+  },
+  "アサナン": {
+    "en": "Meditite",
+    "fr": "Méditikka",
+    "de": "Meditie",
+    "ko": "요가랑",
+    "ja": "アサナン",
+    "zh-Hant": "瑪沙那"
+  },
+  "チャーレム": {
+    "en": "Medicham",
+    "fr": "Charmina",
+    "de": "Meditalis",
+    "ko": "요가램",
+    "ja": "チャーレム",
+    "zh-Hant": "恰雷姆"
+  },
+  "クロバット": {
+    "en": "Crobat",
+    "fr": "Nostenfer",
+    "de": "Iksbat",
+    "ko": "크로뱃",
+    "ja": "クロバット",
+    "zh-Hant": "叉字蝠"
+  },
+  "ホーホー": {
+    "en": "Hoothoot",
+    "fr": "Hoothoot",
+    "de": "Hoothoot",
+    "ko": "부우부",
+    "ja": "ホーホー",
+    "zh-Hant": "咕咕"
+  },
+  "ヨルノズク": {
+    "en": "Noctowl",
+    "fr": "Noarfang",
+    "de": "Noctuh",
+    "ko": "야부엉",
+    "ja": "ヨルノズク",
+    "zh-Hant": "貓頭夜鷹"
+  },
+  "アルセウス": {
+    "en": "Arceus",
+    "fr": "Arceus",
+    "de": "Arceus",
+    "ko": "아르세우스",
+    "ja": "アルセウス",
+    "zh-Hant": "阿爾宙斯"
   }
 }

@@ -169,8 +169,6 @@ export type PokemonCardAttack = (BaseCardTrait | BaseCardTraitWithEffect) & {
 };
 export type TrainerCardTrait = BaseCardTraitWithEffect;
 export type Trait = PokemonCardAbility | PokemonCardAttack | TrainerCardTrait;
-// FIXME: 型パズルに敗北
-// @ts-ignore
 export const traits: Trait[] = traitData;
 export const getTraits = DataIndexArray(
   traits,

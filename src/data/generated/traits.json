@@ -5338,7 +5338,9 @@
   {
     "カードID": 569,
     "名前": "ガードリンク",
-    "名前_en": "Resilience Link"
+    "名前_en": "Resilience Link",
+    "効果": "自分の場に「アルセウス」または「アルセウスex」がいるなら、このポケモンが受けるワザのダメージを-30する。",
+    "効果_en": "If you have Arceus or Arceus ex in play, this Pokémon takes －30 damage from attacks."
   },
   {
     "カードID": 569,

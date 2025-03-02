@@ -360,7 +360,7 @@
     "無色エネルギー数": 1,
     "威力": 0,
     "効果": "コインを１回投げオモテなら、次の相手の番、このワザを受けたポケモンはワザが使えない。",
-    "効果_en": "Flip a coin. If heads, the Defending Pokémoncan't attack during your opponent's next turn,."
+    "効果_en": "Flip a coin. If heads, the Defending Pokémon can't attack during your opponent's next turn,."
   },
   {
     "カードID": 38,
